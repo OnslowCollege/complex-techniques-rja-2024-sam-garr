@@ -1,30 +1,35 @@
 {
-    "image": "ghcr.io/onslowcollege/swifttemplate:latest",
+    "image": "ghcr.io/onslowcollege/webtemplate:latest",
     "customizations": {
         "vscode": {
             "extensions": [
-                "sswg.swift-lang",
-                "vknabel.vscode-apple-swift-format",
-                "vadimcn.vscode-lldb",
                 "eamodio.gitlens",
                 "GitHub.vscode-pull-request-github",
+                "bierner.github-markdown-preview",
                 "yzhang.markdown-all-in-one",
-                "hediet.vscode-drawio",
-                "oderwat.indent-rainbow",
                 "usernamehw.errorlens",
                 "aaron-bond.better-comments",
-                "vsls-contrib.gitdoc",
-                "seunlanlege.action-buttons",
+                "hediet.vscode-drawio",
+                "ritwickdey.LiveServer",
+                "formulahendry.auto-close-tag",
+                "formulahendry.auto-complete-tag",
+                "formulahendry.auto-rename-tag",
+                "bierner.color-info",
+                "pranaygp.vscode-css-peek",
+                "ecmel.vscode-html-css",
+                "oderwat.indent-rainbow",
+                "bierner.lit-html",
+                "christian-kohler.path-intellisense",
+                "Photopea.photopea",
+                "vsls-contrib.gitdoc"
             ],
             "settings": {
-                "apple-swift-format.path": [
-                    "/root/.mint/bin/swift-format"
-                ],
-                "gitlens.showWhatsNewAfterUpgrades": false,
-                "gitlens.showWelcomeOnInstall": false,
                 "editor.wordWrap": "on",
                 "editor.inlayHints.enabled": "off",
                 "editor.fontSize": 16,
+                "editor.formatOnSave": true,
+                "editor.formatOnSaveMode": "modificationsIfAvailable",
+                "editor.formatOnType": true,
                 "editor.rulers": [
                     120
                 ],
@@ -40,36 +45,9 @@
                 },
                 "gitdoc.commitValidationLevel": "none",
                 "gitdoc.enabled": true,
-                "workbench.colorTheme": "Default Light Modern",
-                "actionButtons": {
-                    "commands": [
-                        {
-                            "cwd": "${workspaceFolder}",
-                            "name": "$(run) Run file",
-                            "singleInstance": true,
-                            "command": "swift sh ${file}" // This is executed in the terminal.
-                        },
-                        {
-                            "cwd": "{workspaceFolder}",
-                            "name": "$(pencil) Format file",
-                            "useVsCodeApi": true,
-                            "command": "editor.action.formatDocument"
-                        },
-                        {
-                            "name": "$(terminal-view-icon) New Terminal",
-                            "useVsCodeApi": true,
-                            "command": "workbench.action.terminal.newInActiveWorkspace"
-                        },
-                        {
-                            "name": "$(terminal-kill) Kill all Terminals",
-                            "useVsCodeApi": true,
-                            "command": "workbench.action.terminal.killAll"
-                        }
-                    ],
-                    "defaultColor": "none",
-                    "reloadButton": "↻",
-                    "loadNpmCommands": false
-                }
+                "gitlens.showWhatsNewAfterUpgrades": false,
+                "gitlens.showWelcomeOnInstall": false,
+                "workbench.colorTheme": "Default Light Modern"
             }
         }
     }
