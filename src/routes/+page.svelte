@@ -52,6 +52,6 @@
 {#if state === 'start'}
     <h1>Matching game</h1>
     <button on:click = {() => state = 'playing'}>
-        <img src="/workspaces/complex-techniques-rja-2024-aidan-george.worktrees/Nest-Web-Framework-test/CampCookerRender_V2.png" alt="card">
+        <img src="../CampCookerRender_V2.png" alt="card">
     </button>
 {/if}
