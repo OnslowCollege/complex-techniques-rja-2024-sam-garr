@@ -1,9 +1,9 @@
 <script lang="ts">
-    import'./src/app.css'
+    import'../app.css'
 </script>
 
 <svelte:head>
-    <title>Matching Game</title>
+    <title>Last Card</title>
 </svelte:head>
 
 <slot />

@@ -2,3 +2,5 @@
 <p>Opponent cards</p>
 <p>Playing cards</p>
 <p>Players cards</p>
+
+<script lang="ts"></script>
