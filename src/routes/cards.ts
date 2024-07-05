@@ -12,7 +12,7 @@ interface CardInfo {
 
 const objects: CardInfo[] = [];
 
-const suits: Array<'club' | 'diamond' | 'heart' | 'spade'> = ['club', 'diamond', 'heart', 'spade'];
+const suits: string[] = ['club', 'diamond', 'heart', 'spade'];
 const names: string[] = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
 
 // Generate cards for each suit
