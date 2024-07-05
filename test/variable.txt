@@ -1,5 +1,0 @@
-name,side,colour
-jack,back,red
-ace,front,black
-one,front,red
-queen,front,black
