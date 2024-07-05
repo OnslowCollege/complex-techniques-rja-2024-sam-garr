@@ -51,5 +51,7 @@
 
 {#if state === 'start'}
     <h1>Matching game</h1>
-    <button on:click = {() => state = 'playing'}>Play</button>
+    <button on:click = {() => state = 'playing'}>
+        src="path/to/your/image.png" alt="Button Image"
+    </button>
 {/if}
