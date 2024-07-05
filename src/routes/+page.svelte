@@ -4,6 +4,9 @@
 <p>Players cards</p>
 
 <script lang="ts">
+    import { objects } from "./cards";
+    console.log(objects)
+
     type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
 
     let state: State = 'start'
