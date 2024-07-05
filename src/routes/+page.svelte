@@ -3,4 +3,6 @@
 <p>Playing cards</p>
 <p>Players cards</p>
 
-<script lang="ts"></script>
+<script lang="ts">
+    type State = 'start' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
+</script>
