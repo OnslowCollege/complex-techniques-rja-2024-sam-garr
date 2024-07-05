@@ -10,19 +10,18 @@ interface CardInfo {
 //    { number: 2, suit: 'club', name: 'two' }
 //];
 
-const objects: CardInfo[] = [];
+export const objects: CardInfo[] = [];
 
 const suits: string[] = ['club', 'diamond', 'heart', 'spade'];
 const names: string[] = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
 
+let cardNumber = 0
 // Generate cards for each suit
 for (const suit of suits) {
-    for (let i = 0; i < names.length; i++) {
-        let cardName = names[i];
-        let cardNumber = i + 1; // Number is index + 1 (1-13)
-
+    for (const name of names) {
         // Create the card object and push it to the array
-        objects.push({ number: cardNumber, suit: suit, name: cardName });
+        objects.push({ number: cardNumber, suit: suit, name: name });
+        cardNumber += 1 
     }
 }
 
