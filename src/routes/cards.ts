@@ -20,8 +20,8 @@ let cardNumber = 0
 for (const suit of suits) {
     for (const name of names) {
         // Create the card object and push it to the array
-        objects.push({ number: cardNumber, suit: suit, name: name });
         cardNumber += 1 
+        objects.push({ number: cardNumber, suit: suit, name: name });
     }
 }
 
