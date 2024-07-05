@@ -4,10 +4,11 @@
 <p>Players cards</p>
 
 <script lang="ts">
-    type State = 'start' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
+    type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
 
     let state: State = 'start'
 
+    /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
         if (e.key === 'Escape' ) {
             switch (state) {
@@ -17,11 +18,12 @@
                 case 'paused':
                     state = 'playing'
                     break
-
             }
         }
     }
 
+
+    /* Reset game to starting condition */
     function resetGame() {
     }
 
