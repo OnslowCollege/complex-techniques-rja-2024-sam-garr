@@ -47,6 +47,7 @@
         state = 'lost'
         resetGame()
     }
+    console.log(cards)
 
 </script>
 
@@ -61,5 +62,4 @@
     <button on:click = {() => state = 'playing'}>
         <img src="../favicon.png" alt="card">
     </button>
-    console.log(cards)
 {/if}
