@@ -26,7 +26,11 @@
 
     function playerHand(){
         // all cards
-        console.log(cards)
+        let hand = new Set<string>()
+        let handLength: number = 7
+        for (let i = 0; i < handLength; i++) {
+            const randomIndex = Math.floor(Math.random() * cards.length)
+        }
     }
 
 
