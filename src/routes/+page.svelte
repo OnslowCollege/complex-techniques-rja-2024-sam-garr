@@ -15,6 +15,7 @@
     let timerId: number | null = null
     let time = 60
     let playerHandCards: number[] = []
+    let oppositionHandCards: number[] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -38,7 +39,10 @@
             const randomIndex = Math.floor(Math.random() * cards.length)
             playerHandCards.push(randomIndex)
         }
-
+        for (let i = 0; i < handLength; i++) {
+            const randomIndex = Math.floor(Math.random() * cards.length)
+            oppositionHandCards.push(randomIndex)
+        }
     }
 
 
@@ -79,7 +83,14 @@
 {/if}
 
 {#if state === 'playing'}
-    playerHand()
+    <div class="cards">
+        {#each playerHandCards as playerHandCard}
+        <button class="card">
+            <div class="back">{playerHandCard}</div>
+        </button>
+        {/each}
+    </div>
+    <div></div>
     <div class="cards">
         {#each playerHandCards as playerHandCard}
         <button class="card">
