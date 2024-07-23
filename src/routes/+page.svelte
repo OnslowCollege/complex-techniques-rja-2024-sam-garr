@@ -90,7 +90,7 @@
         </button>
         {/each}
     </div>
-    <div></div>
+    <div class="pickup"></div>
     <div class="cards">
         {#each playerHandCards as playerHandCard}
         <button class="card">
@@ -109,6 +109,37 @@
     }
 
     .card {
+        height: 140px;
+        width: 140px;
+        font-size: 4rem;
+        background-color: var(--bg-2);
+        transition: rotate 0.3s ease-out;
+        transform-style: preserve-3d;
+
+        &.selected {
+            border: 4px solid var(--border);
+        }
+
+        &.flip {
+            rotate: y 180deg;
+            pointer-events: none;
+        }
+
+        & .back {
+            position: absolute;
+            inset:0 ;
+            display: grid;
+            place-content: center;
+            backface-visibility: hidden;
+            rotate: y 180deg;
+        }
+
+        & .match {
+            transition: opacity 0.3s ease-out;
+            opacity: 0.4;
+        }
+    }
+    .pickup {
         height: 140px;
         width: 140px;
         font-size: 4rem;
