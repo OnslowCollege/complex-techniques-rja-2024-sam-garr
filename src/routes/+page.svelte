@@ -10,8 +10,6 @@
 
     let state: State = 'start'
     let size = 20
-    let grid = createGrid()
-    let maxMatches = grid.length / 2 
     let selected: number[] = []
     let matches: string[] = []
     let timerId: number | null = null
@@ -37,24 +35,8 @@
         let handLength: number = 7
         for (let i = 0; i < handLength; i++) {
             const randomIndex = Math.floor(Math.random() * cards.length)
+            console.log(randomIndex)
         }
-    }
-
-    function createGrid() {
-        let cards = new Set<string>()
-        let maxSize = size / 2
-
-        while (cards.size < maxSize) {
-            const randomIndex = Math.floor(Math.random() * emoji.length)
-            cards.add(emoji[randomIndex])
-        }
-
-        return shuffle([...cards, ...cards])
-    }
-
-    function shuffle<Items>(array: Items[]) {
-        return array.sort(() => Math.random() - 0.5 )
-
     }
 
 
@@ -75,7 +57,6 @@
         state = 'lost'
         resetGame()
     }
-    console.log(cards)
 
 </script>
 
