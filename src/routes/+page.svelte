@@ -1,7 +1,4 @@
 <h1>Last Card</h1>
-<p>Opponent cards</p>
-<p>Playing cards</p>
-<p>Players cards</p>
 
 <script lang="ts">
     import { cards } from "./cards";
@@ -94,7 +91,7 @@
     <div class="cards">
         {#each playerHandCards as playerHandCard}
         <button class="card">
-            <div class="back">{playerHandCard}</div>
+            <div>{playerHandCard}</div>
         </button>
         {/each}
     </div>
