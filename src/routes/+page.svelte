@@ -31,7 +31,7 @@
         }
     }
 
-    function playerHand(){
+    function dealHand(){
         // all cards
         let hand = new Set<string>()
         let handLength: number = 7
@@ -65,7 +65,7 @@
         resetGame()
     }
 
-    playerHand()
+    dealHand()
 
 </script>
 
@@ -84,9 +84,9 @@
 
 {#if state === 'playing'}
     <div class="cards">
-        {#each playerHandCards as playerHandCard}
+        {#each oppositionHandCards as oppositionHandCard}
         <button class="card">
-            <div class="back">{playerHandCard}</div>
+            <div class="back">{oppositionHandCard}</div>
         </button>
         {/each}
     </div>
