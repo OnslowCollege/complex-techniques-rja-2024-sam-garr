@@ -81,6 +81,73 @@
 {#if state === 'playing'}
     playerHand()
     <div class="cards">
-        {each}
+        {#each playerHandCards as playerHandCard}
+        <button class="card">
+            <div class="back" class:match>{card}</div>
+        </button>
+        {/each}
     </div>
 {/if}
+
+
+<style>
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.4rem;
+    }
+
+    .card {
+        height: 140px;
+        width: 140px;
+        font-size: 4rem;
+        background-color: var(--bg-2);
+        transition: rotate 0.3s ease-out;
+        transform-style: preserve-3d;
+
+        &.selected {
+            border: 4px solid var(--border);
+        }
+
+        &.flip {
+            rotate: y 180deg;
+            pointer-events: none;
+        }
+
+        & .back {
+            position: absolute;
+            inset:0 ;
+            display: grid;
+            place-content: center;
+            backface-visibility: hidden;
+            rotate: y 180deg;
+        }
+
+        & .match {
+            transition: opacity 0.3s ease-out;
+            opacity: 0.4;
+        }
+    }
+
+    .matches {
+        display: flex;
+        gap: 1rem;
+        margin-block: 2rem;
+        font-size: 3rem;
+    }
+
+    .timer {
+        transition: color 0.3s ease;
+    }
+
+    .pulse {
+        color: var(--pulse);
+        animation: pulse 1s infinite ease;
+    }
+
+    @keyframes pulse {
+        to {
+            scale: 1.4;
+        }
+    }
+</style>
