@@ -72,3 +72,7 @@
         <img src="../favicon.png" alt="card">
     </button>
 {/if}
+
+{#if state === 'playing'}
+    playerHand()
+{/if}
