@@ -14,6 +14,7 @@
     let matches: string[] = []
     let timerId: number | null = null
     let time = 60
+    let playerHandCards: number[] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -35,9 +36,11 @@
         let handLength: number = 7
         for (let i = 0; i < handLength; i++) {
             const randomIndex = Math.floor(Math.random() * cards.length)
-            console.log(randomIndex)
+            playerHandCards.push(randomIndex)
         }
+
     }
+
 
 
     /* Reset game to starting condition */
@@ -77,4 +80,7 @@
 
 {#if state === 'playing'}
     playerHand()
+    <div class="cards">
+        {each}
+    </div>
 {/if}
