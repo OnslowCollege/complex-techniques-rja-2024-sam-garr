@@ -58,6 +58,8 @@
         resetGame()
     }
 
+    playerHand()
+
 </script>
 
 <svelte:window on:keydown={pauseGame}/>
