@@ -83,7 +83,7 @@
     <div class="cards">
         {#each playerHandCards as playerHandCard}
         <button class="card">
-            <div class="back" class:match>{card}</div>
+            <div class="back">{playerHandCard}</div>
         </button>
         {/each}
     </div>
