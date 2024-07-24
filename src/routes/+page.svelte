@@ -73,10 +73,17 @@
     function loadCards(){
         console.log(playerHandCards)
         for (let i = 0; i < playerHandCards.length; i++){
-            let int: number = playerHandCards[i]
-            const foundObject = cards.find(obj => obj.number === int);
+            //let int: number = playerHandCards[i]
+            //const foundObject = cards.find(obj => obj.number === int);
 
-            playerCards.push(foundObject)
+            const randomObject = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
+            }
+
+            //playerCards.push(randomObject)
 
             // print if it is found
             if (foundObject) {
