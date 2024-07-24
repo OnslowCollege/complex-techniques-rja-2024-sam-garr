@@ -111,7 +111,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button class="card">
-            <div>{playerHandCard}</div>
+            <div>{playerHandCard.suit}</div>
         </button>
         {/each}
     </div>
