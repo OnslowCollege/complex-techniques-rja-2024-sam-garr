@@ -111,6 +111,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button class="card">
+            <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
         {/each}
@@ -128,7 +129,7 @@
     .card {
         height: 140px;
         width: 140px;
-        font-size: 4rem;
+        font-size: 1rem;
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
