@@ -2,7 +2,7 @@
 
 <script lang="ts">
     import { cards } from "./cards";
-    import { CardInfo } from "./cards";
+    import type { CardInfo } from "./cards";
 
     type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
 
@@ -14,7 +14,7 @@
     let time = 60
     let playerHandCards: number[] = []
     let oppositionHandCards: number[] = []
-    let playerCards: CardInfo
+    let playerCards = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
