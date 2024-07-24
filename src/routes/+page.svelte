@@ -42,6 +42,19 @@
         }
     }
 
+    function loadCards(){
+        let i = ""
+        for (i in playerHandCards){
+            let int = Number(i)
+            const foundObject = cards.find(obj => obj.number === int);
+
+            if (foundObject) {
+                console.log('Found object:', foundObject);
+            } else {
+                console.log('Object with id', int, 'not found');
+            }
+        }
+    }
 
 
     /* Reset game to starting condition */
@@ -63,6 +76,7 @@
     }
 
     dealHand()
+    loadCards()
 
 </script>
 
