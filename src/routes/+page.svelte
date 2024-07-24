@@ -43,10 +43,9 @@
     }
 
     function loadCards(){
-        let i = ""
         console.log(playerHandCards)
-        for (i in playerHandCards){
-            let int = Number(i)
+        for (let i = 0; i < playerHandCards.length; i++){
+            let int: number = playerHandCards[i]
             const foundObject = cards.find(obj => obj.number === int);
 
             if (foundObject) {
