@@ -14,7 +14,7 @@
     let time = 60
     let playerHandCards: number[] = []
     let oppositionHandCards: number[] = []
-    let playerCards: CardInfo = []
+    let playerCards: CardInfo
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
