@@ -44,6 +44,23 @@
         }
     }
 
+    function getRandomObject<T>(array: T[]): T | undefined {
+        if (array.length === 0) {
+            return undefined;
+        }
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+    }
+
+    function dealTrial(){
+        const randomObject = getRandomObject(cards);
+        if (randomObject) {
+            console.log(randomObject); // Output: a random object from myArray
+        } else {
+            console.log('Array is empty');
+        }
+    }
+
     function loadCards(){
         console.log(playerHandCards)
         for (let i = 0; i < playerHandCards.length; i++){
@@ -81,8 +98,9 @@
         resetGame()
     }
 
-    dealHand()
-    loadCards()
+    //dealHand()
+    //loadCards()
+    dealTrial()
 
 </script>
 
