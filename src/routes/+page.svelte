@@ -2,6 +2,7 @@
 
 <script lang="ts">
     import { cards } from "./cards";
+    import { CardInfo } from "./cards";
 
     type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
 
@@ -13,6 +14,7 @@
     let time = 60
     let playerHandCards: number[] = []
     let oppositionHandCards: number[] = []
+    let playerCards: CardInfo = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -48,12 +50,16 @@
             let int: number = playerHandCards[i]
             const foundObject = cards.find(obj => obj.number === int);
 
+            playerCards.push(foundObject)
+
+            // print if it is found
             if (foundObject) {
                 console.log('Found object:', foundObject);
             } else {
                 console.log('Object with id', int, 'not found');
             }
         }
+        console.log(playerCards)
     }
 
 

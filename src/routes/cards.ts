@@ -1,4 +1,4 @@
-interface CardInfo {
+export interface CardInfo {
     number: number;
     suit: string;
     name: string;
