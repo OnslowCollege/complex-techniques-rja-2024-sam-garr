@@ -109,7 +109,7 @@
     </div>
     <div class="pickup"></div>
     <div class="cards">
-        {#each playerHandCards as playerHandCard}
+        {#each playerCards as playerHandCard}
         <button class="card">
             <div>{playerHandCard}</div>
         </button>
