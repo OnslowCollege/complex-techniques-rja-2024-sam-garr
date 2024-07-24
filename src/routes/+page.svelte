@@ -59,6 +59,15 @@
         } else {
             console.log('Array is empty');
         }
+
+        const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+
+        if (index !== -1) {
+            // Remove the object from the array using splice
+            cards.splice(index, 1);
+        }
+
+        console.log(cards);
     }
 
     function loadCards(){
