@@ -16,6 +16,8 @@
     let oppositionHandCards: number[] = []
     let playerCards: CardInfo[] = []
     let handLength: number = 7
+    let playerCardNames: [] = []
+    let playerCardSuits: [] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -69,6 +71,9 @@
                 cards.splice(index, 1);
             }
             playerCards.push(randomObject)
+        }
+        for (let i = 0; i < handLength; i++) {
+            
         }
         console.log(playerCards)
 
