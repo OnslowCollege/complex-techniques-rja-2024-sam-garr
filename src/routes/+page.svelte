@@ -86,11 +86,11 @@
             //playerCards.push(randomObject)
 
             // print if it is found
-            if (foundObject) {
-                console.log('Found object:', foundObject);
-            } else {
-                console.log('Object with id', int, 'not found');
-            }
+            //if (foundObject) {
+            //    console.log('Found object:', foundObject);
+            //} else {
+            //    console.log('Object with id', int, 'not found');
+            //}
         }
         console.log(playerCards)
     }
