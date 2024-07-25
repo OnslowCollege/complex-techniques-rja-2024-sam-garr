@@ -55,6 +55,7 @@
     }
 
     function dealTrial(){
+        // playerCards
         for (let i = 0; i < handLength; i++) {
             const randomObject: CardInfo = getRandomObject(cards);
             if (randomObject) {
