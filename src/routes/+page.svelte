@@ -83,7 +83,7 @@
                 console.log('Array is empty');
             }
 
-            //playerCards.push(randomObject)
+            playerCards.push(randomObject)
 
             // print if it is found
             //if (foundObject) {
