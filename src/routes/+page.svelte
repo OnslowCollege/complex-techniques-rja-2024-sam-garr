@@ -73,8 +73,8 @@
             playerCards.push(randomObject)
         }
         playerCardNames = playerCards.map(playerCards => playerCards.name);
+        playerCardSuits = playerCards.map(playerCards => playerCards.suit);
         console.log(playerCards)
-        console.log(playerCardNames)
 
         //console.log(cards);
     }
@@ -152,10 +152,9 @@
     </div>
     <div class="pickup"></div>
     <div class="cards">
-        {#each playerCards as playerHandCard}
+        {#each playerCardNames as playerHandCard}
         <button class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
+            <div>{playerHandCard}</div>
         </button>
         {/each}
     </div>
