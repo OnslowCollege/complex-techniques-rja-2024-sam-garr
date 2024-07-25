@@ -72,10 +72,9 @@
             }
             playerCards.push(randomObject)
         }
-        for (let i = 0; i < handLength; i++) {
-            
-        }
+        playerCardNames = playerCards.map(playerCards => playerCards.name);
         console.log(playerCards)
+        console.log(playerCardNames)
 
         //console.log(cards);
     }
