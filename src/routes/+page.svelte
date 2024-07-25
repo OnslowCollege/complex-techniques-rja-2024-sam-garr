@@ -118,7 +118,7 @@
 
     //dealHand()
     //loadCards()
-    dealTrial()
+    //dealTrial()
 
 </script>
 
