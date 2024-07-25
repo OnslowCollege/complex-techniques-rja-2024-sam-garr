@@ -72,8 +72,6 @@
             }
             playerCards.push(randomObject)
         }
-        playerCardNames = playerCards.map(playerCards => playerCards.name);
-        playerCardSuits = playerCards.map(playerCards => playerCards.suit);
         console.log(playerCards)
 
         //console.log(cards);
@@ -146,9 +144,6 @@
 
 {#if state === 'playing'}
     <div class="cards">
-        <h1>
-            {playerCards}
-        </h1>
         {#each oppositionHandCards as oppositionHandCard}
         <button class="card">
             <div>{oppositionHandCard}</div>
