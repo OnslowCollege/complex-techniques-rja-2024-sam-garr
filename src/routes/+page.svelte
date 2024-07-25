@@ -67,7 +67,7 @@
             cards.splice(index, 1);
         }
 
-        console.log(cards);
+        //console.log(cards);
     }
 
     function loadCards(){
