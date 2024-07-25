@@ -53,20 +53,23 @@
     }
 
     function dealTrial(){
-        const randomObject: CardInfo = getRandomObject(cards);
-        if (randomObject) {
-            console.log(randomObject); // Output: a random object from myArray
-        } else {
-            console.log('Array is empty');
+        for (let i = 0; i < handLength; i++) {
+            const randomObject: CardInfo = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
         }
+        
 
-        const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
 
-        if (index !== -1) {
-            // Remove the object from the array using splice
-            cards.splice(index, 1);
+            if (index !== -1) {
+                // Remove the object from the array using splice
+                cards.splice(index, 1);
+            }
+            playerCards.push(randomObject)
         }
-        playerCards.push(randomObject)
         console.log(playerCards)
 
         //console.log(cards);
