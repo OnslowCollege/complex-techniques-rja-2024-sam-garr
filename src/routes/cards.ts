@@ -2,6 +2,7 @@ export interface CardInfo {
     number: number;
     suit: string;
     name: string;
+    image: string;
 }
 
 export const cards: CardInfo[] = [];
@@ -16,6 +17,6 @@ for (const suit of suits) {
         // Number each card a unique number
         cardNumber += 1 
         // Create the card object and push it to the array
-        cards.push({ number: cardNumber, suit: suit, name: name });
+        cards.push({ number: cardNumber, suit: suit, name: name, image: './cards/${suit}_${name}.png' });
     }
 }
