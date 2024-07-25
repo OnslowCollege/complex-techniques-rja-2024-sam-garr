@@ -53,7 +53,7 @@
     }
 
     function dealTrial(){
-        const randomObject = getRandomObject(cards);
+        const randomObject: CardInfo = getRandomObject(cards);
         if (randomObject) {
             console.log(randomObject); // Output: a random object from myArray
         } else {
@@ -66,13 +66,15 @@
             // Remove the object from the array using splice
             cards.splice(index, 1);
         }
+        playerCards.push(randomObject)
+        console.log(playerCards)
 
         //console.log(cards);
     }
 
     function loadCards(){
         console.log(playerHandCards)
-        for (let i = 0; i < playerHandCards.length; i++){
+        for (let i = 7; i < playerHandCards.length; i++){
             //let int: number = playerHandCards[i]
             //const foundObject = cards.find(obj => obj.number === int);
 
@@ -83,7 +85,7 @@
                 console.log('Array is empty');
             }
 
-            playerCards.push(randomObject)
+            //playerCards.push(randomObject)
 
             // print if it is found
             //if (foundObject) {
