@@ -146,16 +146,17 @@
 
 {#if state === 'playing'}
     <div class="cards">
+        <h1>
+            {playerCards}
+        </h1>
         {#each oppositionHandCards as oppositionHandCard}
         <button class="card">
             <div>{oppositionHandCard}</div>
         </button>
         {/each}
+    
     </div>
     <div class="pickup"></div>
-    <div>
-        <h1></h1>
-    </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button class="card">
