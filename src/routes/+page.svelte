@@ -126,6 +126,7 @@
     //dealHand()
     //loadCards()
     dealTrial()
+    console.log(playerCardNames)
 
 </script>
 
@@ -152,9 +153,9 @@
     </div>
     <div class="pickup"></div>
     <div class="cards">
-        {#each playerCardNames as playerHandCard}
+        {#each playerCardNames as workplease}
         <button class="card">
-            <div>{playerHandCard}</div>
+            <div>{workplease}</div>
         </button>
         {/each}
     </div>
