@@ -126,7 +126,6 @@
     //dealHand()
     //loadCards()
     dealTrial()
-    console.log(playerCardNames)
 
 </script>
 
@@ -144,18 +143,13 @@
 {/if}
 
 {#if state === 'playing'}
-    <div class="cards">
-        {#each oppositionHandCards as oppositionHandCard}
-        <button class="card">
-            <div>{oppositionHandCard}</div>
-        </button>
-        {/each}
-    </div>
+    
     <div class="pickup"></div>
     <div class="cards">
-        {#each playerCardNames as workplease}
+        {#each playerCards as playerHandCard}
         <button class="card">
-            <div>{workplease}</div>
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
         </button>
         {/each}
     </div>
