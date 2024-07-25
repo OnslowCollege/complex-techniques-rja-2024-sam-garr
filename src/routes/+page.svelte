@@ -31,18 +31,18 @@
         }
     }
 
-    function dealHand(){
+    //function dealHand(){
         // all cards
-        let hand = new Set<string>()
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            playerHandCards.push(randomIndex)
-        }
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            oppositionHandCards.push(randomIndex)
-        }
-    }
+        //let hand = new Set<string>()
+        //for (let i = 0; i < handLength; i++) {
+        //    const randomIndex = Math.floor(Math.random() * cards.length)
+        //    playerHandCards.push(randomIndex)
+        //}
+        //for (let i = 0; i < handLength; i++) {
+        //    const randomIndex = Math.floor(Math.random() * cards.length)
+        //    oppositionHandCards.push(randomIndex)
+        //}
+    //}
 
     function getRandomObject<T>(array: T[]): T | undefined {
         if (array.length === 0) {
@@ -75,18 +75,18 @@
         //console.log(cards);
     }
 
-    function loadCards(){
-        console.log(playerHandCards)
-        for (let i = 7; i < playerHandCards.length; i++){
+    //function loadCards(){
+        //console.log(playerHandCards)
+        //for (let i = 7; i < playerHandCards.length; i++){
             //let int: number = playerHandCards[i]
             //const foundObject = cards.find(obj => obj.number === int);
 
-            const randomObject = getRandomObject(cards);
-            if (randomObject) {
-                console.log(randomObject); // Output: a random object from myArray
-            } else {
-                console.log('Array is empty');
-            }
+            //const randomObject = getRandomObject(cards);
+            //if (randomObject) {
+            //    console.log(randomObject); // Output: a random object from myArray
+            //} else {
+            //    console.log('Array is empty');
+            //}
 
             //playerCards.push(randomObject)
 
@@ -96,9 +96,9 @@
             //} else {
             //    console.log('Object with id', int, 'not found');
             //}
-        }
-        console.log(playerCards)
-    }
+        //}
+        //console.log(playerCards)
+    //}
 
 
     /* Reset game to starting condition */
