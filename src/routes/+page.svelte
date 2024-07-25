@@ -15,6 +15,7 @@
     let playerHandCards: number[] = []
     let oppositionHandCards: number[] = []
     let playerCards: CardInfo[] = []
+    let handLength: number = 7
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -33,7 +34,6 @@
     function dealHand(){
         // all cards
         let hand = new Set<string>()
-        let handLength: number = 7
         for (let i = 0; i < handLength; i++) {
             const randomIndex = Math.floor(Math.random() * cards.length)
             playerHandCards.push(randomIndex)
@@ -53,20 +53,22 @@
     }
 
     function dealTrial(){
-        const randomObject: CardInfo = getRandomObject(cards);
-        if (randomObject) {
-            console.log(randomObject); // Output: a random object from myArray
-        } else {
-            console.log('Array is empty');
-        }
+        for (let i = 0; i < handLength; i++) {
+            const randomObject: CardInfo = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
+            }
 
-        const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
 
-        if (index !== -1) {
-            // Remove the object from the array using splice
-            cards.splice(index, 1);
-        }
-        playerCards.push(randomObject)
+            if (index !== -1) {
+                // Remove the object from the array using splice
+                cards.splice(index, 1);
+            }
+            playerCards.push(randomObject)
+            
         console.log(playerCards)
 
         //console.log(cards);
@@ -118,7 +120,7 @@
 
     //dealHand()
     //loadCards()
-    //dealTrial()
+    dealTrial()
 
 </script>
 
