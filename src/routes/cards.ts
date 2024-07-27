@@ -14,7 +14,7 @@ let cardNumber = 0
 // Generate cards for each suit and name
 for (const suit of suits) {
     for (const name of names) {
-        const image = '/cards/${name}${suit}.png';
+        const image = `/cards/${name}${suit}.png`;
         // Number each card a unique number
         cardNumber += 1
         // Create the card object and push it to the array
