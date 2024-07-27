@@ -78,6 +78,12 @@
         }
     }
 
+    const cardImages = import.meta.glob('/cards/_.png')
+
+    function getImagePath(name: string): string {
+        return cardImages[`/cards/${name}.png`] || '/cards/default.png';
+    }
+
 
     /* Reset game to starting condition */
     function resetGame() {
@@ -101,6 +107,7 @@
     dealHand();
     loadCards();
     dealTrial();
+    getImagePath();
 
 </script>
 
@@ -129,7 +136,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={card.image} alt={card.name} />
+            <img src={getImagePath(card.name)} alt={card.name} />
         </button>
         {/each}
     </div>
