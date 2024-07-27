@@ -75,7 +75,7 @@
             if (card) {
                 playerCards.push({
                     ...card, 
-                image: getImagePath(card.name)});
+                image: getImagePath(card.name, card.suit)});
             }
         }
     }
@@ -89,7 +89,7 @@
         if (cardImages[path]) {
         return cardImages[path].default;
         }
-        return
+        return '/cards/*.png';
     }
 
 
@@ -143,7 +143,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={getImagePath(card.name, suit.name)} alt={card.name} />
+            <img src={getImagePath(card.name, card.suit)} alt={card.name} />
         </button>
         {/each}
     </div>
