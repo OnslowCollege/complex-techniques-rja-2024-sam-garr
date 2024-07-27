@@ -82,7 +82,7 @@
 
 
 
-    const cardImages = import.meta.glob('/cards/*.png', {eager: true}) as Record<string, {default: string}>;
+    const cardImages = import.meta.glob('.static/cards/*.png', {eager: true}) as Record<string, {default: string}>;
 
     console.log('Card Images:', cardImages);
 
@@ -91,7 +91,7 @@
         if (cardImages[path]) {
         return cardImages[path]?.default;
         } else {
-            return `/cards/${name}${suit}.png`;
+            return '/cards/backcard.png';
         }
     }
 
