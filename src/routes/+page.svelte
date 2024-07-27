@@ -143,7 +143,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={card.image} alt={card.name} />
+            <img src={getImagePath(card.name, card.suit)} alt={card.name} />
         </button>
         {/each}
     </div>
