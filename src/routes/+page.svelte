@@ -68,20 +68,6 @@
         //console.log(cards);
     }
 
-    async function preloadImages() {
-        try {
-            const response = await fetch('images.json');
-            const imageUrls = await response.json();
-
-        imageUrls.forEach((url: string) => {
-            const img = new Image();
-            img.src = url;
-        });
-    } catch (error) {
-        console.error('Error loading images', error);
-    }
-    }
-
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -91,6 +77,7 @@
             }
         }
     }
+
 
     /* Reset game to starting condition */
     function resetGame() {
@@ -111,7 +98,6 @@
     }
 
     // Load hand and cards
-    preloadImages();
     dealHand();
     loadCards();
     dealTrial();
@@ -143,7 +129,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={card.image} alt={card.name} loading="lazy" />
+            <img src={card.image} alt={card.name} />
         </button>
         {/each}
     </div>
