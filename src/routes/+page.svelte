@@ -155,6 +155,7 @@
             border: 4px solid var(--border);
         }
 
+
         &.flip {
             rotate: y 180deg;
             pointer-events: none;
@@ -174,6 +175,13 @@
             opacity: 0.4;
         }
     }
+
+    .card img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
     .pickup {
         height: 140px;
         width: 140px;
