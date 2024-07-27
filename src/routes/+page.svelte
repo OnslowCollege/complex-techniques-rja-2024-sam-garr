@@ -119,9 +119,9 @@
 
 {#if state === 'playing'}
     <div class="cards">
-        {#each oppositionHandCards as oppositionHandCard}
+        {#each oppositionHandCards as card}
         <button class="card">
-            <div>{oppositionHandCard}</div>
+            <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
     </div>
@@ -130,8 +130,6 @@
         {#each playerCards as card}
         <button class="card">
             <img src={card.image} alt={card.name} />
-            <div>{card.name}</div>
-            <div>{card.suit}</div>
         </button>
         {/each}
     </div>
