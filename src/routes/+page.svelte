@@ -73,28 +73,10 @@
         for (const index of playerHandCards) {
             const card = cards[index];
             if (card) {
-                playerCards.push({
-                    ...card, 
-                image: getImagePath(card.name, card.suit)});
+                playerCards.push(card);
             }
         }
     }
-
-
-
-    const cardImages = import.meta.glob('/cards/**/*.png', {eager: true}) as Record<string, {default: string}>;
-
-    console.log('Card Images:', cardImages);
-
-    function getImagePath(name: string, suit: string): string {
-        const path = `/cards/${name}${suit}.png`;
-        if (cardImages[path]) {
-        return cardImages[path]?.default;
-        } else {
-            return '/cards/backcard.png';
-        }
-    }
-
 
     /* Reset game to starting condition */
     function resetGame() {
@@ -146,7 +128,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={getImagePath(card.name, card.suit)} alt={card.name} />
+            <img src={card.image} alt={card.name} />
         </button>
         {/each}
     </div>
