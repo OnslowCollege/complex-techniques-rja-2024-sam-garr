@@ -128,7 +128,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={card.image} alt={card.name} />
+            <img src={card.image} alt={card.name} loading="lazy" />
         </button>
         {/each}
     </div>
