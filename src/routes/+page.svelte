@@ -68,6 +68,20 @@
         //console.log(cards);
     }
 
+    async function preloadImages() {
+        try {
+            const response = await fetch('images.json');
+            const imageUrls = await response.json();
+
+        imageUrls.forEach((url: string) => {
+            const img = new Image();
+            img.src = url;
+        });
+    } catch (error) {
+        console.error('Error loading images', error);
+    }
+    }
+
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -97,6 +111,7 @@
     }
 
     // Load hand and cards
+    preloadImages();
     dealHand();
     loadCards();
     dealTrial();
