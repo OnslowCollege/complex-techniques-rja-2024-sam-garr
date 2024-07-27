@@ -73,15 +73,23 @@
         for (const index of playerHandCards) {
             const card = cards[index];
             if (card) {
-                playerCards.push(card);
+                playerCards.push({
+                    ...card, 
+                image: getImagePath(card.name)});
             }
         }
     }
 
-    const cardImages = import.meta.glob('/cards/_.png')
+    type CardImages = Record<string, {default: string}>;
 
-    function getImagePath(name: string): string {
-        return cardImages[`/cards/${name}.png`] || '/cards/default.png';
+    const cardImages = import.meta.glob('/cards/*.png', {eager: true}) as CardImages;
+
+    function getImagePath(name: string, suit: string): string {
+        const path = `/cards/${name}${suit}.png`;
+        if (cardImages[path]) {
+        return cardImages[path].default;
+        }
+        return
     }
 
 
@@ -107,7 +115,6 @@
     dealHand();
     loadCards();
     dealTrial();
-    getImagePath();
 
 </script>
 
@@ -136,7 +143,7 @@
     <div class="cards">
         {#each playerCards as card}
         <button class="card">
-            <img src={getImagePath(card.name)} alt={card.name} />
+            <img src={getImagePath(card.name, suit.name)} alt={card.name} />
         </button>
         {/each}
     </div>
