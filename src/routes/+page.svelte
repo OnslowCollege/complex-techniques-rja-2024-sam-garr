@@ -73,7 +73,6 @@
         for (const index of playerHandCards) {
             const card = cards[index];
             if (card) {
-                card.image = '../cards/${card.name}${card.suit}.png'
                 playerCards.push(card);
             }
         }

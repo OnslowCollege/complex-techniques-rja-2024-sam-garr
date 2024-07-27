@@ -18,6 +18,6 @@ for (const suit of suits) {
             // Number each card a unique number
         const cardNumber = cards.length += 1
             // Create the card object and push it to the array
-        cards.push({ number: cardNumber, suit: suit, name: name, image: image });
+        cards.push({ number: cardNumber, suit, name, image });
     }
 }
