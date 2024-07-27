@@ -86,9 +86,8 @@
 
     function getImagePath(name: string, suit: string): string {
         const path = `/cards/${name}${suit}.png`;
-        console.log(`Requested path: ${path}`);
+        console.log(cardImages);
         if (cardImages[path]) {
-        console.log(`Image found: ${cardImages[path].default}`);
         return cardImages[path].default;
         }
         return '/cards/*.png';
