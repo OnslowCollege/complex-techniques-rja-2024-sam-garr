@@ -80,13 +80,15 @@
         }
     }
 
-    type CardImages = Record<string, {default: string}>;
 
-    const cardImages = import.meta.glob('/cards/*.png', {eager: true}) as CardImages;
+
+    const cardImages = import.meta.glob('/cards/*.png', {eager: true}) as Record<string, {default: string}>;
 
     function getImagePath(name: string, suit: string): string {
         const path = `/cards/${name}${suit}.png`;
+        console.log(`Requested path: ${path}`);
         if (cardImages[path]) {
+        console.log(`Image found: ${cardImages[path].default}`);
         return cardImages[path].default;
         }
         return '/cards/*.png';
