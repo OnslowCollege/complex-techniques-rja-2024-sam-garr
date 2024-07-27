@@ -84,13 +84,15 @@
 
     const cardImages = import.meta.glob('/cards/*.png', {eager: true}) as Record<string, {default: string}>;
 
+    console.log('Card Images:', cardImages);
+
     function getImagePath(name: string, suit: string): string {
         const path = `/cards/${name}${suit}.png`;
         if (cardImages[path]) {
-        console.log('Requested Path:', path);
-        return cardImages[path].default;
+        return cardImages[path]?.default;
+        } else {
+            return'/cards/backcard.png'
         }
-        return '/cards/*.png';
     }
 
 
