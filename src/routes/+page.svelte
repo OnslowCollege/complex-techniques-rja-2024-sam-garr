@@ -1,6 +1,6 @@
 <h1>Last Card</h1>
 
-<script lang="tsweiwjfiwfjiwfjiwfjiwfji">
+<script lang="ts">
     import { cards } from "./cards";
     import type { CardInfo } from "./cards";
 
