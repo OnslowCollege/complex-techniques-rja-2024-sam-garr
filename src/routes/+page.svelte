@@ -91,7 +91,7 @@
         if (cardImages[path]) {
         return cardImages[path]?.default;
         } else {
-            return'/cards/backcard.png'
+            return `/cards/${name}${suit}.png`;
         }
     }
 
