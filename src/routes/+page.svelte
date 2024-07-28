@@ -154,7 +154,7 @@
 
 {#if state === 'start'}
     <h1>Matching game</h1>
-    <button on:click = {() => state = 'playing'}>
+    <button on:click = {() => state = 'playerTurn'}>
         <img src="../favicon.png" alt="card">
     </button>
 {/if}
@@ -244,7 +244,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+        <button on:click = {() => state = "opponentTurn"} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
@@ -255,7 +255,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+        <button on:click = {() => state = "playerTurn"} class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
         </button>
