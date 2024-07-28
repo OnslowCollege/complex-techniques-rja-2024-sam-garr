@@ -143,8 +143,6 @@
     //dealHand()
     //loadCards()
     dealTrial()
-    const done: string = "hi"
-    console.log(done)
 
 </script>
 
@@ -235,6 +233,7 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
+        align-items: center;
 
         &.selected {
             border: 4px solid var(--border);
