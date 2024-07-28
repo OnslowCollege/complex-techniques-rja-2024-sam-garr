@@ -172,7 +172,7 @@
     <div>
         <h1>{clicked}</h1>
     </div>
-    <div class="cardsCenter">
+    <div>
         <button class="card">
             <div>yes</div>
         </button>
@@ -234,39 +234,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.2rem;
-        align-items: center;
-    }
-    .pickup {
-        height: 140px;
-        width: 140px;
-        font-size: 4rem;
-        background-color: var(--bg-2);
-        transition: rotate 0.3s ease-out;
-        transform-style: preserve-3d;
-        align-items: center;
-
-        &.selected {
-            border: 4px solid var(--border);
-        }
-
-        &.flip {
-            rotate: y 180deg;
-            pointer-events: none;
-        }
-
-        & .back {
-            position: absolute;
-            inset:0 ;
-            display: grid;
-            place-content: center;
-            backface-visibility: hidden;
-            rotate: y 180deg;
-        }
-
-        & .match {
-            transition: opacity 0.3s ease-out;
-            opacity: 0.4;
-        }
+        align-self: center;
     }
 
     .matches {
