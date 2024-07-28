@@ -172,7 +172,10 @@
     <div>
         <h1>{clicked}</h1>
     </div>
-    <div class="cards">
+    <div class="cardsCenter">
+        <button class="card">
+            <div>yes</div>
+        </button>
         <button class="card">
             <div>yes</div>
         </button>
@@ -231,6 +234,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.4rem;
+        align-self: center;
     }
     .pickup {
         height: 140px;
