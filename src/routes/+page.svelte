@@ -159,7 +159,7 @@
     <div class="pickup"></div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name} class="card">
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
