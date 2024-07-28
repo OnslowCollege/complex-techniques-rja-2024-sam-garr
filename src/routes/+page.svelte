@@ -165,7 +165,8 @@
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
-            <div>{oppositionHandCard}</div>
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
         </button>
         {/each}
     
