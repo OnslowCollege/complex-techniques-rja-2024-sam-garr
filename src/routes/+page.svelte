@@ -174,10 +174,10 @@
     </div>
     <div class="center">
         <button class="card">
-            <div>yes</div>
+            <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <div>yes</div>
+            <div>Playing card pile</div>
         </button>
     </div>
     <div class="cards">
