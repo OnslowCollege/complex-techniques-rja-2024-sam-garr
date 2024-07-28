@@ -174,7 +174,11 @@
     <div>
         <h1>{clicked}</h1>
     </div>
-    <div class="pickup"></div>
+    <div class="pickup">
+        <button class="card">
+            <div>yes</div>
+        </button>
+    </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
