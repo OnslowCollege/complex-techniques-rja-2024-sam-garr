@@ -18,6 +18,7 @@
     let handLength: number = 7
     let playerCardNames: [] = []
     let playerCardSuits: [] = []
+    let clicked: string = ""
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -152,10 +153,13 @@
         {/each}
     
     </div>
+    <div>
+        <h1></h1>
+    </div>
     <div class="pickup"></div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button class="card">
+        <button on:click = {() => state = 'playing'} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
