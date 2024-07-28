@@ -172,7 +172,7 @@
     <div>
         <h1>{clicked}</h1>
     </div>
-    <div>
+    <div class="center">
         <button class="card">
             <div>yes</div>
         </button>
@@ -192,6 +192,10 @@
 
 
 <style>
+
+    .center {
+        margin: auto;
+    }
     .cards {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
