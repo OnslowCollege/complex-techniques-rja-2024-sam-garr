@@ -233,8 +233,8 @@
     .cardsCenter {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.4rem;
-        align-self: center;
+        gap: 0.2rem;
+        align-items: center;
     }
     .pickup {
         height: 140px;
