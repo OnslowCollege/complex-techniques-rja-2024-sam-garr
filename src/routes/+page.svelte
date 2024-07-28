@@ -4,7 +4,7 @@
     import { cards } from "./cards";
     import type { CardInfo } from "./cards";
 
-    type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
+    type State = 'start' | 'playing' | 'playerTurn' | 'opponentTurn' | 'paused' | 'won' | 'lost'
 
     let state: State = 'start'
     let size = 20
@@ -190,6 +190,98 @@
     </div>
 {/if}
 
+{#if state === 'playing'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'playerTurn'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <div class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </div>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'opponentTurn'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <div class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </div>
+        {/each}
+    </div>
+{/if}
 
 <style>
 
@@ -234,32 +326,4 @@
         }
     }
 
-    .cardsCenter {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.2rem;
-        align-self: center;
-    }
-
-    .matches {
-        display: flex;
-        gap: 1rem;
-        margin-block: 2rem;
-        font-size: 3rem;
-    }
-
-    .timer {
-        transition: color 0.3s ease;
-    }
-
-    .pulse {
-        color: var(--pulse);
-        animation: pulse 1s infinite ease;
-    }
-
-    @keyframes pulse {
-        to {
-            scale: 1.4;
-        }
-    }
 </style>
