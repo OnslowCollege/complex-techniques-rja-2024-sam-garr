@@ -13,11 +13,9 @@
     let timerId: number | null = null
     let time = 60
     let playerHandCards: number[] = []
-    let oppositionHandCards: number[] = []
     let playerCards: CardInfo[] = []
+    let oppositionCards: CardInfo[] = []
     let handLength: number = 7
-    let playerCardNames: [] = []
-    let playerCardSuits: [] = []
     let clicked: string = ""
 
     /* Allow the user to pause the game */
@@ -56,7 +54,7 @@
     }
 
     function dealTrial(){
-        // playerCards
+        // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomObject: CardInfo = getRandomObject(cards);
             if (randomObject) {
@@ -74,7 +72,26 @@
             }
             playerCards.push(randomObject)
         }
-        console.log(playerCards)
+
+        // Opposition cards
+        for (let i = 0; i < handLength; i++) {
+            const randomObject: CardInfo = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
+        }
+        
+
+            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+
+            if (index !== -1) {
+                // Remove the object from the array using splice
+                cards.splice(index, 1);
+            }
+            oppositionCards.push(randomObject)
+        }
+        console.log(oppositionCards)
 
         //console.log(cards);
     }
