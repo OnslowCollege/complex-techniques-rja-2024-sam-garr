@@ -154,12 +154,12 @@
     
     </div>
     <div>
-        <h1></h1>
+        <h1>{clicked}</h1>
     </div>
     <div class="pickup"></div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => state = 'playing'} class="card">
+        <button on:click = {() => clicked = playerHandCard.name} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
