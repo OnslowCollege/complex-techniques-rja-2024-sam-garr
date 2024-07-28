@@ -4,7 +4,7 @@
     import { cards } from "./cards";
     import type { CardInfo } from "./cards";
 
-    type State = 'start' | 'playing' | 'player turn' | 'opponent turn' | 'paused' | 'won' | 'lost'
+    type State = 'start' | 'playing' | 'playerTurn' | 'opponentTurn' | 'paused' | 'won' | 'lost'
 
     let state: State = 'start'
     let size = 20
@@ -13,8 +13,10 @@
     let timerId: number | null = null
     let time = 60
     let playerHandCards: number[] = []
-    let oppositionHandCards: number[] = []
     let playerCards: CardInfo[] = []
+    let oppositionCards: CardInfo[] = []
+    let handLength: number = 7
+    let clicked: string = ""
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -30,6 +32,7 @@
         }
     }
 
+<<<<<<< HEAD
     function dealHand() {
         let hand = new Set<string>()
         let handLength: number = 7
@@ -42,6 +45,20 @@
             oppositionHandCards.push(randomIndex)
         }
     }
+=======
+    //function dealHand(){
+        // all cards
+        //let hand = new Set<string>()
+        //for (let i = 0; i < handLength; i++) {
+        //    const randomIndex = Math.floor(Math.random() * cards.length)
+        //    playerHandCards.push(randomIndex)
+        //}
+        //for (let i = 0; i < handLength; i++) {
+        //    const randomIndex = Math.floor(Math.random() * cards.length)
+        //    oppositionHandCards.push(randomIndex)
+        //}
+    //}
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
     function getRandomCard(): CardInfo | undefined {
         if (cards.length === 0) {
@@ -52,6 +69,7 @@
     }
 
     function dealTrial(){
+<<<<<<< HEAD
         const randomCard = getRandomCard();
         if (randomCard) {
             console.log(randomCard); // Output: a random card from Array
@@ -64,10 +82,51 @@
         } else {
             console.log('Array is empty');
         }
+=======
+        // Player Cards
+        for (let i = 0; i < handLength; i++) {
+            const randomObject: CardInfo = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
+        }
+        
+
+            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+
+            if (index !== -1) {
+                // Remove the object from the array using splice
+                cards.splice(index, 1);
+            }
+            playerCards.push(randomObject)
+        }
+
+        // Opposition cards
+        for (let i = 0; i < handLength; i++) {
+            const randomObject: CardInfo = getRandomObject(cards);
+            if (randomObject) {
+                console.log(randomObject); // Output: a random object from myArray
+            } else {
+                console.log('Array is empty');
+        }
+        
+
+            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+
+            if (index !== -1) {
+                // Remove the object from the array using splice
+                cards.splice(index, 1);
+            }
+            oppositionCards.push(randomObject)
+        }
+        console.log(oppositionCards)
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
         //console.log(cards);
     }
 
+<<<<<<< HEAD
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -77,6 +136,32 @@
             }
         }
     }
+=======
+    //function loadCards(){
+        //console.log(playerHandCards)
+        //for (let i = 7; i < playerHandCards.length; i++){
+            //let int: number = playerHandCards[i]
+            //const foundObject = cards.find(obj => obj.number === int);
+
+            //const randomObject = getRandomObject(cards);
+            //if (randomObject) {
+            //    console.log(randomObject); // Output: a random object from myArray
+            //} else {
+            //    console.log('Array is empty');
+            //}
+
+            //playerCards.push(randomObject)
+
+            // print if it is found
+            //if (foundObject) {
+            //    console.log('Found object:', foundObject);
+            //} else {
+            //    console.log('Object with id', int, 'not found');
+            //}
+        //}
+        //console.log(playerCards)
+    //}
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
 
     /* Reset game to starting condition */
@@ -119,24 +204,145 @@
 
 {#if state === 'playing'}
     <div class="cards">
+<<<<<<< HEAD
         {#each oppositionHandCards as card}
         <button class="card">
             <img src="/cards/backcard.png" alt="Back of card" />
+=======
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
         </button>
         {/each}
+    
     </div>
-    <div class="pickup"></div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
     <div class="cards">
+<<<<<<< HEAD
         {#each playerCards as card}
         <button class="card">
             <img src={card.image} alt={card.name} />
+=======
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
         </button>
         {/each}
     </div>
 {/if}
 
+{#if state === 'playing'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'playerTurn'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <div class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </div>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'opponentTurn'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+            <div>{oppositionHandCard.name}</div>
+            <div>{oppositionHandCard.suit}</div>
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <div class="card">
+            <div>{playerHandCard.name}</div>
+            <div>{playerHandCard.suit}</div>
+        </div>
+        {/each}
+    </div>
+{/if}
 
 <style>
+
+    .center {
+        margin: auto;
+    }
     .cards {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
@@ -175,6 +381,7 @@
             opacity: 0.4;
         }
     }
+<<<<<<< HEAD
 
     .card img {
         max-width: 100%;
@@ -189,50 +396,7 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
+=======
+>>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
-        &.selected {
-            border: 4px solid var(--border);
-        }
-
-        &.flip {
-            rotate: y 180deg;
-            pointer-events: none;
-        }
-
-        & .back {
-            position: absolute;
-            inset:0 ;
-            display: grid;
-            place-content: center;
-            backface-visibility: hidden;
-            rotate: y 180deg;
-        }
-
-        & .match {
-            transition: opacity 0.3s ease-out;
-            opacity: 0.4;
-        }
-    }
-
-    .matches {
-        display: flex;
-        gap: 1rem;
-        margin-block: 2rem;
-        font-size: 3rem;
-    }
-
-    .timer {
-        transition: color 0.3s ease;
-    }
-
-    .pulse {
-        color: var(--pulse);
-        animation: pulse 1s infinite ease;
-    }
-
-    @keyframes pulse {
-        to {
-            scale: 1.4;
-        }
-    }
 </style>
