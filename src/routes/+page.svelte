@@ -46,8 +46,8 @@
     //}
 
 
-    function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
-        if (cards.length === 0) {
+    function getRandomCard<T>(array: T[]): T | undefined {
+        if (array.length === 0) {
             return undefined;
         }
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -127,9 +127,12 @@
         resetGame()
     }
 
+
     //dealHand()
     //loadCards()
     dealTrial()
+
+
 </script>
 
 <svelte:window on:keydown={pauseGame}/>
@@ -309,7 +312,6 @@
             opacity: 0.4;
         }
     }
-<<<<<<< HEAD
 
     .card img {
         max-width: 100%;
@@ -324,7 +326,6 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
-=======
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
+    }
 
 </style>
