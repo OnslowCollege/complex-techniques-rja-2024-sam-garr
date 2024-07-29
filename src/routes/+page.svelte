@@ -224,7 +224,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button class="card">
+        <button on:click = {() => state = "playerTurn"} class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
         </button>
