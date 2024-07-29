@@ -45,8 +45,13 @@
         //}
     //}
 
+<<<<<<< HEAD
+    function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
+        if (cards.length === 0) {
+=======
     function getRandomObject<T>(array: T[]): T | undefined {
         if (array.length === 0) {
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
             return undefined;
         }
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -56,47 +61,66 @@
     function dealTrial(){
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomObject: CardInfo = getRandomObject(cards);
-            if (randomObject) {
-                console.log(randomObject); // Output: a random object from myArray
+            const randomCard: CardInfo = getRandomCard(cards);
+            if (randomCard) {
+                console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log('Array is empty');
         }
         
 
-            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
-                // Remove the object from the array using splice
+                // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            playerCards.push(randomObject)
+            playerCards.push(randomCard)
         }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomObject: CardInfo = getRandomObject(cards);
-            if (randomObject) {
-                console.log(randomObject); // Output: a random object from myArray
+            const randomCard: CardInfo = getRandomCard(cards);
+            if (randomCard) {
+                console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log('Array is empty');
         }
         
 
-            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
-                // Remove the object from the array using splice
+                // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            oppositionCards.push(randomObject)
+            oppositionCards.push(randomCard)
         }
         console.log(oppositionCards)
 
         //console.log(cards);
     }
 
+<<<<<<< HEAD
     function opponentTurn() {
+=======
+<<<<<<< HEAD
+    function loadCards() {
+        playerCards = [];
+        for (const index of playerHandCards) {
+            const card = cards[index];
+            if (card) {
+                playerCards.push(card);
+            }
+        }
+    }
+=======
+    //function loadCards(){
+        //console.log(playerHandCards)
+        //for (let i = 7; i < playerHandCards.length; i++){
+            //let int: number = playerHandCards[i]
+            //const foundObject = cards.find(obj => obj.number === int);
+>>>>>>> 81f361e50c93b15322d08db4ca5ea12f6c8ae390
 
     }
 
@@ -104,6 +128,19 @@
         
     }
 
+<<<<<<< HEAD
+=======
+            // print if it is found
+            //if (foundObject) {
+            //    console.log('Found object:', foundObject);
+            //} else {
+            //    console.log('Object with id', int, 'not found');
+            //}
+        //}
+        //console.log(playerCards)
+    //}
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
+>>>>>>> 81f361e50c93b15322d08db4ca5ea12f6c8ae390
 
 
     /* Reset game to starting condition */
@@ -124,9 +161,15 @@
         resetGame()
     }
 
+<<<<<<< HEAD
+    // Load hand and cards
+    loadCards();
+    dealTrial();
+=======
     //dealHand()
     //loadCards()
     dealTrial()
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 </script>
 
@@ -145,6 +188,38 @@
 
 {#if state === 'playing'}
     <div class="cards">
+<<<<<<< HEAD
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+        <img src="/cards/backcard.png" alt="Back of card" />
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <div>Playing card pile</div>
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+            <img src={playerHandCard.image} alt={playerHandCard.name} />
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'playing'}
+    <div class="cards">
+=======
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
             <div>{oppositionHandCard.name}</div>
@@ -278,5 +353,22 @@
             opacity: 0.4;
         }
     }
+<<<<<<< HEAD
+
+    .card img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .pickup {
+        height: 140px;
+        width: 140px;
+        font-size: 4rem;
+        background-color: var(--bg-2);
+        transition: rotate 0.3s ease-out;
+        transform-style: preserve-3d;
+=======
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 </style>
