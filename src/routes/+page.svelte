@@ -201,7 +201,7 @@
     
     </div>
     <div>
-        <h1>{clicked}</h1>
+        <h1>playerturn</h1>
     </div>
     <div class="center">
         <button class="card">
@@ -232,7 +232,7 @@
     
     </div>
     <div>
-        <h1>{clicked}</h1>
+        <h1>opposition turn</h1>
     </div>
     <div class="center">
         <button class="card">
