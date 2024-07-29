@@ -45,13 +45,9 @@
         //}
     //}
 
-<<<<<<< HEAD
+
     function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
         if (cards.length === 0) {
-=======
-    function getRandomObject<T>(array: T[]): T | undefined {
-        if (array.length === 0) {
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
             return undefined;
         }
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -131,16 +127,9 @@
         resetGame()
     }
 
-<<<<<<< HEAD
-    // Load hand and cards
-    loadCards();
-    dealTrial();
-=======
     //dealHand()
     //loadCards()
     dealTrial()
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
-
 </script>
 
 <svelte:window on:keydown={pauseGame}/>
