@@ -45,12 +45,17 @@
         //}
     //}
 
+<<<<<<< HEAD
     function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
         if (cards.length === 0) {
+=======
+    function getRandomObject<T>(array: T[]): T | undefined {
+        if (array.length === 0) {
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
             return undefined;
         }
-        const randomIndex = Math.floor(Math.random() * cards.length);
-        return cards[randomIndex];
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
     }
 
     function dealTrial(){
@@ -96,6 +101,7 @@
         //console.log(cards);
     }
 
+<<<<<<< HEAD
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -105,6 +111,32 @@
             }
         }
     }
+=======
+    //function loadCards(){
+        //console.log(playerHandCards)
+        //for (let i = 7; i < playerHandCards.length; i++){
+            //let int: number = playerHandCards[i]
+            //const foundObject = cards.find(obj => obj.number === int);
+
+            //const randomObject = getRandomObject(cards);
+            //if (randomObject) {
+            //    console.log(randomObject); // Output: a random object from myArray
+            //} else {
+            //    console.log('Array is empty');
+            //}
+
+            //playerCards.push(randomObject)
+
+            // print if it is found
+            //if (foundObject) {
+            //    console.log('Found object:', foundObject);
+            //} else {
+            //    console.log('Object with id', int, 'not found');
+            //}
+        //}
+        //console.log(playerCards)
+    //}
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 
     /* Reset game to starting condition */
@@ -125,9 +157,15 @@
         resetGame()
     }
 
+<<<<<<< HEAD
     // Load hand and cards
     loadCards();
     dealTrial();
+=======
+    //dealHand()
+    //loadCards()
+    dealTrial()
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 </script>
 
@@ -139,13 +177,14 @@
 
 {#if state === 'start'}
     <h1>Matching game</h1>
-    <button on:click = {() => state = 'playing'}>
+    <button on:click = {() => state = 'playerTurn'}>
         <img src="../favicon.png" alt="card">
     </button>
 {/if}
 
 {#if state === 'playing'}
     <div class="cards">
+<<<<<<< HEAD
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
@@ -175,6 +214,8 @@
 
 {#if state === 'playing'}
     <div class="cards">
+=======
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
             <div>{oppositionHandCard.name}</div>
@@ -207,15 +248,15 @@
 {#if state === 'playerTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <div class="card">
+        <button class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
-        </div>
+        </button>
         {/each}
     
     </div>
     <div>
-        <h1>{clicked}</h1>
+        <h1>playerturn</h1>
     </div>
     <div class="center">
         <button class="card">
@@ -227,7 +268,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+        <button on:click = {() => state = "opponentTurn"} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
@@ -238,7 +279,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+        <button on:click = {() => state = "playerTurn"} class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
         </button>
@@ -246,7 +287,7 @@
     
     </div>
     <div>
-        <h1>{clicked}</h1>
+        <h1>opposition turn</h1>
     </div>
     <div class="center">
         <button class="card">
@@ -258,10 +299,10 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <div class="card">
+        <button class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
-        </div>
+        </button>
         {/each}
     </div>
 {/if}
@@ -289,7 +330,6 @@
             border: 4px solid var(--border);
         }
 
-
         &.flip {
             rotate: y 180deg;
             pointer-events: none;
@@ -309,6 +349,7 @@
             opacity: 0.4;
         }
     }
+<<<<<<< HEAD
 
     .card img {
         max-width: 100%;
@@ -323,5 +364,7 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
+=======
+>>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 </style>
