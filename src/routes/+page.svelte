@@ -243,8 +243,7 @@
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => state = "playerTurn"} class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
+        <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
     
@@ -263,8 +262,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
+        <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
         </button>
         {/each}
     </div>
