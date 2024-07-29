@@ -32,20 +32,6 @@
         }
     }
 
-<<<<<<< HEAD
-    function dealHand() {
-        let hand = new Set<string>()
-        let handLength: number = 7
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            playerHandCards.push(randomIndex)
-        }
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            oppositionHandCards.push(randomIndex)
-        }
-    }
-=======
     //function dealHand(){
         // all cards
         //let hand = new Set<string>()
@@ -58,31 +44,16 @@
         //    oppositionHandCards.push(randomIndex)
         //}
     //}
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
-    function getRandomCard(): CardInfo | undefined {
-        if (cards.length === 0) {
+    function getRandomObject<T>(array: T[]): T | undefined {
+        if (array.length === 0) {
             return undefined;
         }
-        const randomIndex = Math.floor(Math.random() * cards.length);
-        return cards[randomIndex];
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
     }
 
     function dealTrial(){
-<<<<<<< HEAD
-        const randomCard = getRandomCard();
-        if (randomCard) {
-            console.log(randomCard); // Output: a random card from Array
-            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
-        
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            cards.splice(index, 1);
-        }
-        } else {
-            console.log('Array is empty');
-        }
-=======
         // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomObject: CardInfo = getRandomObject(cards);
@@ -121,22 +92,10 @@
             oppositionCards.push(randomObject)
         }
         console.log(oppositionCards)
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
         //console.log(cards);
     }
 
-<<<<<<< HEAD
-    function loadCards() {
-        playerCards = [];
-        for (const index of playerHandCards) {
-            const card = cards[index];
-            if (card) {
-                playerCards.push(card);
-            }
-        }
-    }
-=======
     //function loadCards(){
         //console.log(playerHandCards)
         //for (let i = 7; i < playerHandCards.length; i++){
@@ -161,7 +120,6 @@
         //}
         //console.log(playerCards)
     //}
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
 
     /* Reset game to starting condition */
@@ -182,10 +140,9 @@
         resetGame()
     }
 
-    // Load hand and cards
-    dealHand();
-    loadCards();
-    dealTrial();
+    //dealHand()
+    //loadCards()
+    dealTrial()
 
 </script>
 
@@ -197,52 +154,9 @@
 
 {#if state === 'start'}
     <h1>Matching game</h1>
-    <button on:click = {() => state = 'playerTurn'}>
+    <button on:click = {() => state = 'playing'}>
         <img src="../favicon.png" alt="card">
     </button>
-{/if}
-
-{#if state === 'playing'}
-    <div class="cards">
-<<<<<<< HEAD
-        {#each oppositionHandCards as card}
-        <button class="card">
-            <img src="/cards/backcard.png" alt="Back of card" />
-=======
-        {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
-        </button>
-        {/each}
-    
-    </div>
-    <div>
-        <h1>{clicked}</h1>
-    </div>
-    <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
-        </button>
-        <button class="card">
-            <div>Playing card pile</div>
-        </button>
-    </div>
-    <div class="cards">
-<<<<<<< HEAD
-        {#each playerCards as card}
-        <button class="card">
-            <img src={card.image} alt={card.name} />
-=======
-        {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
-        </button>
-        {/each}
-    </div>
 {/if}
 
 {#if state === 'playing'}
@@ -279,10 +193,10 @@
 {#if state === 'playerTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <div class="card">
+        <button class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
-        </div>
+        </button>
         {/each}
     
     </div>
@@ -310,7 +224,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => state = "playerTurn"} class="card">
+        <button class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
         </button>
@@ -361,7 +275,6 @@
             border: 4px solid var(--border);
         }
 
-
         &.flip {
             rotate: y 180deg;
             pointer-events: none;
@@ -381,22 +294,5 @@
             opacity: 0.4;
         }
     }
-<<<<<<< HEAD
-
-    .card img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-    }
-
-    .pickup {
-        height: 140px;
-        width: 140px;
-        font-size: 4rem;
-        background-color: var(--bg-2);
-        transition: rotate 0.3s ease-out;
-        transform-style: preserve-3d;
-=======
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
 </style>
