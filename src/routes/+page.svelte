@@ -16,7 +16,7 @@
     let playerCards: CardInfo[] = []
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
-    let clicked: string = ""
+    let clicked: CardInfo[] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -96,30 +96,14 @@
         //console.log(cards);
     }
 
-    //function loadCards(){
-        //console.log(playerHandCards)
-        //for (let i = 7; i < playerHandCards.length; i++){
-            //let int: number = playerHandCards[i]
-            //const foundObject = cards.find(obj => obj.number === int);
+    function opponentTurn() {
 
-            //const randomObject = getRandomObject(cards);
-            //if (randomObject) {
-            //    console.log(randomObject); // Output: a random object from myArray
-            //} else {
-            //    console.log('Array is empty');
-            //}
+    }
 
-            //playerCards.push(randomObject)
+    function playerTurn() {
+        
+    }
 
-            // print if it is found
-            //if (foundObject) {
-            //    console.log('Found object:', foundObject);
-            //} else {
-            //    console.log('Object with id', int, 'not found');
-            //}
-        //}
-        //console.log(playerCards)
-    //}
 
 
     /* Reset game to starting condition */
@@ -213,7 +197,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => state = "opponentTurn"} class="card">
+        <button on:click = {() => state = "opponentTurn"} on:click = {() => clicked = playerHandCard} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
         </button>
@@ -224,7 +208,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => state = "playerTurn"} class="card">
+        <button on:click = {() => state = "playerTurn"} on:click = {() => clicked = oppositionHandCard} class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
         </button>
