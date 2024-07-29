@@ -101,7 +101,7 @@
         //console.log(cards);
     }
 
-<<<<<<< HEAD
+
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -111,32 +111,6 @@
             }
         }
     }
-=======
-    //function loadCards(){
-        //console.log(playerHandCards)
-        //for (let i = 7; i < playerHandCards.length; i++){
-            //let int: number = playerHandCards[i]
-            //const foundObject = cards.find(obj => obj.number === int);
-
-            //const randomObject = getRandomObject(cards);
-            //if (randomObject) {
-            //    console.log(randomObject); // Output: a random object from myArray
-            //} else {
-            //    console.log('Array is empty');
-            //}
-
-            //playerCards.push(randomObject)
-
-            // print if it is found
-            //if (foundObject) {
-            //    console.log('Found object:', foundObject);
-            //} else {
-            //    console.log('Object with id', int, 'not found');
-            //}
-        //}
-        //console.log(playerCards)
-    //}
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 
 
     /* Reset game to starting condition */
@@ -184,7 +158,6 @@
 
 {#if state === 'playing'}
     <div class="cards">
-<<<<<<< HEAD
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
@@ -214,8 +187,6 @@
 
 {#if state === 'playing'}
     <div class="cards">
-=======
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
             <div>{oppositionHandCard.name}</div>
