@@ -32,20 +32,6 @@
         }
     }
 
-<<<<<<< HEAD
-    function dealHand() {
-        let hand = new Set<string>()
-        let handLength: number = 7
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            playerHandCards.push(randomIndex)
-        }
-        for (let i = 0; i < handLength; i++) {
-            const randomIndex = Math.floor(Math.random() * cards.length)
-            oppositionHandCards.push(randomIndex)
-        }
-    }
-=======
     //function dealHand(){
         // all cards
         //let hand = new Set<string>()
@@ -58,9 +44,8 @@
         //    oppositionHandCards.push(randomIndex)
         //}
     //}
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
-    function getRandomCard(): CardInfo | undefined {
+    function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
         if (cards.length === 0) {
             return undefined;
         }
@@ -69,64 +54,48 @@
     }
 
     function dealTrial(){
-<<<<<<< HEAD
-        const randomCard = getRandomCard();
-        if (randomCard) {
-            console.log(randomCard); // Output: a random card from Array
-            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
-        
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            cards.splice(index, 1);
-        }
-        } else {
-            console.log('Array is empty');
-        }
-=======
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomObject: CardInfo = getRandomObject(cards);
-            if (randomObject) {
-                console.log(randomObject); // Output: a random object from myArray
+            const randomCard: CardInfo = getRandomCard(cards);
+            if (randomCard) {
+                console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log('Array is empty');
         }
         
 
-            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
-                // Remove the object from the array using splice
+                // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            playerCards.push(randomObject)
+            playerCards.push(randomCard)
         }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomObject: CardInfo = getRandomObject(cards);
-            if (randomObject) {
-                console.log(randomObject); // Output: a random object from myArray
+            const randomCard: CardInfo = getRandomCard(cards);
+            if (randomCard) {
+                console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log('Array is empty');
         }
         
 
-            const index = cards.findIndex(obj => obj.number === randomObject.number && obj.name === randomObject.name);
+            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
-                // Remove the object from the array using splice
+                // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            oppositionCards.push(randomObject)
+            oppositionCards.push(randomCard)
         }
         console.log(oppositionCards)
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
         //console.log(cards);
     }
 
-<<<<<<< HEAD
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -136,32 +105,6 @@
             }
         }
     }
-=======
-    //function loadCards(){
-        //console.log(playerHandCards)
-        //for (let i = 7; i < playerHandCards.length; i++){
-            //let int: number = playerHandCards[i]
-            //const foundObject = cards.find(obj => obj.number === int);
-
-            //const randomObject = getRandomObject(cards);
-            //if (randomObject) {
-            //    console.log(randomObject); // Output: a random object from myArray
-            //} else {
-            //    console.log('Array is empty');
-            //}
-
-            //playerCards.push(randomObject)
-
-            // print if it is found
-            //if (foundObject) {
-            //    console.log('Found object:', foundObject);
-            //} else {
-            //    console.log('Object with id', int, 'not found');
-            //}
-        //}
-        //console.log(playerCards)
-    //}
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
 
     /* Reset game to starting condition */
@@ -183,7 +126,6 @@
     }
 
     // Load hand and cards
-    dealHand();
     loadCards();
     dealTrial();
 
@@ -204,16 +146,9 @@
 
 {#if state === 'playing'}
     <div class="cards">
-<<<<<<< HEAD
-        {#each oppositionHandCards as card}
-        <button class="card">
-            <img src="/cards/backcard.png" alt="Back of card" />
-=======
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
+        <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
     
@@ -230,16 +165,9 @@
         </button>
     </div>
     <div class="cards">
-<<<<<<< HEAD
-        {#each playerCards as card}
-        <button class="card">
-            <img src={card.image} alt={card.name} />
-=======
         {#each playerCards as playerHandCard}
         <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
+            <img src={playerHandCard.image} alt={playerHandCard.name} />
         </button>
         {/each}
     </div>
@@ -381,7 +309,6 @@
             opacity: 0.4;
         }
     }
-<<<<<<< HEAD
 
     .card img {
         max-width: 100%;
@@ -396,7 +323,5 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
-=======
->>>>>>> 22f4e1085db8d026bfde958419387d705665767a
 
 </style>
