@@ -84,14 +84,10 @@
         //console.log(cards);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     function opponentTurn() {
-=======
-<<<<<<< HEAD
-=======
+    }
+        
 
->>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -101,36 +97,10 @@
             }
         }
     }
-<<<<<<< HEAD
-=======
-    //function loadCards(){
-        //console.log(playerHandCards)
-        //for (let i = 7; i < playerHandCards.length; i++){
-            //let int: number = playerHandCards[i]
-            //const foundObject = cards.find(obj => obj.number === int);
->>>>>>> 81f361e50c93b15322d08db4ca5ea12f6c8ae390
-
-    }
 
     function playerTurn() {
         
     }
-
-<<<<<<< HEAD
-=======
-            // print if it is found
-            //if (foundObject) {
-            //    console.log('Found object:', foundObject);
-            //} else {
-            //    console.log('Object with id', int, 'not found');
-            //}
-        //}
-        //console.log(playerCards)
-    //}
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
->>>>>>> 81f361e50c93b15322d08db4ca5ea12f6c8ae390
-=======
->>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
 
 
     /* Reset game to starting condition */
@@ -254,14 +224,8 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-<<<<<<< HEAD
-        <button on:click = {() => state = "opponentTurn"} on:click = {() => clicked = playerHandCard} class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
-=======
         <button on:click = {() => state = "opponentTurn"} class="card">
         <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
->>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
         </button>
         {/each}
     </div>
@@ -270,14 +234,8 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-<<<<<<< HEAD
-        <button on:click = {() => state = "playerTurn"} on:click = {() => clicked = oppositionHandCard} class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
-=======
         <button on:click = {() => state = "playerTurn"} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
->>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
         </button>
         {/each}
     
