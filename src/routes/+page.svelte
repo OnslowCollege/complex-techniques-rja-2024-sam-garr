@@ -145,7 +145,7 @@
 {#if state === 'playing'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
+        <button on:click = {() => clicked = oppositionHandCard} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
@@ -164,7 +164,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
+        <button on:click = {() => clicked = playerHandCard} class="card">
             <img src={playerHandCard.image} alt={playerHandCard.name} />
         </button>
         {/each}
@@ -214,6 +214,9 @@
     </div>
     <div>
         <h1>opposition turn</h1>
+    </div>
+    <div>
+        <h1>{clicked.name}</h1>
     </div>
     <div class="center">
         <button class="card">
