@@ -214,6 +214,9 @@
     <div>
         <h1>playerturn</h1>
     </div>
+    <div>
+        <h1>{clicked.name}</h1>
+    </div>
     <div class="center">
         <button class="card">
             <div>Pickup card pile</div>
