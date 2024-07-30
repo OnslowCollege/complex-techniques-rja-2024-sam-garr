@@ -141,35 +141,6 @@
     </button>
 {/if}
 
-{#if state === 'playing'}
-    <div class="cards">
-        {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard} class="card">
-        <img src="/cards/backcard.png" alt="Back of card" />
-        </button>
-        {/each}
-    
-    </div>
-    <div>
-        <h1>{clicked}</h1>
-    </div>
-    <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
-        </button>
-        <button class="card">
-            <img src={clicked.image} alt={clicked.name} />
-        </button>
-    </div>
-    <div class="cards">
-        {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard} class="card">
-            <img src={playerHandCard.image} alt={playerHandCard.name} />
-        </button>
-        {/each}
-    </div>
-{/if}
-
 {#if state === 'playerTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
@@ -181,9 +152,6 @@
     </div>
     <div>
         <h1>playerturn</h1>
-    </div>
-    <div>
-        <h1>{clicked.name}</h1>
     </div>
     <div class="center">
         <button class="card">
@@ -215,9 +183,6 @@
     <div>
         <h1>opposition turn</h1>
     </div>
-    <div>
-        <h1>{clicked.name}</h1>
-    </div>
     <div class="center">
         <button class="card">
             <div>Pickup card pile</div>
@@ -230,6 +195,35 @@
         {#each playerCards as playerHandCard}
         <button class="card">
         <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
+        </button>
+        {/each}
+    </div>
+{/if}
+
+{#if state === 'playing'}
+    <div class="cards">
+        {#each oppositionCards as oppositionHandCard}
+        <button on:click = {() => clicked = oppositionHandCard} class="card">
+        <img src="/cards/backcard.png" alt="Back of card" />
+        </button>
+        {/each}
+    
+    </div>
+    <div>
+        <h1>{clicked}</h1>
+    </div>
+    <div class="center">
+        <button class="card">
+            <div>Pickup card pile</div>
+        </button>
+        <button class="card">
+            <img src={clicked.image} alt={clicked.name} />
+        </button>
+    </div>
+    <div class="cards">
+        {#each playerCards as playerHandCard}
+        <button on:click = {() => clicked = playerHandCard} class="card">
+            <img src={playerHandCard.image} alt={playerHandCard.name} />
         </button>
         {/each}
     </div>
