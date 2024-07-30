@@ -171,37 +171,6 @@
     </div>
 {/if}
 
-{#if state === 'playing'}
-    <div class="cards">
-        {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
-        </button>
-        {/each}
-    
-    </div>
-    <div>
-        <h1>{clicked}</h1>
-    </div>
-    <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
-        </button>
-        <button class="card">
-            <div>Playing card pile</div>
-        </button>
-    </div>
-    <div class="cards">
-        {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard.name + playerHandCard.suit} class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
-        </button>
-        {/each}
-    </div>
-{/if}
-
 {#if state === 'playerTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
