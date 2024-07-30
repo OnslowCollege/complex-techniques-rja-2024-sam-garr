@@ -17,6 +17,7 @@
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
     let clicked: CardInfo[] = []
+    let currentCard: CardInfo[] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -105,6 +106,7 @@
             // Remove the card from the array using splice
             playerCards.splice(index, 1);
         }
+        currentCard = clicked
     }
 
 
@@ -162,7 +164,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <img src={clicked.image} alt={clicked.name} />
+            <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
     <div class="cards">
@@ -192,7 +194,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <img src={clicked.image} alt={clicked.name} />
+            <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
     <div class="cards">
@@ -221,7 +223,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <img src={clicked.image} alt={clicked.name} />
+            <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
     <div class="cards">
