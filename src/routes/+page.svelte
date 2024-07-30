@@ -122,8 +122,6 @@
     }
 
 
-    //dealHand()
-    //loadCards()
     dealTrial()
 
 
@@ -206,7 +204,7 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => state = "playerTurn"} class="card">
+        <button on:click = {() => clicked = oppositionHandCard} on:click = {() => state = "playerTurn"} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
