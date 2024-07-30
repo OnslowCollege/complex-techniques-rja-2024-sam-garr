@@ -224,7 +224,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => state = "opponentTurn"} class="card">
+        <button on:click = {() => state = "opponentTurn"} on:click = {() => clicked = playerHandCard} class="card">
         <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
         </button>
         {/each}
