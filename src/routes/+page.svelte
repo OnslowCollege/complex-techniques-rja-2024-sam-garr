@@ -100,16 +100,10 @@
     }
 
     function playerTurn() {
-        const index = playerCards.findIndex(obj => obj.number === clicked.number && obj.name === clicked.name);
-
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            playerCards.splice(index, 1);
-        }
         if (currentCard.length === 0 || currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
             currentCard = clicked
 
-            const index = playerCards.findIndex(obj => obj.number === clicked.number && obj.name === clicked.name);
+            const index = playerCards.findIndex(obj => obj.number === currentCard.number && obj.name === currentCard.name);
 
             if (index !== -1) {
                 // Remove the card from the array using splice
