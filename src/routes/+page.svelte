@@ -32,19 +32,6 @@
         }
     }
 
-    //function dealHand(){
-        // all cards
-        //let hand = new Set<string>()
-        //for (let i = 0; i < handLength; i++) {
-        //    const randomIndex = Math.floor(Math.random() * cards.length)
-        //    playerHandCards.push(randomIndex)
-        //}
-        //for (let i = 0; i < handLength; i++) {
-        //    const randomIndex = Math.floor(Math.random() * cards.length)
-        //    oppositionHandCards.push(randomIndex)
-        //}
-    //}
-
 
     function getRandomCard<T>(array: T[]): T | undefined {
         if (array.length === 0) {
