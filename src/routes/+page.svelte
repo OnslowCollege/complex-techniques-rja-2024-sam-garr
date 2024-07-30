@@ -106,10 +106,15 @@
             // Remove the card from the array using splice
             playerCards.splice(index, 1);
         }
-        if (currentCard.length === 0) {
+        if (currentCard.length === 0 || currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
             currentCard = clicked
-        } else if (currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
-            currentCard = clicked
+
+            const index = playerCards.findIndex(obj => obj.number === clicked.number && obj.name === clicked.name);
+
+            if (index !== -1) {
+                // Remove the card from the array using splice
+                playerCards.splice(index, 1);
+            }
         }
     }
 
