@@ -45,13 +45,9 @@
         //}
     //}
 
-<<<<<<< HEAD
-    function getRandomCard(cards: CardInfo[]): CardInfo | undefined {
-        if (cards.length === 0) {
-=======
-    function getRandomObject<T>(array: T[]): T | undefined {
+
+    function getRandomCard<T>(array: T[]): T | undefined {
         if (array.length === 0) {
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
             return undefined;
         }
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -102,9 +98,13 @@
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     function opponentTurn() {
 =======
 <<<<<<< HEAD
+=======
+
+>>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -114,6 +114,7 @@
             }
         }
     }
+<<<<<<< HEAD
 =======
     //function loadCards(){
         //console.log(playerHandCards)
@@ -141,6 +142,8 @@
     //}
 >>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
 >>>>>>> 81f361e50c93b15322d08db4ca5ea12f6c8ae390
+=======
+>>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
 
 
     /* Reset game to starting condition */
@@ -161,15 +164,11 @@
         resetGame()
     }
 
-<<<<<<< HEAD
-    // Load hand and cards
-    loadCards();
-    dealTrial();
-=======
+
     //dealHand()
     //loadCards()
     dealTrial()
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
+
 
 </script>
 
@@ -188,7 +187,6 @@
 
 {#if state === 'playing'}
     <div class="cards">
-<<<<<<< HEAD
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
@@ -218,8 +216,6 @@
 
 {#if state === 'playing'}
     <div class="cards">
-=======
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard.name + oppositionHandCard.suit} class="card">
             <div>{oppositionHandCard.name}</div>
@@ -253,8 +249,7 @@
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button class="card">
-            <div>{oppositionHandCard.name}</div>
-            <div>{oppositionHandCard.suit}</div>
+        <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
     
@@ -272,9 +267,14 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
+<<<<<<< HEAD
         <button on:click = {() => state = "opponentTurn"} on:click = {() => clicked = playerHandCard} class="card">
             <div>{playerHandCard.name}</div>
             <div>{playerHandCard.suit}</div>
+=======
+        <button on:click = {() => state = "opponentTurn"} class="card">
+        <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
+>>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
         </button>
         {/each}
     </div>
@@ -283,9 +283,14 @@
 {#if state === 'opponentTurn'}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
+<<<<<<< HEAD
         <button on:click = {() => state = "playerTurn"} on:click = {() => clicked = oppositionHandCard} class="card">
             <div>{oppositionHandCard.name}</div>
             <div>{oppositionHandCard.suit}</div>
+=======
+        <button on:click = {() => state = "playerTurn"} class="card">
+        <img src="/cards/backcard.png" alt="Back of card" />
+>>>>>>> ce088bc6952e2f44c6de8153e13b8f66e8f0b96f
         </button>
         {/each}
     
@@ -304,8 +309,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
         <button class="card">
-            <div>{playerHandCard.name}</div>
-            <div>{playerHandCard.suit}</div>
+        <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
         </button>
         {/each}
     </div>
@@ -353,7 +357,6 @@
             opacity: 0.4;
         }
     }
-<<<<<<< HEAD
 
     .card img {
         max-width: 100%;
@@ -368,7 +371,6 @@
         background-color: var(--bg-2);
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
-=======
->>>>>>> 5c84fe52403ee09895c599da7bcabddb4017bdfd
+    }
 
 </style>
