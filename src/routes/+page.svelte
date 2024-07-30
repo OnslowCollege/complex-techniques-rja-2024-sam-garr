@@ -158,7 +158,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <div>Playing card pile</div>
+            <img src={clicked.image} alt={clicked.name} />
         </button>
     </div>
     <div class="cards">
@@ -190,7 +190,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <div>Playing card pile</div>
+            <img src={clicked.image} alt={clicked.name} />
         </button>
     </div>
     <div class="cards">
@@ -223,7 +223,7 @@
             <div>Pickup card pile</div>
         </button>
         <button class="card">
-            <div>Playing card pile</div>
+            <img src={clicked.image} alt={clicked.name} />
         </button>
     </div>
     <div class="cards">
