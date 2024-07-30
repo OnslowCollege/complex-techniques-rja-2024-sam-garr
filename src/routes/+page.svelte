@@ -106,7 +106,9 @@
             // Remove the card from the array using splice
             playerCards.splice(index, 1);
         }
-        if (currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
+        if (currentCard.length === 0) {
+            currentCard = clicked
+        } else if (currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
             currentCard = clicked
         }
     }
