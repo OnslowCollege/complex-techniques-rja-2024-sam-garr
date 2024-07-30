@@ -85,7 +85,6 @@
     }
 
     function opponentTurn() {
-        clicked
     }
         
 
@@ -100,7 +99,12 @@
     }
 
     function playerTurn() {
-        
+        const index = playerCards.findIndex(obj => obj.number === clicked.number && obj.name === clicked.name);
+
+        if (index !== -1) {
+            // Remove the card from the array using splice
+            playerCards.splice(index, 1);
+        }
     }
 
 
@@ -171,7 +175,7 @@
 {/if}
 
 {#if state === 'opponentTurn'}
-    {opponentTurn()}
+    {playerTurn()}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard} on:click = {() => state = "playerTurn"} class="card">
