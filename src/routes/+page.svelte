@@ -173,7 +173,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard} on:click = {playerTurn()} class="card">
+        <button on:click = {() => clicked = playerHandCard} on:click = {playerTurn} class="card">
         <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
         </button>
         {/each}
