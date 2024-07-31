@@ -102,6 +102,7 @@
     function playerTurn() {
         if (currentCard.length === 0 || currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
             currentCard = clicked
+            state = 'opponentTurn'
 
             const index = playerCards.findIndex(obj => obj.number === currentCard.number && obj.name === currentCard.name);
 
@@ -172,7 +173,7 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-        <button on:click = {() => clicked = playerHandCard} on:click = {() => state = "opponentTurn"} class="card">
+        <button on:click = {() => clicked = playerHandCard} on:click = {playerTurn()} class="card">
         <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy" />
         </button>
         {/each}
@@ -180,7 +181,6 @@
 {/if}
 
 {#if state === 'opponentTurn'}
-    {playerTurn()}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard} on:click = {() => state = "playerTurn"} class="card">
