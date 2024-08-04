@@ -229,6 +229,7 @@
 {/if}
 
 {#if state === 'opponentTurn'}
+    {opponentTurn()}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button on:click = {() => clicked = oppositionHandCard} on:click = {() => state = "playerTurn"} class="card">
