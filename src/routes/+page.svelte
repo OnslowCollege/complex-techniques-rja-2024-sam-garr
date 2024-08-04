@@ -236,7 +236,7 @@
     
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-        <button on:click = {() => clicked = oppositionHandCard} on:click = {() => state = "playerTurn"} class="card">
+        <button class="card">
         <img src="/cards/backcard.png" alt="Back of card" />
         </button>
         {/each}
