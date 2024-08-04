@@ -41,6 +41,7 @@
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];
     }
+    
 
     function dealTrial(){
         // Player Cards
@@ -52,6 +53,7 @@
                 console.log('Array is empty');
         }
         
+        i
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
@@ -86,6 +88,52 @@
     }
 
     function opponentTurn() {
+        // Check if the opponent has any cards left
+        if (oppositionCards.length === 0) {
+            console.log('Opponent has no cards left');
+            gameWon(); // End the game if the opponent has no cards left
+            return;
+        }
+
+        // Find cards that can be played based on the current card
+        const playableCards = oppositionCards.filter(card => 
+            card.suit === currentCard.suit || card.name === currentCard.name
+        );
+
+        if (playableCards.length === 0) {
+            // If no playable cards, the opponent must draw a card (if applicable)
+            console.log('Opponent has no playable cards, must draw a card');
+            // If there is a draw pile, implement logic to draw a card and add to opponent's hand
+            // For simplicity, we'll skip drawing a card in this example
+            state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+            return;
+        }
+
+        // Select a random card from the playable cards
+        const randomIndex = Math.floor(Math.random() * playableCards.length);
+        const cardToPlay = playableCards[randomIndex];
+
+        // Update the current card with the card played by the opponent
+        currentCard = cardToPlay;
+
+        // Remove the card from the opponent's hand
+        const cardIndex = oppositionCards.findIndex(card => 
+            card.number === cardToPlay.number && card.name === cardToPlay.name
+        );
+        if (cardIndex !== -1) {
+            oppositionCards.splice(cardIndex, 1);
+        }
+
+        console.log('Opponent played:', cardToPlay);
+
+        // Check for win/loss conditions (e.g., if the player has no cards left)
+        if (playerCards.length === 0) {
+            gameLost(); // End the game if the player has no cards left
+            return;
+        }
+
+        // Transition back to the player's turn
+        state = 'playerTurn';
     }
         
 
