@@ -231,7 +231,7 @@
 {#if state === 'opponentTurn'}
 
     {setTimeout(() => {
-        opponentTurn;
+        opponentTurn();
     }, 2000)}
     
     <div class="cards">
