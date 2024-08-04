@@ -203,7 +203,8 @@
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
         <button class="card">
-        <img src="/cards/backcard.png" alt="Back of card" />
+        <img src={oppositionHandCard.image} alt={oppositionHandCard.name} loading="lazy" />
+        <!-- <img src="/cards/backcard.png" alt="Back of card" /> -->
         </button>
         {/each}
     
