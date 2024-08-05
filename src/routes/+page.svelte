@@ -46,7 +46,7 @@
         // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
-            console.log(cards)
+            console.log(cards.length)
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
@@ -60,7 +60,7 @@
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
-            console.log(cards)
+            console.log(cards.length)
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
@@ -70,9 +70,6 @@
             }
             oppositionCards.push(randomCard)
         }
-        console.log(oppositionCards)
-
-        //console.log(cards);
     }
 
     function opponentTurn() {
