@@ -1,5 +1,4 @@
 
-
 <script lang="ts">
     import { cards } from "./cards";
     import type { CardInfo } from "./cards";
