@@ -46,13 +46,7 @@
         // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
-            if (randomCard) {
-                console.log(randomCard); // Output: a random card from myArray
-            } else {
-                console.log('Array is empty');
-        }
-        
-        i
+            console.log(cards)
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
@@ -66,12 +60,7 @@
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
-            if (randomCard) {
-                console.log(randomCard); // Output: a random card from myArray
-            } else {
-                console.log('Array is empty');
-        }
-        
+            console.log(cards)
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
