@@ -95,6 +95,12 @@
         //console.log(cards);
     }
 
+    function handleLastCardClick() {
+        if (playerCards.length === 1) {
+            console.log("Last Card!")
+        }
+    }
+
     function opponentTurn() {}
 
     function loadCards() {
@@ -261,6 +267,12 @@
             </button>
         {/each}
     </div>
+    <button 
+        on:click={handleLastCardClick}
+        class="last-card-button"
+        disabled={playerCards.length !== 1} 
+    >
+    </button>
 {/if}
 
 <style>
@@ -312,5 +324,25 @@
         object-fit: cover;
     }
 
+    .last-card-button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: green;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .last-card-button:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+    }
+
+    .last-card-button:not(:disabled):hover {
+        background-color: red;
+    }
 
 </style>
