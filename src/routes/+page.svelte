@@ -265,6 +265,10 @@
 
 <style>
 
+    .body {
+        background-color: green;
+    }
+
     .center {
         margin: auto;
         background-color: green;
