@@ -270,16 +270,16 @@
         background-color: green;
     }
     .cards {
-        display: grid;
+        display: line;
         grid-template-columns: repeat(7, 1fr);
         gap: 0.1rem;
     }
 
     .card {
-        height: 170px;
-        width: 170px;
+        height: 200px;
+        width: 200px;
         font-size: 1rem;
-        background-color: var(green);
+        background-color:green;
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
 
@@ -313,12 +313,5 @@
         object-fit: cover;
     }
 
-    .pickup {
-        height: 140px;
-        width: 140px;
-        font-size: 4rem;
-        background-color: var(green);
-        transition: rotate 0.3s ease-out;
-        transform-style: preserve-3d;
-    }
+
 </style>
