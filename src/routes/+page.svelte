@@ -205,7 +205,7 @@
     class="last-card-button"
     disabled={playerCards.length !== 1} 
     >
-        
+        Last Card
     </button>
 {/if}
 
