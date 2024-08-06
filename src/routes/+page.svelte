@@ -264,8 +264,10 @@
 {/if}
 
 <style>
+
     .center {
         margin: auto;
+        background-color: green;
     }
     .cards {
         display: grid;
