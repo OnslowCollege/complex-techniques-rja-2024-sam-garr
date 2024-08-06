@@ -44,6 +44,7 @@
 
     function dealTrial(){
         // Player Cards
+        console.log(cards)
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
             console.log(cards.length)
