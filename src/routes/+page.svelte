@@ -179,7 +179,7 @@
     <button on:click = {() => {
         dealTrial;
         state = 'playerTurn';
-        }}>
+    }}>
         <img src="../favicon.png" alt="card">
     </button>
 {/if}
