@@ -161,6 +161,7 @@
 {/if}
 
 {#if state === "playerTurn"}
+    <div class="body"></div>
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
             <button class="card">
@@ -197,6 +198,7 @@
 {/if}
 
 {#if state === "opponentTurn"}
+<div class="body"></div>
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
             <button
@@ -233,6 +235,7 @@
 {/if}
 
 {#if state === "playing"}
+<div class="body"></div>
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
             <button
