@@ -276,8 +276,8 @@
     }
 
     .card {
-        height: 200px;
-        width: 200px;
+        height: 170px;
+        width: 170px;
         font-size: 1rem;
         transition: rotate 0.3s ease-out;
         transform-style: preserve-3d;
