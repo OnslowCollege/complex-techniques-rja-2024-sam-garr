@@ -172,8 +172,8 @@
         <h1>playerturn</h1>
     </div>
     <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
+        <button class="card pickup-pile">
+            <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
             <img src={currentCard.image} alt={currentCard.name} />
@@ -212,8 +212,8 @@
         <h1>opposition turn</h1>
     </div>
     <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
+        <button class="card pickup-pile">
+            <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
             <img src={currentCard.image} alt={currentCard.name} />
@@ -247,8 +247,8 @@
         <h1>{clicked}</h1>
     </div>
     <div class="center">
-        <button class="card">
-            <div>Pickup card pile</div>
+        <button class="card pickup-pile">
+            <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
             <img src={currentCard.image} alt={currentCard.name} />
@@ -265,11 +265,7 @@
 
 <style>
 
-    body {
-        background-color: green;
-    }
-
-    .center {
+.center {
         margin: auto;
         background-color: green;
     }
