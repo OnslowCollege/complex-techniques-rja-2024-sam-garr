@@ -200,6 +200,12 @@
             </button>
         {/each}
     </div>
+    <button 
+    on:click={handleLastCardClick}
+    class="last-card-button"
+    disabled={playerCards.length !== 1} 
+    >
+    </button>
 {/if}
 
 {#if state === "opponentTurn"}
@@ -267,12 +273,6 @@
             </button>
         {/each}
     </div>
-    <button 
-        on:click={handleLastCardClick}
-        class="last-card-button"
-        disabled={playerCards.length !== 1} 
-    >
-    </button>
 {/if}
 
 <style>
