@@ -17,6 +17,7 @@
     let handLength: number = 7
     let clicked: CardInfo[] = []
     let currentCard: CardInfo[] = []
+    let dealPile: CardInfo[] = cards
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -32,8 +33,6 @@
         }
     }
 
-    console.log(cards)
-
 
     function getRandomCard<T>(array: T[]): T | undefined {
         if (array.length === 0) {
@@ -46,32 +45,27 @@
 
     function dealTrial(){
         // Player Cards
-        console.log(cards)
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(cards);
-            console.log(cards.length)
-            console.log(randomCard)
-            console.log(cards)
+            const randomCard: CardInfo = getRandomCard(dealPile);
 
-            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
+            const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
                 // Remove the card from the array using splice
-                cards.splice(index, 1);
+                dealPile.splice(index, 1);
             }
             playerCards.push(randomCard)
         }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(cards);
-            console.log(cards.length)
+            const randomCard: CardInfo = getRandomCard(dealPile);
 
-            const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
+            const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
             if (index !== -1) {
                 // Remove the card from the array using splice
-                cards.splice(index, 1);
+                dealPile.splice(index, 1);
             }
             oppositionCards.push(randomCard)
         }
@@ -125,17 +119,7 @@
         // Transition back to the player's turn
         state = 'playerTurn';
     }
-        
 
-    function loadCards() {
-        playerCards = [];
-        for (const index of playerHandCards) {
-            const card = cards[index];
-            if (card) {
-                playerCards.push(card);
-            }
-        }
-    }
 
     function playerTurn() {
         if (currentCard.length === 0 || currentCard.suit == clicked.suit || currentCard.name == clicked.name) {
