@@ -272,7 +272,7 @@
     .cards {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 0.2rem;
+        gap: 0.1rem;
     }
 
     .card {
