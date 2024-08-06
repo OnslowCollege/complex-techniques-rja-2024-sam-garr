@@ -194,7 +194,7 @@
         <h1>playerturn</h1>
     </div>
     <div class="center">
-        <button class="card">
+        <button  on:click = {() => pickup()} class="card">
             <div>Pickup card pile</div>
         </button>
         <button class="card">
@@ -232,7 +232,7 @@
         <button class="card">
             <div>Pickup card pile</div>
         </button>
-        <button on:click = {() => pickup()} class="card">
+        <button class="card">
             <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
