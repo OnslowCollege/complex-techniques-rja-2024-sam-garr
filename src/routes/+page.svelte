@@ -135,6 +135,14 @@
         }
     }
 
+    function pickup() {
+        const pickupCard = dealPile.shift()
+
+        if (pickupCard !== undefined) { // Check if item is not undefined (i.e., sourceArray was not empty)
+            playerCards.push(pickupCard);
+        }
+    }
+
 
     /* Reset game to starting condition */
     function resetGame() {
@@ -224,7 +232,7 @@
         <button class="card">
             <div>Pickup card pile</div>
         </button>
-        <button class="card">
+        <button on:click = {() => pickup()} class="card">
             <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
