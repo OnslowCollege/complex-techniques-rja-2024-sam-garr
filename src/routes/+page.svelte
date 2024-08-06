@@ -270,9 +270,10 @@
         background-color: green;
     }
     .cards {
-        display: line;
-        grid-template-columns: repeat(7, 1fr);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         gap: 0.1rem;
+        justify-content: center;
     }
 
     .card {
