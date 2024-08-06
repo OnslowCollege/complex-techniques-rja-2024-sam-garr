@@ -47,6 +47,7 @@
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(cards);
             console.log(cards.length)
+            console.log(randomCard)
             console.log(cards)
 
             const index = cards.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
