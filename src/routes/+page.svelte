@@ -327,13 +327,18 @@
     .last-card-button {
         margin-top: 1rem;
         padding: 0.5rem 1rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         border: none;
         border-radius: 4px;
         background-color: green;
         color: white;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        text-align: center;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        line-height: 1.5;
     }
 
     .last-card-button:disabled {
