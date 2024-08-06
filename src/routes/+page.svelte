@@ -32,6 +32,8 @@
         }
     }
 
+    console.log(cards)
+
 
     function getRandomCard<T>(array: T[]): T | undefined {
         if (array.length === 0) {
