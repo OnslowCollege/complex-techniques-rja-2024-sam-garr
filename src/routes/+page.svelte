@@ -137,11 +137,17 @@
     }
 
     function pickup() {
-        const pickupCard = dealPile.shift()
 
-        if (pickupCard !== undefined) { // Check if item is not undefined (i.e., sourceArray was not empty)
-            playerCards.push(pickupCard);
+        const randomCard: CardInfo = getRandomCard(dealPile)
+
+        const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name)
+
+        if (index !== -1) {
+            // Remove the card from the array using splice
+            dealPile.splice(index, 1)
         }
+
+        playerCards.push(randomCard)
     }
 
     function startCard() {
