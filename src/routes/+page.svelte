@@ -315,21 +315,15 @@
         background-color: green;
     }
     .cards {
-        display: flex;
-        flex-wrap: wrap;
+        display: line;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        gap: 0;
-        padding: 0;
-        margin: 0;
+        gap: 10px;
     }
 
     .card {
         height: 170px;
         width: 170px;
         font-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -359,22 +353,9 @@
     }
 
     .card img {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 125%;
+        max-height: 125%;
         object-fit: cover;
-    }
-
-    .card button {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        border: none;
-        background: none;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .last-card-button {
