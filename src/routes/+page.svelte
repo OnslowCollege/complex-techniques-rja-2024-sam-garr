@@ -315,9 +315,11 @@
         background-color: hsl(122, 92%, 20%);
     }
     .cards {
-        display: line;
-        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        gap: 10px;
+        display: flex;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+        padding: 0;
+        margin: 0;
     }
 
     .card {
@@ -329,6 +331,7 @@
         padding: 0;
         box-sizing: border-box;
         background: none;
+        width: 100%;
 
         &.selected {
             border: 4px solid var(--border);
@@ -357,9 +360,7 @@
     .card img {
         display: block;
         width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: 100%;
+        height: auto;   
         object-fit: cover;
     }
 
@@ -411,7 +412,7 @@
         display: flex;
         flex-direction: column;
         align-items: left;
-        margin: 1rem;
+        margin: 0;
     }
 
     .card-counter {
