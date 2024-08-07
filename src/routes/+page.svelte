@@ -376,4 +376,24 @@
         background-color: red;
     }
 
+
+    .card-count {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+        position: relative;
+    }
+
+    .card-counter {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        background-color: white;
+        color: black;
+        border: 2px black;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 100px;
+    }
+
 </style>
