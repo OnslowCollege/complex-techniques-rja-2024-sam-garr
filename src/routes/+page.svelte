@@ -317,7 +317,7 @@
     .cards {
         display: line;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        gap: 5px;
+        gap: 0rem;
     }
 
     .card {
