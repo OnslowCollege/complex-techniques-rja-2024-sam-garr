@@ -17,6 +17,8 @@
     let matches: string[] = [];
     let timerId: number | null = null;
     let time = 60;
+    let playerCardCount = 0;
+    let oppositionCardCount = 0;
     let playerHandCards: number[] = [];
     let playerCards: CardInfo[] = [];
     let oppositionCards: CardInfo[] = [];
@@ -174,6 +176,10 @@
             </button>
         {/each}
     </div>
+    <div class="card-count">
+        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter">{oppositionCardCount}</div>
+    </div>
     <div>
         <h1>playerturn</h1>
     </div>
@@ -221,6 +227,10 @@
             </button>
         {/each}
     </div>
+    <div class="card-count">
+        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter">{oppositionCardCount}</div>
+    </div>
     <div>
         <h1>opposition turn</h1>
     </div>
@@ -262,6 +272,10 @@
                 <img src="/cards/backcard.png" alt="Back of card" />
             </button>
         {/each}
+    </div>
+    <div class="card-count">
+        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div>
         <h1>{clicked}</h1>
