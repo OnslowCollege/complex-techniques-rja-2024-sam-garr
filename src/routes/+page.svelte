@@ -243,6 +243,13 @@
             </button>
         {/each}
     </div>
+    <button 
+    on:click={handleLastCardClick}
+    class="last-card-button"
+    disabled 
+    >
+        Last Card
+    </button>
 {/if}
 
 {#if state === "playing"}
