@@ -136,18 +136,16 @@
     }
 
     function pickup() {
-        console.log(dealPile)
         const pickupCard = dealPile.shift()
 
         if (pickupCard !== undefined) { // Check if item is not undefined (i.e., sourceArray was not empty)
             playerCards.push(pickupCard);
         }
-
-        console.log(dealPile)
     }
 
     function startCard() {
-
+        const startingCard = dealPile.shift()
+        return startingCard
     }
 
 
@@ -181,6 +179,7 @@
     <h1>Last Card</h1>
     <button on:click = {() => {
         dealTrial();
+        startCard();
         state = 'playerTurn';
     }}>
         <img src="../favicon.png" alt="card">
@@ -205,10 +204,10 @@
             pickup();
             state = "opponentTurn";
         }} class="card">
-            <div>Pickup card pile</div>
+            Pickup card pile
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} />
+            <img src={startingCard.image} alt={startingCard.name} />
         </button>
     </div>
     <div class="cards">
