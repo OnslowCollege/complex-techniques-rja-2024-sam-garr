@@ -324,8 +324,9 @@
         height: 170px;
         width: 170px;
         font-size: 1rem;
-        transition: rotate 0.3s ease-out;
-        transform-style: preserve-3d;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
 
         &.selected {
             border: 4px solid var(--border);
