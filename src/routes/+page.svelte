@@ -328,6 +328,9 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        background: none;
+        width: calc(100% / 5 - 10px);
+        height: auto;
 
         &.selected {
             border: 4px solid var(--border);
@@ -355,11 +358,27 @@
 
     .card img {
         display: block;
-        width: auto;
+        width: 100%;
         height: auto;
-        max-width: 100%;
-        max-height: 100%;
         object-fit: cover;
+    }
+
+    @media (max-width: 1200px) {
+        .card {
+            width: calc(100% / 4 - 10px)
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .card {
+            width: calc(100% / 3 - 10px)
+        }
+    }
+
+    @media (max-width: 800px) {
+        .card {
+            width: calc(100% / 2 - 10px)
+        }
     }
 
     .last-card-button {
