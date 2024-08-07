@@ -196,7 +196,7 @@
     <div class="center">
         <button on:click = {() => {
             pickup();
-            ;
+            state = "opponentTurn";
         }} class="card">
             <div>Pickup card pile</div>
         </button>
