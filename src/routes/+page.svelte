@@ -105,7 +105,9 @@
         }
     }
 
-    function opponentTurn() {}
+    function opponentTurn() {
+        oppositionCardCount = oppositionCards.length
+    }
 
     function loadCards() {
         playerCards = [];
@@ -135,6 +137,7 @@
             if (index !== -1) {
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
+                playerCardCount = playerCards.length;
             }
         }
     }
@@ -179,8 +182,8 @@
         {/each}
     </div>
     <div class="card-count">
-        <div class="card-counter">{playerCardCount}</div>
         <div class="card-counter">{oppositionCardCount}</div>
+        <div class="card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>playerturn</h1>
@@ -230,8 +233,8 @@
         {/each}
     </div>
     <div class="card-count">
-        <div class="card-counter">{playerCardCount}</div>
         <div class="card-counter">{oppositionCardCount}</div>
+        <div class="card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>opposition turn</h1>
@@ -276,8 +279,8 @@
         {/each}
     </div>
     <div class="card-count">
-        <div class="card-counter">{playerCardCount}</div>
         <div class="card-counter">{oppositionCardCount}</div>
+        <div class="card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>{clicked}</h1>
