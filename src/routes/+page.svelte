@@ -169,7 +169,7 @@
 {#if state === "start"}
     <h1>Last Card</h1>
     <button on:click={() => (state = "playerTurn")}>
-        <img src="../favicon.png" alt="card" />
+        <img src="../start.png" alt="card" />
     </button>
 {/if}
 
