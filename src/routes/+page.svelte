@@ -329,7 +329,6 @@
         padding: 0;
         box-sizing: border-box;
         background: none;
-        width: 100%;
 
         &.selected {
             border: 4px solid var(--border);
@@ -357,27 +356,9 @@
 
     .card img {
         display: block;
-        width: 100%;
-        height: auto;   
+        max-width: 100%;
+        max-height: 100%;   
         object-fit: cover;
-    }
-
-    @media (max-width: 1200px) {
-        .card {
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        }
-    }
-
-    @media (max-width: 1000px) {
-        .card {
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        }
-    }
-
-    @media (max-width: 800px) {
-        .card {
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-        }
     }
 
     .last-card-button {
