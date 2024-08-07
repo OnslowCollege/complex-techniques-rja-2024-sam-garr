@@ -346,8 +346,8 @@
     }
 
     .card img {
-        max-width: 150%;
-        max-height: 150%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
     }
 
@@ -394,6 +394,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         text-align: center;
         width: 100px;
+        margin-bottom: 1rem;
     }
 
 </style>
