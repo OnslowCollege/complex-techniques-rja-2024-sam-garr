@@ -310,7 +310,7 @@
     }
     .cards {
         display: line;
-        grid-template-columns: repeat(auto-fill, minmax(10, 0.1fr));
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         gap: 10px;
     }
 
@@ -346,8 +346,8 @@
     }
 
     .card img {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 150%;
+        max-height: 150%;
         object-fit: cover;
     }
 
