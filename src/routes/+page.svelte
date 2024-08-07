@@ -318,7 +318,7 @@
         display: flex;
         flex-wrap: wrap;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        gap: 5px;
+        gap: 0;
         padding: 0;
         margin: 0;
     }
