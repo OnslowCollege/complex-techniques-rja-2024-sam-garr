@@ -329,8 +329,6 @@
         padding: 0;
         box-sizing: border-box;
         background: none;
-        width: calc(100% / 5 - 10px);
-        height: auto;
 
         &.selected {
             border: 4px solid var(--border);
@@ -365,19 +363,19 @@
 
     @media (max-width: 1200px) {
         .card {
-            width: calc(100% / 4 - 10px)
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         }
     }
 
     @media (max-width: 1000px) {
         .card {
-            width: calc(100% / 3 - 10px)
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
         }
     }
 
     @media (max-width: 800px) {
         .card {
-            width: calc(100% / 2 - 10px)
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         }
     }
 
