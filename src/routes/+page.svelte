@@ -47,7 +47,7 @@
     function dealTrial(){
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile);
+            const randomCard: CardInfo = getRandomCard(dealPile)
 
             const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
 
@@ -145,7 +145,16 @@
     }
 
     function startCard() {
-        return dealPile.shift()
+        const randomCard: CardInfo = getRandomCard(dealPile)
+
+        const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name)
+
+        if (index !== -1) {
+            // Remove the card from the array using splice
+            dealPile.splice(index, 1)
+        }
+
+        return randomCard
     }
 
 
