@@ -47,28 +47,21 @@
         // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(dealPile)
-
-            const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
-
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                dealPile.splice(index, 1);
+            if (randomCard) {
+                // Remove the card from the array
+                dealPile = dealPile.filter(card => card !== randomCard);
+                playerCards.push(randomCard);
             }
-            playerCards.push(randomCard)
-        }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(dealPile);
 
-            const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name);
-
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                dealPile.splice(index, 1);
+            if (randomCard) {
+                // Remove the card from the array
+                dealPile = dealPile.filter(card => card !== randomCard);
+                oppositionCards.push(randomCard);
             }
-            oppositionCards.push(randomCard)
-        }
     }
 
     function opponentTurn() {
@@ -139,27 +132,21 @@
 
         const randomCard: CardInfo = getRandomCard(dealPile)
 
-        const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name)
-
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            dealPile.splice(index, 1)
+        if (randomCard) {
+            // Remove the card from the array
+            dealPile = dealPile.filter(card => card !== randomCard);
+            playerCards.push(randomCard);
         }
-
-        playerCards.push(randomCard)
     }
 
     function startCard() {
         const randomCard: CardInfo = getRandomCard(dealPile)
 
-        const index = dealPile.findIndex(obj => obj.number === randomCard.number && obj.name === randomCard.name)
-
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            dealPile.splice(index, 1)
+        if (randomCard) {
+            // Remove the card from the array
+            dealPile = dealPile.filter(card => card !== randomCard);
+            return randomCard
         }
-
-        return randomCard
     }
 
 
@@ -344,15 +331,6 @@
         max-width: 100%;
         max-height: 100%;
         object-fit: cover;
-    }
-
-    .pickup {
-        height: 140px;
-        width: 140px;
-        font-size: 4rem;
-        background-color: var(--bg-2);
-        transition: rotate 0.3s ease-out;
-        transform-style: preserve-3d;
     }
 
 </style>
