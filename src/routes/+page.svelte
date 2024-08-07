@@ -310,8 +310,8 @@
     }
     .cards {
         display: line;
-        grid-template-columns: repeat(auto-fill, minmax(170, 0.5fr));
-        column-gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(10, 0.1fr));
+        gap: 10px;
     }
 
     .card {
