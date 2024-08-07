@@ -174,9 +174,9 @@
 {/if}
 
 {#if state === "playerTurn"}
-    <div class="cards">
+    <div class="cards card button">
         {#each oppositionCards as oppositionHandCard}
-            <button class="card">
+            <button class="card card button">
                 <img src="/cards/backcard.png" alt="Back of card" />
             </button>
         {/each}
@@ -191,16 +191,16 @@
         <button class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
-        <button class="card">
+        <button class="card card button">
             <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
         </button>
     </div>
-    <div class="cards">
+    <div class="cards card button">
         {#each playerCards as playerHandCard}
             <button
                 on:click={() => (clicked = playerHandCard)}
                 on:click={playerTurn}
-                class="card"
+                class="card card button"
             >
                 <img
                     src={playerHandCard.image}
@@ -223,12 +223,12 @@
 {/if}
 
 {#if state === "opponentTurn"}
-    <div class="cards">
+    <div class="cards card button">
         {#each oppositionCards as oppositionHandCard}
             <button
                 on:click={() => (clicked = oppositionHandCard)}
                 on:click={() => (state = "playerTurn")}
-                class="card"
+                class="card card button"
             >
                 <img src="/cards/backcard.png" alt="Back of card" />
             </button>
@@ -244,13 +244,13 @@
         <button class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
-        <button class="card">
+        <button class="card card button">
             <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
         </button>
     </div>
-    <div class="cards">
+    <div class="cards card button">
         {#each playerCards as playerHandCard}
-            <button class="card">
+            <button class="card card button">
                 <img
                     src={playerHandCard.image}
                     alt={playerHandCard.name}
@@ -276,7 +276,7 @@
         {#each oppositionCards as oppositionHandCard}
             <button
                 on:click={() => (clicked = oppositionHandCard)}
-                class="card"
+                class="card card button"
             >
                 <img src="/cards/backcard.png" alt="Back of card" />
             </button>
@@ -292,11 +292,11 @@
         <button class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
-        <button class="card">
+        <button class="card card button">
             <img src={currentCard.image} alt={currentCard.name} />
         </button>
     </div>
-    <div class="cards">
+    <div class="cards card button">
         {#each playerCards as playerHandCard}
             <button on:click={() => (clicked = playerHandCard)} class="card">
                 <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
@@ -362,6 +362,19 @@
         max-width: 100%;
         max-height: 100%;
         object-fit: cover;
+    }
+
+    .card button {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .last-card-button {
