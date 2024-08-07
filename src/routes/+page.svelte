@@ -70,6 +70,7 @@
             }
             playerCards.push(randomCard);
         }
+        playerCardCount = playerCards.length
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
@@ -94,6 +95,7 @@
         }
         console.log(oppositionCards);
 
+        oppositionCardCount = oppositionCards.length
         //console.log(cards);
     }
 
