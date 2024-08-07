@@ -315,7 +315,7 @@
         background-color: green;
     }
     .cards {
-        display: wrap;
+        display: flex;
         flex-wrap: wrap;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         gap: 5px;
