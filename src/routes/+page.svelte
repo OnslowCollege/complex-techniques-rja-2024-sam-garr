@@ -136,18 +136,18 @@
     }
 
     function pickup() {
+        console.log(dealPile)
         const pickupCard = dealPile.shift()
 
         if (pickupCard !== undefined) { // Check if item is not undefined (i.e., sourceArray was not empty)
             playerCards.push(pickupCard);
         }
 
-        const index = dealPile.findIndex(obj => obj.number === currentCard.number && obj.name === currentCard.name);
+        console.log(dealPile)
+    }
 
-        if (index !== -1) {
-            // Remove the card from the array using splice
-            dealPile.splice(index, 1);
-        }
+    function startCard() {
+
     }
 
 
