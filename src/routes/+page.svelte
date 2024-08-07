@@ -312,7 +312,7 @@
 
 .center {
         margin: auto;
-        background-color: green;
+        background-color: hsl(122, 92%, 20%);
     }
     .cards {
         display: line;
