@@ -321,8 +321,9 @@
     }
 
     .card {
-        height: 170px;
-        width: 170px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1rem;
         margin: 0;
         padding: 0;
@@ -353,8 +354,11 @@
     }
 
     .card img {
-        max-width: 125%;
-        max-height: 125%;
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
     }
 
