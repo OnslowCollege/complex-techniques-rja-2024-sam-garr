@@ -379,9 +379,9 @@
 
     .card-count {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: left;
         margin: 1rem;
-        position: relative;
     }
 
     .card-counter {
