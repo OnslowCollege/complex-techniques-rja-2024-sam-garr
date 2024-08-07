@@ -183,7 +183,6 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>playerturn</h1>
@@ -211,6 +210,9 @@
             </button>
         {/each}
     </div>
+    <div class="card-count">
+    <div class="card-counter player-card-counter">{playerCardCount}</div>
+    </div>
     <button 
     on:click={handleLastCardClick}
     class="last-card-button"
@@ -234,7 +236,6 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>opposition turn</h1>
@@ -258,6 +259,9 @@
             </button>
         {/each}
     </div>
+    <div class="card-count">
+    <div class="card-counter player-card-counter">{playerCardCount}</div>
+    </div>
     <button 
     on:click={handleLastCardClick}
     class="last-card-button"
@@ -280,7 +284,6 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>{clicked}</h1>
@@ -299,6 +302,9 @@
                 <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
             </button>
         {/each}
+    </div>
+    <div class="card-count">
+    <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
 {/if}
 
@@ -398,7 +404,7 @@
     }
 
         .player-card-counter {
-            margin-top: 20rem;
+            margin-top: 1rem;
         }
     
 
