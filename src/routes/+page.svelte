@@ -353,8 +353,8 @@
     }
 
     .card img {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 125%;
+        max-height: 125%;
         object-fit: cover;
     }
 
