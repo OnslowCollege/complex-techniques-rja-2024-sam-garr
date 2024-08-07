@@ -183,7 +183,7 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>playerturn</h1>
@@ -193,7 +193,7 @@
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} />
+            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
@@ -234,7 +234,7 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>opposition turn</h1>
@@ -244,7 +244,7 @@
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} />
+            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
@@ -280,7 +280,7 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-        <div class="card-counter">{playerCardCount}</div>
+        <div class="card-counter player-card-counter">{playerCardCount}</div>
     </div>
     <div>
         <h1>{clicked}</h1>
@@ -296,7 +296,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
             <button on:click={() => (clicked = playerHandCard)} class="card">
-                <img src={playerHandCard.image} alt={playerHandCard.name} />
+                <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
             </button>
         {/each}
     </div>
@@ -396,5 +396,10 @@
         width: 100px;
         margin-bottom: 1rem;
     }
+
+        .player-card-counter {
+            margin-top: 20rem;
+        }
+    
 
 </style>
