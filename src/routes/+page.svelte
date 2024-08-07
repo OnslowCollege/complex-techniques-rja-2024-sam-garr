@@ -18,6 +18,7 @@
     let clicked: CardInfo[] = []
     let currentCard: CardInfo[] = []
     let dealPile: CardInfo[] = cards
+    let startingCard: CardInfo[] = []
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -144,8 +145,7 @@
     }
 
     function startCard() {
-        const startingCard = dealPile.shift()
-        return startingCard
+        return dealPile.shift()
     }
 
 
@@ -179,7 +179,7 @@
     <h1>Last Card</h1>
     <button on:click = {() => {
         dealTrial();
-        startCard();
+        startingCard = startCard();
         state = 'playerTurn';
     }}>
         <img src="../favicon.png" alt="card">
