@@ -317,13 +317,16 @@
     .cards {
         display: line;
         grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-        gap: 0rem;
+        gap: 5px;
     }
 
     .card {
         height: 170px;
         width: 170px;
         font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
