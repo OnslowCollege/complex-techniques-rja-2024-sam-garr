@@ -239,6 +239,8 @@
         resetGame();
     }
 
+dealTrial()
+
 </script>
 
 <svelte:window on:keydown={pauseGame} />
@@ -249,11 +251,7 @@
 
 {#if state === "start"}
     <h1>Last Card</h1>
-    <button on:click = {() => {
-        state = 'playerTurn'
-        dealTrial();
-        currentCard = startCard();
-    }}>
+    <button on:click= {() => (state = 'playerTurn')}>
         <img src="../start.png" alt="card" />
     </button>
 {/if}
