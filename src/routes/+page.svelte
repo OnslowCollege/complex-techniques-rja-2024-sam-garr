@@ -62,15 +62,13 @@
                 playerCards.push(randomCard);
             }
                 console.log(randomCard); // Output: a random card from myArray
-            } else {
-                console.log("Array is empty");
             }
 
             const index = cards.findIndex(
                 (obj) =>
                     obj.number === randomCard.number &&
                     obj.name === randomCard.name,
-            );
+            )
 
             if (index !== -1) {
                 // Remove the card from the array using splice
@@ -226,7 +224,7 @@
 
     /* Reset game to starting condition */
     function resetGame() {
-        
+
     }
 
     /* When game is won give option to reset */
