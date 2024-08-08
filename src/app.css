@@ -26,6 +26,8 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--txt-1);
     background-color: var(--bg-1);
+    transform: scale(0.9);
+        transform-origin: 0 0;
 }
 
 h1 {
