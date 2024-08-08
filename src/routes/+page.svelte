@@ -52,6 +52,7 @@
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
             }
+        }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
@@ -62,6 +63,7 @@
                 dealPile = dealPile.filter(card => card !== randomCard);
                 oppositionCards.push(randomCard);
             }
+        }
     }
 
     function opponentTurn() {
