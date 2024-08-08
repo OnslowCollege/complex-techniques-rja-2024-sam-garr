@@ -88,10 +88,7 @@
                 oppositionCards.push(randomCard);
             }
         }
-    }
-    
 
-    function opponentTurn() {
         // Check if the opponent has any cards left
         if (oppositionCards.length === 0) {
             console.log('Opponent has no cards left');
@@ -126,15 +123,7 @@
         }
     }
 
-    function loadCards() {
-        playerCards = [];
-        for (const index of playerHandCards) {
-            const card = cards[index];
-            if (card) {
-                playerCards.push(card);
-            }
-        }
-
+    function opponentTurn() {
         // Find cards that can be played based on the current card
         const playableCards = oppositionCards.filter(card => 
             card.suit === currentCard.suit || card.name === currentCard.name
