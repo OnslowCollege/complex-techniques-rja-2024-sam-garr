@@ -356,9 +356,9 @@
 
     .card img {
         display: block;
-        max-width: 100%;
-        max-height: 100%;   
-        object-fit: cover;
+        max-width: 90%;
+        max-height: 90%;   
+        object-fit: scale-down;
     }
 
     .last-card-button {
