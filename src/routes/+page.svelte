@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/Gui-Design
 <script lang="ts">
     import { cards } from "./cards";
     import type { CardInfo } from "./cards";
@@ -15,13 +12,14 @@
         | "won"
         | "lost";
 
-<<<<<<< HEAD
     let state: State = 'start'
     let size = 20
     let selected: number[] = []
     let matches: string[] = []
     let timerId: number | null = null
     let time = 60
+    let playerCardCount = 0;
+    let oppositionCardCount = 0;
     let playerHandCards: number[] = []
     let playerCards: CardInfo[] = []
     let oppositionCards: CardInfo[] = []
@@ -29,22 +27,7 @@
     let clicked: CardInfo[] = []
     let currentCard: CardInfo[] = []
     let dealPile: CardInfo[] = cards
-=======
-    let state: State = "start";
-    let size = 20;
-    let selected: number[] = [];
-    let matches: string[] = [];
-    let timerId: number | null = null;
-    let time = 60;
-    let playerCardCount = 0;
-    let oppositionCardCount = 0;
-    let playerHandCards: number[] = [];
-    let playerCards: CardInfo[] = [];
-    let oppositionCards: CardInfo[] = [];
-    let handLength: number = 7;
-    let clicked: CardInfo[] = [];
-    let currentCard: CardInfo[] = [];
->>>>>>> origin/Gui-Design
+
 
     /* Allow the user to pause the game */
     function pauseGame(e: KeyboardEvent) {
@@ -74,12 +57,10 @@
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo = getRandomCard(dealPile)
             if (randomCard) {
-<<<<<<< HEAD
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
             }
-=======
                 console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log("Array is empty");
@@ -96,8 +77,7 @@
                 cards.splice(index, 1);
             }
             playerCards.push(randomCard);
->>>>>>> origin/Gui-Design
-        }
+
         playerCardCount = playerCards.length
 
         // Opposition cards
@@ -105,13 +85,13 @@
             const randomCard: CardInfo = getRandomCard(dealPile);
 
             if (randomCard) {
-<<<<<<< HEAD
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 oppositionCards.push(randomCard);
             }
         }
     }
+    
 
     function opponentTurn() {
         // Check if the opponent has any cards left
@@ -119,7 +99,6 @@
             console.log('Opponent has no cards left');
             gameWon(); // End the game if the opponent has no cards left
             return;
-=======
                 console.log(randomCard); // Output: a random card from myArray
             } else {
                 console.log("Array is empty");
@@ -136,7 +115,7 @@
                 cards.splice(index, 1);
             }
             oppositionCards.push(randomCard);
-        }
+        
         console.log(oppositionCards);
 
         oppositionCardCount = oppositionCards.length
@@ -149,10 +128,6 @@
         }
     }
 
-    function opponentTurn() {
-        oppositionCardCount = oppositionCards.length
-    }
-
     function loadCards() {
         playerCards = [];
         for (const index of playerHandCards) {
@@ -160,7 +135,6 @@
             if (card) {
                 playerCards.push(card);
             }
->>>>>>> origin/Gui-Design
         }
 
         // Find cards that can be played based on the current card
@@ -229,7 +203,6 @@
         }
     }
 
-<<<<<<< HEAD
     function pickup(competitor) {
 
         const randomCard: CardInfo = getRandomCard(dealPile)
@@ -251,11 +224,10 @@
         }
     }
 
-
-=======
->>>>>>> origin/Gui-Design
     /* Reset game to starting condition */
-    function resetGame() {}
+    function resetGame() {
+        
+    }
 
     /* When game is won give option to reset */
     function gameWon() {
@@ -269,10 +241,6 @@
         resetGame();
     }
 
-<<<<<<< HEAD
-=======
-    dealTrial();
->>>>>>> origin/Gui-Design
 </script>
 
 <svelte:window on:keydown={pauseGame} />
@@ -283,33 +251,22 @@
 
 {#if state === "start"}
     <h1>Last Card</h1>
-<<<<<<< HEAD
     <button on:click = {() => {
         dealTrial();
         currentCard = startCard();
         state = 'playerTurn';
     }}>
-        <img src="../favicon.png" alt="card">
-=======
-    <button on:click={() => (state = "playerTurn")}>
         <img src="../start.png" alt="card" />
->>>>>>> origin/Gui-Design
     </button>
 {/if}
 
 {#if state === "playerTurn"}
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
-<<<<<<< HEAD
         <button class="card">
         <img src={oppositionHandCard.image} alt={oppositionHandCard.name} loading="lazy" />
         <!-- <img src="/cards/backcard.png" alt="Back of card" /> -->
         </button>
-=======
-            <button class="card">
-                <img src="/cards/backcard.png" alt="Back of card" />
-            </button>
->>>>>>> origin/Gui-Design
         {/each}
     </div>
     <div class="card-count">
@@ -319,16 +276,11 @@
         <h1>playerturn</h1>
     </div>
     <div class="center">
-<<<<<<< HEAD
         <button on:click = {() => {
             pickup(playerCards);
             state = "opponentTurn";
-        }} class="card">
-            Pickup card pile
-=======
-        <button class="card pickup-pile">
+        }} class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
->>>>>>> origin/Gui-Design
         </button>
         <button class="card">
             <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
@@ -361,7 +313,7 @@
     </button>
 {/if}
 
-<<<<<<< HEAD
+
 {#if state === 'opponentTurn'}
 
     {setTimeout(() => {
@@ -374,18 +326,6 @@
         <img src={oppositionHandCard.image} alt={oppositionHandCard.name} loading="lazy" />
         <!-- <img src="/cards/backcard.png" alt="Back of card" /> -->
         </button>
-=======
-{#if state === "opponentTurn"}
-    <div class="cards">
-        {#each oppositionCards as oppositionHandCard}
-            <button
-                on:click={() => (clicked = oppositionHandCard)}
-                on:click={() => (state = "playerTurn")}
-                class="card"
-            >
-                <img src="/cards/backcard.png" alt="Back of card" />
-            </button>
->>>>>>> origin/Gui-Design
         {/each}
     </div>
     <div class="card-count">
@@ -517,9 +457,6 @@
         object-fit: scale-down;
     }
 
-<<<<<<< HEAD
-</style>
-=======
     .last-card-button {
         position: fixed;
         bottom: 1rem;
@@ -572,4 +509,3 @@
     
 
 </style>
->>>>>>> origin/Gui-Design
