@@ -82,6 +82,7 @@
         if (playableCards.length === 0) {
             // If no playable cards, the opponent must draw a card (if applicable)
             console.log('Opponent has no playable cards, must draw a card');
+            pickup(oppositionCards)
             // If there is a draw pile, implement logic to draw a card and add to opponent's hand
             // For simplicity, we'll skip drawing a card in this example
             state = 'playerTurn'; // End the opponent's turn if they have no playable cards
@@ -107,7 +108,7 @@
 
         // Check for win/loss conditions (e.g., if the player has no cards left)
         if (playerCards.length === 0) {
-            gameLost(); // End the game if the player has no cards left
+            gameWon(); // End the game if the player has no cards left
             return;
         }
 
