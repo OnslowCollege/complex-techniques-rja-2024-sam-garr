@@ -329,6 +329,8 @@
         padding: 0;
         box-sizing: border-box;
         background: none;
+        max-width: 90%;
+        max-height: 90%;
 
         &.selected {
             border: 4px solid var(--border);
@@ -356,8 +358,8 @@
 
     .card img {
         display: block;
-        max-width: 90%;
-        max-height: 90%;   
+        max-width: 100%;
+        max-height: 100%;   
         object-fit: scale-down;
     }
 
