@@ -130,14 +130,14 @@
         }
     }
 
-    function pickup() {
+    function pickup(competitor) {
 
         const randomCard: CardInfo = getRandomCard(dealPile)
 
         if (randomCard) {
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
-            playerCards.push(randomCard);
+            competitor.push(randomCard);
         }
     }
 
@@ -204,7 +204,7 @@
     </div>
     <div class="center">
         <button on:click = {() => {
-            pickup();
+            pickup(playerCards);
             state = "opponentTurn";
         }} class="card">
             Pickup card pile
