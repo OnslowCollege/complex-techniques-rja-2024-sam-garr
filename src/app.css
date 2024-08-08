@@ -26,8 +26,12 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--txt-1);
     background-color: var(--bg-1);
-    transform: scale(0.9);
-        transform-origin: 0 0;
+}
+
+div.zoomed {
+    zoom: 3;
+    -moz-transform: scale(5);
+    -moz-transform-origin: 0 0;
 }
 
 h1 {
