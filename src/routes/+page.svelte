@@ -250,9 +250,9 @@
 {#if state === "start"}
     <h1>Last Card</h1>
     <button on:click = {() => {
+        state = 'playerTurn'
         dealTrial();
         currentCard = startCard();
-        state = 'playerTurn';
     }}>
         <img src="../start.png" alt="card" />
     </button>
