@@ -8,15 +8,16 @@
 
 :root {
     --txt-1: hsl(220 10% 98%);
-    --bg-1: hsl(220 20% 10%);
-    --bg-2: hsl(220 20% 20%);
-    --border: hsl(180 100% 50%);
-    --pulse: hsl(9 100% 64%);
+    --bg-1: hsl(122, 92%, 20%);
+        --bg-2: hsl(120, 79%, 30%);
+        --border: hsl(0, 0%, 100%);
+            --pulse: hsl(0, 0%, 0%);
 }
 
 html,
 body {
     height: 100%;
+    zoom: 95%;
 }
 
 body {
@@ -42,7 +43,7 @@ h1+button {
 }
 
 button {
-    padding: 1.5rem;
+    padding: 1rem;
     font-size: 2rem;
     font-weight: 900;
     color: inherit;
