@@ -17,6 +17,7 @@
 html,
 body {
     height: 100%;
+    zoom: 95%;
 }
 
 body {
@@ -26,12 +27,6 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--txt-1);
     background-color: var(--bg-1);
-}
-
-div.zoomed {
-    zoom: 75%;
-    -moz-transform: scale(3);
-    -moz-transform-origin: 0 0;
 }
 
 h1 {
