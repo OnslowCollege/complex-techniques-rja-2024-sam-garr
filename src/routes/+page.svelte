@@ -67,7 +67,7 @@
             const index = cards.findIndex(
                 (obj) =>
                     obj.number === randomCard.number &&
-                    obj.name === randomCard.name,
+                    obj.name === randomCard.name
             )
 
             if (index !== -1) {
