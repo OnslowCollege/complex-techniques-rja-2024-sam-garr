@@ -161,9 +161,9 @@
             currentCard = clicked;
 
             const index = playerCards.findIndex(
-                card =>
-                    card.number === clicked?.number &&
-                    card.name === clicked?.name,
+                (obj) =>
+                    obj.number === clicked?.number &&
+                    obj.name === clicked?.name,
             );
 
             if (index !== -1) {
