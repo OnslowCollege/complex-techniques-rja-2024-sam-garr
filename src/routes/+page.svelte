@@ -138,6 +138,7 @@
         );
         if (cardIndex !== -1) {
             oppositionCards.splice(cardIndex, 1);
+            oppositionCardCount = oppositionCards.length;
         }
 
         console.log('Opponent played:', cardToPlay);
@@ -171,7 +172,6 @@
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
-                
             }
             state = "opponentTurn";
         }
@@ -364,7 +364,12 @@
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
-            <button on:click={() => (clicked = playerHandCard)} class="card">
+            <button on:click={() => {
+                clicked = playerHandCard; 
+                playerTurn();
+                }}
+                class="card"
+                >
                 <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
             </button>
         {/each}
