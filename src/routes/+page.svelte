@@ -25,7 +25,7 @@
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
     let clicked: CardInfo[] = []
-    let currentCard: CardInfo[] = []
+    let currentCard: CardInfo | null = null;
     let dealPile: CardInfo[] = cards
 
 
@@ -55,7 +55,7 @@
     function dealTrial() {
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile);
+            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
@@ -80,7 +80,7 @@
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile);
+            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
 
             if (randomCard) {
                 // Remove the card from the array
@@ -93,8 +93,7 @@
         if (oppositionCards.length === 0) {
             console.log('Opponent has no cards left');
             gameWon(); // End the game if the opponent has no cards left
-            return;
-                console.log(randomCard); // Output: a random card from myArray
+            return; 
             } else {
                 console.log("Array is empty");
             }
@@ -156,14 +155,12 @@
 
     function playerTurn() {
         if (
-            currentCard === null ||
+            currentCard && (
             currentCard.suit == clicked?.suit ||
             currentCard.name == clicked?.name
-        ) {
+        )) {
             currentCard = clicked;
-            state = "opponentTurn";
 
-            if (clicked) {
             const index = playerCards.findIndex(
                 (obj) =>
                     obj.number === currentCard.number &&
@@ -174,14 +171,15 @@
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
+                
             }
+            state = "opponentTurn";
         }
     }
-}
 
     function pickup(competitor: CardInfo[]) {
 
-        const randomCard: CardInfo = getRandomCard(dealPile)
+        const randomCard: CardInfo | undefined = getRandomCard(dealPile)
 
         if (randomCard) {
             // Remove the card from the array
