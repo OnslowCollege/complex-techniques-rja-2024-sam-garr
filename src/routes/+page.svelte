@@ -24,8 +24,8 @@
     let playerCards: CardInfo[] = []
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
-    let clicked: CardInfo | null = null;
-    let currentCard: CardInfo | null = null;
+    let clicked: CardInfo[] = [];
+    let currentCard: CardInfo[] = [];
     let dealPile: CardInfo[] = cards
 
 
