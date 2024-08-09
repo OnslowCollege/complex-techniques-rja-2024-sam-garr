@@ -170,7 +170,6 @@
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
-                clicked = null;
             }
             state = "opponentTurn";
         }
