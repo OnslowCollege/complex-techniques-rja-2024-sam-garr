@@ -25,7 +25,7 @@
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
     let clicked: CardInfo[] = []
-    let currentCard: CardInfo[] = [];
+    let currentCard: CardInfo | null = null;
     let dealPile: CardInfo[] = cards
 
 
@@ -74,9 +74,8 @@
                 cards.splice(index, 1);
             }
         }
+        playerCardCount = playerCards.length
     }
-
-    playerCardCount = playerCards.length
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
@@ -112,7 +111,7 @@
     function opponentTurn() {
         // Find cards that can be played based on the current card
         const playableCards = oppositionCards.filter(card => 
-            card.suit === currentCard.suit || card.name === currentCard.name
+            card.suit === currentCard?.suit || card.name === currentCard?.name
         );
 
         if (playableCards.length === 0) {
@@ -155,23 +154,29 @@
 
 
     function playerTurn() {
-        if (clicked &&
-            currentCard && (
-            currentCard.suit == clicked?.suit ||
-            currentCard.name == clicked?.name
-        )) {
+
+        if (!clicked || !currentCard) {
+            console.log("No card clicked");
+            return;
+        }
+
+        if (
+            currentCard.suit === clicked.suit ||
+            currentCard.name === clicked.name
+        ) {
             currentCard = clicked;
 
             const index = playerCards.findIndex(
-                (obj) =>
-                    obj.number === currentCard.number &&
-                    obj.name === currentCard.name,
+                card =>
+                    card.number === clicked.number &&
+                    card.name === clicked.name,
             );
 
             if (index !== -1) {
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
+                clicked = null;
             }
             state = "opponentTurn";
         }
@@ -255,14 +260,16 @@
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
+            <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
             <button
-                on:click={() => (clicked = playerHandCard)}
-                on:click={playerTurn}
+                on:click={() => {
+                clicked = playerHandCard;
+                playerTurn();
+                }}
                 class="card"
             >
                 <img
@@ -311,7 +318,7 @@
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
+            <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
@@ -359,7 +366,7 @@
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} />
+            <img src={currentCard?.image} alt={currentCard?.name} />
         </button>
     </div>
     <div class="cards">
