@@ -59,7 +59,6 @@
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
-                playerCards.push(randomCard);
                 console.log(randomCard); // Output: a random card from myArray
             
 
@@ -73,6 +72,7 @@
                 // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
+            playerCards.push(randomCard);
         }
         playerCardCount = playerCards.length
     }
