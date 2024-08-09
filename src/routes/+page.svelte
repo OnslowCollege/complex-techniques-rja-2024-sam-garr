@@ -25,7 +25,7 @@
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
     let clicked: CardInfo[] = []
-    let currentCard: CardInfo | null = null;
+    let currentCard: CardInfo[] = [];
     let dealPile: CardInfo[] = cards
 
 
@@ -154,7 +154,7 @@
 
 
     function playerTurn() {
-        if (
+        if (clicked &&
             currentCard && (
             currentCard.suit == clicked?.suit ||
             currentCard.name == clicked?.name
@@ -189,7 +189,7 @@
     }
 
     function startCard() {
-        const randomCard: CardInfo = getRandomCard(dealPile)
+        const randomCard: CardInfo | undefined = getRandomCard(dealPile)
 
         if (randomCard) {
             // Remove the card from the array
