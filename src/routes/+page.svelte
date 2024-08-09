@@ -55,28 +55,28 @@
     function dealTrial() {
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile)
+            const randomCard: CardInfo = getRandomCard(dealPile);
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
-            }
                 console.log(randomCard); // Output: a random card from myArray
-            }
+            
 
             const index = cards.findIndex(
                 (obj) =>
                     obj.number === randomCard.number &&
                     obj.name === randomCard.name
-            )
+            );
 
             if (index !== -1) {
                 // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            playerCards.push(randomCard);
+        }
+    }
 
-        playerCardCount = playerCards.length
+    playerCardCount = playerCards.length
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
@@ -98,24 +98,11 @@
             } else {
                 console.log("Array is empty");
             }
-
-            const index = cards.findIndex(
-                (obj) =>
-                    obj.number === randomCard.number &&
-                    obj.name === randomCard.name,
-            );
-
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                cards.splice(index, 1);
-            }
-            oppositionCards.push(randomCard);
         
         console.log(oppositionCards);
-
         oppositionCardCount = oppositionCards.length
-        //console.log(cards);
     }
+
 
     function handleLastCardClick() {
         if (playerCards.length === 1) {
@@ -169,13 +156,14 @@
 
     function playerTurn() {
         if (
-            currentCard.length === 0 ||
-            currentCard.suit == clicked.suit ||
-            currentCard.name == clicked.name
+            currentCard === null ||
+            currentCard.suit == clicked?.suit ||
+            currentCard.name == clicked?.name
         ) {
             currentCard = clicked;
             state = "opponentTurn";
 
+            if (clicked) {
             const index = playerCards.findIndex(
                 (obj) =>
                     obj.number === currentCard.number &&
@@ -189,8 +177,9 @@
             }
         }
     }
+}
 
-    function pickup(competitor) {
+    function pickup(competitor: CardInfo[]) {
 
         const randomCard: CardInfo = getRandomCard(dealPile)
 
@@ -228,7 +217,7 @@
         resetGame();
     }
 
-dealTrial()
+    dealTrial();
 
 </script>
 
