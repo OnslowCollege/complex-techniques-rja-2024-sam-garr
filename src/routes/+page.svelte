@@ -72,8 +72,9 @@
                 // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            playerCards.push(randomCard);
+            
         }
+        playerCards.push(randomCard);
         playerCardCount = playerCards.length
     }
 
