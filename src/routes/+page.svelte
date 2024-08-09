@@ -363,7 +363,7 @@
             <img src={currentCard?.image} alt={currentCard?.name} />
         </button>
     </div>
-    <div class="cards">
+    <div class="cards">     
         {#each playerCards as playerHandCard}
             <button on:click={() => (clicked = playerHandCard)} class="card">
                 <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
