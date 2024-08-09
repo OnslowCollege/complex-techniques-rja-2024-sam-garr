@@ -59,6 +59,7 @@
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
+                playerCards.push(randomCard);
                 console.log(randomCard); // Output: a random card from myArray
             
 
@@ -74,7 +75,6 @@
             }
             
         }
-        playerCards.push(randomCard);
         playerCardCount = playerCards.length
     }
 
@@ -155,6 +155,9 @@
 
 
     function playerTurn() {
+
+        console.log('clicked card:', clicked);
+        console.log('current card:', currentCard);
         if (
             currentCard?.suit === clicked?.suit ||
             currentCard?.name === clicked?.name
@@ -227,7 +230,7 @@
 {#if state === "start"}
     <h1>Last Card</h1>
     <button on:click= {() => (state = 'playerTurn')}>
-        <img src="../start.png" alt="card" />
+        <img src="../favicon.png" alt="card" />
     </button>
 {/if}
 
