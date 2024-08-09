@@ -24,7 +24,7 @@
     let playerCards: CardInfo[] = []
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
-    let clicked: CardInfo[] = []
+    let clicked: CardInfo | null = null;
     let currentCard: CardInfo | null = null;
     let dealPile: CardInfo[] = cards
 
@@ -154,22 +154,16 @@
 
 
     function playerTurn() {
-
-        if (!clicked || !currentCard) {
-            console.log("No card clicked");
-            return;
-        }
-
         if (
-            currentCard.suit === clicked.suit ||
-            currentCard.name === clicked.name
+            currentCard?.suit === clicked?.suit ||
+            currentCard?.name === clicked?.name
         ) {
             currentCard = clicked;
 
             const index = playerCards.findIndex(
                 card =>
-                    card.number === clicked.number &&
-                    card.name === clicked.name,
+                    card.number === clicked?.number &&
+                    card.name === clicked?.name,
             );
 
             if (index !== -1) {
@@ -267,6 +261,7 @@
         {#each playerCards as playerHandCard}
             <button
                 on:click={() => {
+                    console.log('Card clicked:', playerHandCard)
                 clicked = playerHandCard;
                 playerTurn();
                 }}
@@ -372,6 +367,7 @@
     <div class="cards">
         {#each playerCards as playerHandCard}
             <button on:click={() => {
+                console.log('Card clicked:', playerHandCard)
                 clicked = playerHandCard; 
                 playerTurn();
                 }}
