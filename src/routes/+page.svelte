@@ -24,8 +24,8 @@
     let playerCards: CardInfo[] = []
     let oppositionCards: CardInfo[] = []
     let handLength: number = 7
-    let clicked: CardInfo[] = [];
-    let currentCard: CardInfo[] = [];
+    let clicked: CardInfo | null = null;
+    let currentCard: CardInfo | null = null;
     let dealPile: CardInfo[] = cards
 
 
@@ -55,7 +55,7 @@
     function dealTrial() {
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
+            const randomCard: CardInfo | undefined = getRandomCard(cards);
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
@@ -80,7 +80,7 @@
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
+            const randomCard: CardInfo | undefined = getRandomCard(cards);
 
             if (randomCard) {
                 // Remove the card from the array
@@ -187,16 +187,6 @@
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
             competitor.push(randomCard);
-        }
-    }
-
-    function startCard() {
-        const randomCard: CardInfo | undefined = getRandomCard(dealPile)
-
-        if (randomCard) {
-            // Remove the card from the array
-            dealPile = dealPile.filter(card => card !== randomCard);
-            return randomCard
         }
     }
 
