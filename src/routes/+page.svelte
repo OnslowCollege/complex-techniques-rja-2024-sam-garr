@@ -20,13 +20,13 @@
     let time = 60
     let playerCardCount = 0;
     let oppositionCardCount = 0;
-    let playerHandCards: number[] = []
-    let playerCards: CardInfo[] = []
-    let oppositionCards: CardInfo[] = []
-    let handLength: number = 7
-    let clicked: CardInfo | null = null;
-    let currentCard: CardInfo | null = null;
-    let dealPile: CardInfo[] = cards
+    let playerHandCards: number[] = [];
+    let playerCards: CardInfo[] = [];
+    let oppositionCards: CardInfo[] = [];
+    let handLength: number = 7;
+    let clicked: CardInfo[] = [];
+    let currentCard: CardInfo[] = [];
+    let dealPile: CardInfo[] = cards;
 
 
     /* Allow the user to pause the game */
@@ -56,7 +56,7 @@
         // Player Cards
         for (let i = 0; i < handLength; i++) {
             const randomCard: CardInfo | undefined = getRandomCard(cards);
-            if (randomCard) {
+            if (randomCard) {   
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
@@ -156,8 +156,6 @@
 
     function playerTurn() {
 
-        console.log('clicked card:', clicked);
-        console.log('current card:', currentCard);
         if (
             currentCard?.suit === clicked?.suit ||
             currentCard?.name === clicked?.name
