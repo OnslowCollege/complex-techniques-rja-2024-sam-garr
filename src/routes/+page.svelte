@@ -155,12 +155,14 @@
 
 
     function playerTurn() {
-
+        
         if (
+            currentCard.length === 0 ||
             currentCard?.suit === clicked?.suit ||
             currentCard?.name === clicked?.name
         ) {
             currentCard = clicked;
+            state = "opponentTurn";
 
             const index = playerCards.findIndex(
                 (obj) =>
@@ -173,7 +175,6 @@
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
             }
-            state = "opponentTurn";
         }
     }
 
