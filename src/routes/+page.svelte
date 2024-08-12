@@ -181,13 +181,18 @@
     function pickup(competitor: CardInfo[]) {
 
         const randomCard: CardInfo | undefined = getRandomCard(dealPile)
-        playerCardCount = playerCards.length;
-        oppositionCardCount = oppositionCards.length;
 
         if (randomCard) {
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
             competitor.push(randomCard);
+
+            if (state === 'playerTurn') {
+                playerCardCount = playerCards.length
+            }
+            else {
+                oppositionCardCount = oppositionCards.length
+            }
         }
     }
 
