@@ -235,7 +235,7 @@
 
 {#if state === "start"}
     <h1>Last Card</h1>
-    <button on:click= {() => (state = 'playerTurn')}>
+    <button on:click= {() => (state = 'playerTurn')} {startCard()}>
         <img src="../favicon.png" alt="card" />
     </button>
 {/if}
@@ -262,7 +262,7 @@
         }} class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
-        <button class="card" {startCard()}>
+        <button class="card">
             <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
