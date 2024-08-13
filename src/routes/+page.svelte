@@ -20,13 +20,13 @@
     let time = 60
     let playerCardCount = 0;
     let oppositionCardCount = 0;
-    let playerHandCards: number[] = []
-    let playerCards: CardInfo[] = []
-    let oppositionCards: CardInfo[] = []
-    let handLength: number = 7
-    let clicked: CardInfo[] = []
-    let currentCard: CardInfo[] = []
-    let dealPile: CardInfo[] = cards
+    let playerHandCards: number[] = [];
+    let playerCards: CardInfo[] = [];
+    let oppositionCards: CardInfo[] = [];
+    let handLength: number = 7;
+    let clicked: CardInfo[] = [];
+    let currentCard: CardInfo[] = [];
+    let dealPile: CardInfo[] = cards;
 
 
     /* Allow the user to pause the game */
@@ -55,12 +55,11 @@
     function dealTrial() {
         // Player Cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile)
-            if (randomCard) {
+            const randomCard: CardInfo | undefined = getRandomCard(cards);
+            if (randomCard) {   
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
-            }
                 console.log(randomCard); // Output: a random card from myArray
             
 
@@ -68,44 +67,41 @@
                 (obj) =>
                     obj.number === randomCard.number &&
                     obj.name === randomCard.name
-            )
-
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                cards.splice(index, 1);
-            }
-            playerCards.push(randomCard);
-
-        playerCardCount = playerCards.length
-    }
-        // Opposition cards
-        for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo = getRandomCard(dealPile);
-
-            if (randomCard) {
-                // Remove the card from the array
-                dealPile = dealPile.filter(card => card !== randomCard);
-                oppositionCards.push(randomCard);
-            }
-
-            const index = cards.findIndex(
-                (obj) =>
-                    obj.number === randomCard.number &&
-                    obj.name === randomCard.name,
             );
 
             if (index !== -1) {
                 // Remove the card from the array using splice
                 cards.splice(index, 1);
             }
-            oppositionCards.push(randomCard);
+            
+        }
+        playerCardCount = playerCards.length
+    }
+
+        // Opposition cards
+        for (let i = 0; i < handLength; i++) {
+            const randomCard: CardInfo | undefined = getRandomCard(cards);
+
+            if (randomCard) {
+                // Remove the card from the array
+                dealPile = dealPile.filter(card => card !== randomCard);
+                oppositionCards.push(randomCard);
+            }
+        }
+
+        // Check if the opponent has any cards left
+        if (oppositionCards.length === 0) {
+            console.log('Opponent has no cards left');
+            gameWon(); // End the game if the opponent has no cards left
+            return; 
+            } else {
+                console.log("Array is empty");
+            }
         
         console.log(oppositionCards);
-
         oppositionCardCount = oppositionCards.length
     }
-        //console.log(cards);
-    }
+
 
     function handleLastCardClick() {
         if (playerCards.length === 1) {
@@ -114,20 +110,9 @@
     }
 
     function opponentTurn() {
-
-        // Check if the opponent has any cards left
-        if (oppositionCards.length === 0) {
-            console.log('Opponent has no cards left');
-            gameWon(); // End the game if the opponent has no cards left
-            return;
-                console.log(randomCard); // Output: a random card from myArray
-            } else {
-                console.log("Array is empty");
-            }
-        
         // Find cards that can be played based on the current card
         const playableCards = oppositionCards.filter(card => 
-            card.suit === currentCard.suit || card.name === currentCard.name
+            card.suit === currentCard?.suit || card.name === currentCard?.name
         );
 
         if (playableCards.length === 0) {
@@ -153,6 +138,7 @@
         );
         if (cardIndex !== -1) {
             oppositionCards.splice(cardIndex, 1);
+            oppositionCardCount = oppositionCards.length;
         }
 
         console.log('Opponent played:', cardToPlay);
@@ -169,18 +155,19 @@
 
 
     function playerTurn() {
+        
         if (
             currentCard.length === 0 ||
-            currentCard.suit == clicked.suit ||
-            currentCard.name == clicked.name
+            currentCard?.suit === clicked?.suit ||
+            currentCard?.name === clicked?.name
         ) {
             currentCard = clicked;
             state = "opponentTurn";
 
             const index = playerCards.findIndex(
                 (obj) =>
-                    obj.number === currentCard.number &&
-                    obj.name === currentCard.name,
+                    obj.number === clicked?.number &&
+                    obj.name === clicked?.name,
             );
 
             if (index !== -1) {
@@ -191,24 +178,21 @@
         }
     }
 
-    function pickup(competitor) {
+    function pickup(competitor: CardInfo[]) {
 
-        const randomCard: CardInfo = getRandomCard(dealPile)
+        const randomCard: CardInfo | undefined = getRandomCard(dealPile)
 
         if (randomCard) {
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
             competitor.push(randomCard);
-        }
-    }
 
-    function startCard() {
-        const randomCard: CardInfo = getRandomCard(dealPile)
-
-        if (randomCard) {
-            // Remove the card from the array
-            dealPile = dealPile.filter(card => card !== randomCard);
-            return randomCard
+            if (state === 'playerTurn') {
+                playerCardCount = playerCards.length
+            }
+            else {
+                oppositionCardCount = oppositionCards.length
+            }
         }
     }
 
@@ -229,7 +213,7 @@
         resetGame();
     }
 
-dealTrial()
+    dealTrial();
 
 </script>
 
@@ -242,7 +226,7 @@ dealTrial()
 {#if state === "start"}
     <h1>Last Card</h1>
     <button on:click= {() => (state = 'playerTurn')}>
-        <img src="../start.png" alt="card" />
+        <img src="../favicon.png" alt="card" />
     </button>
 {/if}
 
@@ -269,7 +253,7 @@ dealTrial()
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
+            <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
@@ -301,7 +285,6 @@ dealTrial()
 
 
 {#if state === 'opponentTurn'}
-
     {setTimeout(() => {
         opponentTurn();
     }, 2000)}
@@ -325,7 +308,7 @@ dealTrial()
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} loading="lazy"/>
+            <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
     <div class="cards">
@@ -373,10 +356,10 @@ dealTrial()
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
-            <img src={currentCard.image} alt={currentCard.name} />
+            <img src={currentCard?.image} alt={currentCard?.name} />
         </button>
     </div>
-    <div class="cards">
+    <div class="cards">     
         {#each playerCards as playerHandCard}
             <button on:click={() => (clicked = playerHandCard)} class="card">
                 <img src={playerHandCard.image} alt={playerHandCard.name} loading="lazy"/>
