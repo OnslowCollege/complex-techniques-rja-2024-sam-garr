@@ -196,6 +196,16 @@
         }
     }
 
+    function startCard() {
+        const randomCard: CardInfo = getRandomCard(dealPile)
+
+        if (randomCard) {
+            // Remove the card from the array
+            dealPile = dealPile.filter(card => card !== randomCard);
+        }
+        currentCard = randomCard
+    }
+
     /* Reset game to starting condition */
     function resetGame() {
 
@@ -252,6 +262,7 @@
         }} class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
+        {startCard()}
         <button class="card">
             <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
