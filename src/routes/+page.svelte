@@ -87,7 +87,6 @@
                 dealPile = dealPile.filter(card => card !== randomCard);
                 oppositionCards.push(randomCard);
             }
-        }
 
             const index = cards.findIndex(
                 (obj) =>
@@ -104,6 +103,7 @@
         console.log(oppositionCards);
 
         oppositionCardCount = oppositionCards.length
+    }
         //console.log(cards);
     }
 
