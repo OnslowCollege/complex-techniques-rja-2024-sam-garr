@@ -262,8 +262,7 @@
         }} class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
-        {startCard()}
-        <button class="card">
+        <button class="card" {startCard()}>
             <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
     </div>
