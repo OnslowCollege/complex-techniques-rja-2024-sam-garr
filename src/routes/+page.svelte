@@ -192,10 +192,11 @@
         const playableCards = oppositionCards.filter(card => 
             isTwoOrFive(card) || card.suit === currentCard?.suit || card.name === currentCard?.name
         );
-        
+
         if (playableCards.length === 0) {
             // If no playable cards, the opponent must pick up 5 cards
             for (let i = 0; i < 5; i++) {
+                console.log('pickup the cards please')
                 pickup(oppositionCards);
             }
         } else {
