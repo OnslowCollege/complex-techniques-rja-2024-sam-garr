@@ -155,6 +155,7 @@
 
 
     function playerTurn() {
+    
         
         if (
             currentCard.length === 0 ||
