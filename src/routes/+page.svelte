@@ -112,9 +112,17 @@
 
     function opponentTurn() {
         // Find cards that can be played based on the current card
-        const playableCards = oppositionCards.filter(card => 
-            card.suit === currentCard?.suit || card.name === currentCard?.name
-        );
+
+        if (currentCard.name === "2" || currentCard.name === "5") {
+            const playableCards = oppositionCards.filter(card => 
+                card.name === currentCard?.name
+            );
+        } else {
+            const playableCards = oppositionCards.filter(card => 
+                card.suit === currentCard?.suit || card.name === currentCard?.name
+            );
+
+        }
 
         if (playableCards.length === 0) {
             // If no playable cards, the opponent must draw a card (if applicable)
@@ -148,6 +156,15 @@
         if (playerCards.length === 0) {
             gameWon(); // End the game if the player has no cards left
             return;
+        }
+
+        if (cardToPlay.name === '2') {
+            pickupAmount += 2
+            console.log(pickupAmount)
+        }
+        if (cardToPlay.name === '5') {
+            pickupAmount += 5
+            console.log(pickupAmount)
         }
 
         // Transition back to the player's turn
