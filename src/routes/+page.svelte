@@ -102,6 +102,10 @@
         oppositionCardCount = oppositionCards.length
     }
 
+    function isTwoOrFive(card: CardInfo): boolean {
+        return card.number === 2 || card.number === 5;
+    }
+
 
     function handleLastCardClick() {
         if (playerCards.length === 1) {
@@ -176,6 +180,27 @@
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
             }
+        }
+
+        // Check if the played card is a 2 or a 5
+        if (isTwoOrFive(clicked)) {
+            enforceTwoOrFiveRule();
+        }
+    }
+
+    function enforceTwoOrFiveRule() {
+        const playableCards = oppositionCards.filter(card => 
+            isTwoOrFive(card) || card.suit === currentCard?.suit || card.name === currentCard?.name
+        );
+        
+        if (playableCards.length === 0) {
+            // If no playable cards, the opponent must pick up 5 cards
+            for (let i = 0; i < 5; i++) {
+                pickup(oppositionCards);
+            }
+        } else {
+            // Opponent can play a 2 or 5, transition to opponent's turn
+            state = 'opponentTurn';
         }
     }
 
