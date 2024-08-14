@@ -92,7 +92,7 @@
         // Check if the opponent has any cards left
         if (oppositionCards.length === 0) {
             console.log('Opponent has no cards left');
-            gameWon(); // End the game if the opponent has no cards left
+            gameLost(); // End the game if the opponent has no cards left
             return; 
             } else {
                 console.log("Array is empty");
@@ -361,9 +361,6 @@
     </div>
     <div class="card-count">
         <div class="card-counter">{oppositionCardCount}</div>
-    </div>
-    <div>
-        <h1>{clicked}</h1>
     </div>
     <div class="center">
         <button class="card pickup-pile">
