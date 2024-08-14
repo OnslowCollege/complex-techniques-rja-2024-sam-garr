@@ -177,7 +177,13 @@
                 playerCardCount = playerCards.length;
             }
         }
+
+        // Check if the played card is a 2 or a 5
+        if (clicked.name === '2' || clicked.name === '5' ) {
+            console.log("opponent must pick up")
+        }
     }
+
 
     function pickup(competitor: CardInfo[]) {
 
