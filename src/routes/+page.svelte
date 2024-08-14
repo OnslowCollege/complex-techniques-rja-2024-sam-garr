@@ -27,6 +27,7 @@
     let clicked: CardInfo[] = [];
     let currentCard: CardInfo[] = [];
     let dealPile: CardInfo[] = cards;
+    let pickupAmount: number = 0;
 
 
     /* Allow the user to pause the game */
@@ -179,8 +180,13 @@
         }
 
         // Check if the played card is a 2 or a 5
-        if (clicked.name === '2' || clicked.name === '5' ) {
-            console.log("opponent must pick up")
+        if (clicked.name === '2') {
+            pickupAmount += 2
+            console.log(pickupAmount)
+        }
+        if (clicked.name === '5') {
+            pickupAmount += 5
+            console.log(pickupAmount)
         }
     }
 
