@@ -183,7 +183,7 @@
             console.log("opponent must pick up")
         }
     }
-
+    
 
     function pickup(competitor: CardInfo[]) {
 
@@ -411,31 +411,7 @@
         background: none;
         max-width: 90%;
         max-height: 90%;
-
-        &.selected {
-            border: 4px solid var(--border);
-        }
-
-        &.flip {
-            rotate: y 180deg;
-            pointer-events: none;
-        }
-
-        & .back {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-content: center;
-            backface-visibility: hidden;
-            rotate: y 180deg;
-        }
-
-        & .match {
-            transition: opacity 0.3s ease-out;
-            opacity: 0.4;
-        }
     }
-
     .card img {
         display: block;
         max-width: 100%;
