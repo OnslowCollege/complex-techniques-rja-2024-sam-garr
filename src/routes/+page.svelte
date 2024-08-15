@@ -188,7 +188,10 @@
 
         if (currentCard.name === "2" || currentCard.name === "5"){
             if (playerCards.some(card => card.name === currentCard.name)) {
-                console.log("it is currently working!!!!!!!")
+                console.log("card available")
+            }
+            else {
+                console.log("no card available")
             }
         }
     
