@@ -125,6 +125,8 @@
             );
         }
 
+        console.log(pickupAmount)
+
         if (playableCards.length === 0) {
             if (pickupAmount === 0 ){
                 console.log('Opponent has no playable cards, must draw a card');
