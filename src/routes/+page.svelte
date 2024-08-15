@@ -240,6 +240,14 @@
             }
         }
 
+        if (cardToPlay.name === '2') {
+            pickupAmount += 2
+            console.log(pickupAmount)
+        }
+        if (cardToPlay.name === '5') {
+            pickupAmount += 5
+            console.log(pickupAmount)
+        }
     }
 
 
