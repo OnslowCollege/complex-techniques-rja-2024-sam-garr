@@ -196,6 +196,7 @@
                     pickup(playerCards)
                 }
                 pickupAmount = 0
+                return
             }
         }
     
