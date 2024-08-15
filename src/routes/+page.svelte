@@ -192,6 +192,10 @@
             }
             else {
                 console.log("no card available")
+                for (let i = pickupAmount; i < handLength; i++) {
+                    pickup(playerCards)
+                }
+                pickupAmount = 0
             }
         }
     
