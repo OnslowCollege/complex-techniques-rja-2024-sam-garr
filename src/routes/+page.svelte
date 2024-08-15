@@ -115,6 +115,7 @@
         // Find cards that can be played based on the current card
 
         if (currentCard.name === "2" || currentCard.name === "5") {
+            pickupAmount += Number(currentCard.name)
             playableCards = oppositionCards.filter(card => 
                 card.name === currentCard?.name
             );
