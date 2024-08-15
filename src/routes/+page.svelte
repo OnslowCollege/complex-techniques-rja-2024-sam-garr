@@ -185,6 +185,12 @@
 
 
     function playerTurn() {
+
+        if (currentCard.name === "2" || currentCard.name === "5"){
+            if (playerCards.name.includes(currentCard.name)){
+                console.log("it is currently working!!!!!!!")
+            }
+        }
     
         if (pickupAmount !== 0){
             if (currentCard.name === clicked.name) {
