@@ -125,7 +125,16 @@
         }
 
         if (playableCards.length === 0) {
-            if (cards)
+            if (pickupAmount === 0 ){
+                console.log('Opponent has no playable cards, must draw a card');
+                pickup(oppositionCards)
+            } else {
+                console.log('Opponent has no playable cards, must draw a card');
+                for (let i = pickupAmount; i < handLength; i++) {
+                    pickup(oppositionCards)
+                }
+                pickupAmount = 0
+            }
             // If no playable cards, the opponent must draw a card (if applicable)
             console.log('Opponent has no playable cards, must draw a card');
             pickup(oppositionCards)
