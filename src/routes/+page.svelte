@@ -115,7 +115,6 @@
         // Find cards that can be played based on the current card
 
         if (currentCard.name === "2" || currentCard.name === "5") {
-            pickupAmount += Number(currentCard.name)
             playableCards = oppositionCards.filter(card => 
                 card.name === currentCard?.name
             );
@@ -127,24 +126,24 @@
 
         console.log(pickupAmount)
 
+        // If no playable cards, the opponent must draw a card (if applicable)
         if (playableCards.length === 0) {
             if (pickupAmount === 0 ){
                 console.log('Opponent has no playable cards, must draw a card');
                 pickup(oppositionCards)
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                return;
             } else {
                 console.log('Opponent has no playable cards, must draw a card');
                 for (let i = pickupAmount; i < handLength; i++) {
                     pickup(oppositionCards)
                 }
                 pickupAmount = 0
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                return;
             }
-            // If no playable cards, the opponent must draw a card (if applicable)
-            console.log('Opponent has no playable cards, must draw a card');
-            pickup(oppositionCards)
-            // If there is a draw pile, implement logic to draw a card and add to opponent's hand
-            // For simplicity, we'll skip drawing a card in this example
-            state = 'playerTurn'; // End the opponent's turn if they have no playable cards
-            return;
         }
 
         // Select a random card from the playable cards
@@ -187,8 +186,25 @@
 
     function playerTurn() {
     
-        
-        if (
+        if ( currentCard.name === "2" || currentCard.name === "5"){
+            if (currentCard.name === clicked.name) {
+                currentCard = clicked;
+                state = "opponentTurn";
+                
+                const index = playerCards.findIndex(
+                    (obj) =>
+                        obj.number === clicked?.number &&
+                        obj.name === clicked?.name,
+                );
+                
+                if (index !== -1) {
+                    // Remove the card from the array using splice
+                    playerCards.splice(index, 1);
+                    playerCardCount = playerCards.length;
+                }
+            }
+
+        } else if (
             currentCard.length === 0 ||
             currentCard?.suit === clicked?.suit ||
             currentCard?.name === clicked?.name
