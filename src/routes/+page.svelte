@@ -202,7 +202,6 @@
 
 
     function playerTurn() {
-
     
         if (pickupAmount !== 0){
             if (currentCard.name === clicked.name) {
@@ -333,7 +332,7 @@
         <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div>
-        <h1>playerturn</h1>
+        <h1 >playerturn {pickupCheck()}</h1>
     </div>
     <div class="center">
         <button on:click = {() => {
