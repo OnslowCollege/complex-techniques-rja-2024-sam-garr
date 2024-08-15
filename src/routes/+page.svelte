@@ -123,7 +123,7 @@
                 card.suit === currentCard?.suit || card.name === currentCard?.name
             );
         }
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         if (playableCards.length === 0) {
             if (cards)
             // If no playable cards, the opponent must draw a card (if applicable)
