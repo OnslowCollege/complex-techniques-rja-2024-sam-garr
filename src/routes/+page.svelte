@@ -183,9 +183,7 @@
         state = 'playerTurn';
     }
 
-
-    function playerTurn() {
-
+    function pickupCheck() {
         if (currentCard.name === "2" || currentCard.name === "5"){
             if (playerCards.some(card => card.name === currentCard.name)) {
                 console.log("card available")
@@ -196,9 +194,15 @@
                     pickup(playerCards)
                 }
                 pickupAmount = 0
+                state = "opponentTurn"
                 return
             }
         }
+    }
+
+
+    function playerTurn() {
+
     
         if (pickupAmount !== 0){
             if (currentCard.name === clicked.name) {
