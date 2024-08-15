@@ -186,22 +186,23 @@
 
     function playerTurn() {
     
-        if ( currentCard.name === "2" || currentCard.name === "5"){
+        if (pickupAmount !== 0){
             if (currentCard.name === clicked.name) {
                 currentCard = clicked;
                 state = "opponentTurn";
-                
+
                 const index = playerCards.findIndex(
                     (obj) =>
                         obj.number === clicked?.number &&
                         obj.name === clicked?.name,
                 );
-                
+
                 if (index !== -1) {
                     // Remove the card from the array using splice
                     playerCards.splice(index, 1);
                     playerCardCount = playerCards.length;
                 }
+                pickupAmount += Number(clicked.name)
             }
 
         } else if (
@@ -225,15 +226,6 @@
             }
         }
 
-        // Check if the played card is a 2 or a 5
-        if (clicked.name === '2') {
-            pickupAmount += 2
-            console.log(pickupAmount)
-        }
-        if (clicked.name === '5') {
-            pickupAmount += 5
-            console.log(pickupAmount)
-        }
     }
 
 
