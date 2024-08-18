@@ -27,6 +27,8 @@
     let clicked: CardInfo[] = [];
     let currentCard: CardInfo[] = [];
     let dealPile: CardInfo[] = cards;
+    let pickupAmount: number = 0;
+    let playableCards: CardInfo[] = [];
 
 
     /* Allow the user to pause the game */
@@ -111,18 +113,37 @@
 
     function opponentTurn() {
         // Find cards that can be played based on the current card
-        const playableCards = oppositionCards.filter(card => 
-            card.suit === currentCard?.suit || card.name === currentCard?.name
-        );
 
+        if (currentCard.name === "2" || currentCard.name === "5") {
+            playableCards = oppositionCards.filter(card => 
+                card.name === currentCard?.name
+            );
+        } else {
+            playableCards = oppositionCards.filter(card => 
+                card.suit === currentCard?.suit || card.name === currentCard?.name
+            );
+        }
+
+        console.log(pickupAmount)
+
+        // If no playable cards, the opponent must draw a card (if applicable)
         if (playableCards.length === 0) {
-            // If no playable cards, the opponent must draw a card (if applicable)
-            console.log('Opponent has no playable cards, must draw a card');
-            pickup(oppositionCards)
-            // If there is a draw pile, implement logic to draw a card and add to opponent's hand
-            // For simplicity, we'll skip drawing a card in this example
-            state = 'playerTurn'; // End the opponent's turn if they have no playable cards
-            return;
+            if (pickupAmount === 0 ){
+                console.log('Opponent has no playable cards, must draw a card');
+                pickup(oppositionCards)
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                return;
+            } else {
+                console.log('Opponent has no playable cards, must draw a card');
+                for (let i = pickupAmount; i < handLength; i++) {
+                    pickup(oppositionCards)
+                }
+                pickupAmount = 0
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                return;
+            }
         }
 
         // Select a random card from the playable cards
@@ -149,15 +170,59 @@
             return;
         }
 
+        if (cardToPlay.name === '2') {
+            pickupAmount += 2
+            console.log(pickupAmount)
+        }
+        if (cardToPlay.name === '5') {
+            pickupAmount += 5
+            console.log(pickupAmount)
+        }
+
         // Transition back to the player's turn
         state = 'playerTurn';
+    }
+
+    function pickupCheck() {
+        if (currentCard.name === "2" || currentCard.name === "5"){
+            if (playerCards.some(card => card.name === currentCard.name)) {
+                console.log("card available")
+            }
+            else {
+                console.log("no card available")
+                for (let i = pickupAmount; i < handLength; i++) {
+                    pickup(playerCards)
+                }
+                pickupAmount = 0
+                state = "opponentTurn"
+                return
+            }
+        }
     }
 
 
     function playerTurn() {
     
-        
-        if (
+        if (pickupAmount !== 0){
+            if (currentCard.name === clicked.name) {
+                currentCard = clicked;
+                state = "opponentTurn";
+
+                const index = playerCards.findIndex(
+                    (obj) =>
+                        obj.number === clicked?.number &&
+                        obj.name === clicked?.name,
+                );
+
+                if (index !== -1) {
+                    // Remove the card from the array using splice
+                    playerCards.splice(index, 1);
+                    playerCardCount = playerCards.length;
+                }
+                pickupAmount += Number(clicked.name)
+            }
+
+        } else if (
             currentCard.length === 0 ||
             currentCard?.suit === clicked?.suit ||
             currentCard?.name === clicked?.name
@@ -178,9 +243,13 @@
             }
         }
 
-        // Check if the played card is a 2 or a 5
-        if (clicked.name === '2' || clicked.name === '5' ) {
-            console.log("opponent must pick up")
+        if (cardToPlay.name === '2') {
+            pickupAmount += 2
+            console.log(pickupAmount)
+        }
+        if (cardToPlay.name === '5') {
+            pickupAmount += 5
+            console.log(pickupAmount)
         }
     }
     
@@ -263,7 +332,7 @@
         <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div>
-        <h1>playerturn</h1>
+        <h1 >playerturn {pickupCheck()}</h1>
     </div>
     <div class="center">
         <button on:click = {() => {
