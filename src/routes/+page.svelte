@@ -161,6 +161,10 @@
             pickupAmount += 5
             console.log(pickupAmount)
         }
+        if (cardToPlay.name === '7') {
+            state = 'opponentTurn'
+            return
+        }
 
         // Transition back to the player's turn
         state = 'playerTurn';
@@ -246,6 +250,7 @@
             currentCard?.name === clicked?.name
         ) {
             currentCard = clicked;
+            console.log(clicked)
 
             if (clicked.name === "2" || clicked.name === "5") {
                 pickupAmount += Number(clicked.name)
@@ -262,6 +267,12 @@
                 // Remove the card from the array using splice
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
+            }
+            if (clicked.name === '7') {
+                console.log(playerCards)
+                state = 'playing'
+                state = 'playerTurn'
+                return
             }
             state = "opponentTurn";
         }
@@ -319,6 +330,7 @@
     }
 
     $: if (state === 'playerTurn') {
+        console.log(state)
         setTimeout(() => {
             autoPickup();
         }, 2)
