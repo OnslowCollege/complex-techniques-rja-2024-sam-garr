@@ -55,53 +55,28 @@
     
 
     function dealTrial() {
-        // Player Cards
+        // Player cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo | undefined = getRandomCard(cards);
-            if (randomCard) {   
+            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
+            if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 playerCards.push(randomCard);
-                console.log(randomCard); // Output: a random card from myArray
-            
-
-            const index = cards.findIndex(
-                (obj) =>
-                    obj.number === randomCard.number &&
-                    obj.name === randomCard.name
-            );
-
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                cards.splice(index, 1);
             }
-            
         }
         playerCardCount = playerCards.length
-    }
 
         // Opposition cards
         for (let i = 0; i < handLength; i++) {
-            const randomCard: CardInfo | undefined = getRandomCard(cards);
-
+            const randomCard: CardInfo | undefined = getRandomCard(dealPile);
             if (randomCard) {
                 // Remove the card from the array
                 dealPile = dealPile.filter(card => card !== randomCard);
                 oppositionCards.push(randomCard);
             }
         }
-
-        // Check if the opponent has any cards left
-        if (oppositionCards.length === 0) {
-            console.log('Opponent has no cards left');
-            gameLost(); // End the game if the opponent has no cards left
-            return; 
-            } else {
-                console.log("Array is empty");
-            }
-        
-        console.log(oppositionCards);
         oppositionCardCount = oppositionCards.length
+
     }
 
 
@@ -112,8 +87,15 @@
     }
 
     function opponentTurn() {
-        // Find cards that can be played based on the current card
 
+        // Check if the opponent has any cards left
+        if (oppositionCards.length === 0) {
+            console.log('Opponent has no cards left');
+            gameLost(); // End the game if the opponent has no cards left
+            return; 
+        } 
+
+        // Find cards that can be played based on the current card
         if (currentCard.name === "2" || currentCard.name === "5") {
             playableCards = oppositionCards.filter(card => 
                 card.name === currentCard?.name
@@ -136,9 +118,10 @@
                 return;
             } else {
                 console.log('Opponent has no playable cards, must draw a card');
-                for (let i = pickupAmount; i < handLength; i++) {
+                for (let i = 0; i < pickupAmount; i++) {
                     pickup(oppositionCards)
                 }
+                currentCard.name = ""
                 pickupAmount = 0
                 // For simplicity, we'll skip drawing a card in this example
                 state = 'playerTurn'; // End the opponent's turn if they have no playable cards
@@ -190,9 +173,10 @@
             }
             else {
                 console.log("no card available")
-                for (let i = pickupAmount; i < handLength; i++) {
+                for (let i = 0; i < pickupAmount; i++) {
                     pickup(playerCards)
                 }
+                currentCard.name = ""
                 pickupAmount = 0
                 state = "opponentTurn"
                 return
@@ -220,6 +204,7 @@
                     playerCardCount = playerCards.length;
                 }
                 pickupAmount += Number(clicked.name)
+                console.log(pickupAmount)
             }
 
         } else if (
@@ -242,17 +227,7 @@
                 playerCardCount = playerCards.length;
             }
         }
-
-        if (cardToPlay.name === '2') {
-            pickupAmount += 2
-            console.log(pickupAmount)
-        }
-        if (cardToPlay.name === '5') {
-            pickupAmount += 5
-            console.log(pickupAmount)
-        }
     }
-    
 
     function pickup(competitor: CardInfo[]) {
 
@@ -275,11 +250,14 @@
     function startCard() {
         const randomCard: CardInfo = getRandomCard(dealPile)
 
-        if (randomCard) {
+        if (randomCard.name !== "2" && randomCard.name !== "5") {
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
+            currentCard = randomCard
+        } else {
+            startCard()
+            return;
         }
-        currentCard = randomCard
     }
 
     /* Reset game to starting condition */
@@ -299,7 +277,11 @@
         resetGame();
     }
 
-    dealTrial();
+    $: if (state === 'playerTurn') {
+        pickupCheck()
+    }
+
+
 
 </script>
 
@@ -313,6 +295,7 @@
     <h1>Last Card</h1>
     <button on:click = {() => {
         (state = 'playerTurn');
+        dealTrial();
         startCard();
     }}>
         <img src="../favicon.png" alt="card" />
@@ -332,7 +315,7 @@
         <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div>
-        <h1 >playerturn {pickupCheck()}</h1>
+        <h1 >playerturn</h1>
     </div>
     <div class="center">
         <button on:click = {() => {
