@@ -137,13 +137,8 @@
         currentCard = cardToPlay;
 
         // Remove the card from the opponent's hand
-        const cardIndex = oppositionCards.findIndex(card => 
-            card.number === cardToPlay.number && card.name === cardToPlay.name
-        );
-        if (cardIndex !== -1) {
-            oppositionCards.splice(cardIndex, 1);
-            oppositionCardCount = oppositionCards.length;
-        }
+        oppositionCards = oppositionCards.filter(card => card !== cardToPlay);
+        oppositionCardCount = oppositionCards.length;
 
         console.log('Opponent played:', cardToPlay);
 
@@ -162,6 +157,7 @@
             console.log(pickupAmount)
         }
         if (cardToPlay.name === '7') {
+            state = 'playing'
             state = 'opponentTurn'
             return
         }
@@ -229,17 +225,9 @@
                 currentCard = clicked;
                 state = "opponentTurn";
 
-                const index = playerCards.findIndex(
-                    (obj) =>
-                        obj.number === clicked?.number &&
-                        obj.name === clicked?.name,
-                );
-
-                if (index !== -1) {
-                    // Remove the card from the array using splice
-                    playerCards.splice(index, 1);
-                    playerCardCount = playerCards.length;
-                }
+                playerCards = playerCards.filter(card => card !== clicked);
+                playerCardCount = playerCards.length;
+                
                 pickupAmount += Number(clicked.name)
                 console.log(pickupAmount)
             }
@@ -257,19 +245,10 @@
                 console.log(pickupAmount)
             }
 
-            const index = playerCards.findIndex(
-                (obj) =>
-                    obj.number === clicked?.number &&
-                    obj.name === clicked?.name,
-            );
+            playerCards = playerCards.filter(card => card !== clicked);
+            playerCardCount = playerCards.length;
 
-            if (index !== -1) {
-                // Remove the card from the array using splice
-                playerCards.splice(index, 1);
-                playerCardCount = playerCards.length;
-            }
             if (clicked.name === '7') {
-                console.log(playerCards)
                 state = 'playing'
                 state = 'playerTurn'
                 return
