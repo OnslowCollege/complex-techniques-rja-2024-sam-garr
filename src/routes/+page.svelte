@@ -184,6 +184,39 @@
         }
     }
 
+    function autoPickup() {
+        if (currentCard.name === "2" || currentCard.name === "5") {
+            playableCards = playerCards.filter(card => 
+                card.name === currentCard?.name
+            );
+        } else {
+            playableCards = playerCards.filter(card => 
+                card.suit === currentCard?.suit || card.name === currentCard?.name
+            );
+        }
+
+        // If no playable cards, the player must draw a card (if applicable)
+        if (playableCards.length === 0) {
+            if (pickupAmount === 0 ){
+                console.log('Player has no playable cards, must draw a card');
+                pickup(playerCards)
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'opponentTurn'; // End the player's turn if they have no playable cards
+                return;
+            } else {
+                console.log('Player has no playable cards, must draw a card');
+                for (let i = 0; i < pickupAmount; i++) {
+                    pickup(playerCards)
+                }
+                currentCard.name = ""
+                pickupAmount = 0
+                // For simplicity, we'll skip drawing a card in this example
+                state = 'opponentTurn'; // End the player's turn if they have no playable cards
+                return;
+            }
+        }
+    }
+
 
     function playerTurn() {
     
@@ -213,7 +246,11 @@
             currentCard?.name === clicked?.name
         ) {
             currentCard = clicked;
-            state = "opponentTurn";
+
+            if (clicked.name === "2" || clicked.name === "5") {
+                pickupAmount += Number(clicked.name)
+                console.log(pickupAmount)
+            }
 
             const index = playerCards.findIndex(
                 (obj) =>
@@ -226,6 +263,7 @@
                 playerCards.splice(index, 1);
                 playerCardCount = playerCards.length;
             }
+            state = "opponentTurn";
         }
     }
 
@@ -237,12 +275,15 @@
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
             competitor.push(randomCard);
+            console.log("adding", randomCard)
 
             if (state === 'playerTurn') {
                 playerCardCount = playerCards.length
+                console.log(playerCards)
             }
             else {
                 oppositionCardCount = oppositionCards.length
+                console.log(oppositionCards)
             }
         }
     }
@@ -278,7 +319,15 @@
     }
 
     $: if (state === 'playerTurn') {
-        pickupCheck()
+        setTimeout(() => {
+            autoPickup();
+        }, 2)
+    }
+
+    $: if (state === 'opponentTurn') {
+        setTimeout(() => {
+            opponentTurn();
+        }, 2000)
     }
 
 
@@ -356,10 +405,7 @@
 {/if}
 
 
-{#if state === 'opponentTurn'}
-    {setTimeout(() => {
-        opponentTurn();
-    }, 2000)}
+{#if state === 'opponentTurn'} 
     
     <div class="cards">
         {#each oppositionCards as oppositionHandCard}
