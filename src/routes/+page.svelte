@@ -14,7 +14,7 @@
 
     let state: State = 'start'
     let playerCardCount = 0;
-    let turnCount: number = 1;
+    let turnCount: number = 0;
     let oppositionCardCount = 0;
     let playerHandCards: number[] = [];
     let playerCards: CardInfo[] = [];
@@ -112,6 +112,7 @@
                 pickup(oppositionCards)
                 // For simplicity, we'll skip drawing a card in this example
                 state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                turnCount++;
                 return;
             } else {
                 console.log('Opponent has no playable cards, must draw a card');
@@ -122,6 +123,7 @@
                 pickupAmount = 0
                 // For simplicity, we'll skip drawing a card in this example
                 state = 'playerTurn'; // End the opponent's turn if they have no playable cards
+                turnCount++;
                 return;
             }
         }
@@ -247,12 +249,12 @@
             playerCardCount = playerCards.length;
 
             if (clicked.name === '7') {
-                state = 'playing'
                 state = 'playerTurn'
+                turnCount++;
+                console.log(turnCount)
                 return
             }
             state = "opponentTurn";
-            turnCount++;
             lastCardCheck();
         }
     }
@@ -260,7 +262,6 @@
     function pickup(competitor: CardInfo[]) {
 
         const randomCard: CardInfo | undefined = getRandomCard(dealPile)
-        turnCount++;
 
         if (randomCard) {
             // Remove the card from the array
@@ -346,6 +347,7 @@
     <h1>Last Card</h1>
     <button on:click = {() => {
         (state = 'playerTurn');
+        turnCount++;
         dealTrial();
         startCard();
     }}>
