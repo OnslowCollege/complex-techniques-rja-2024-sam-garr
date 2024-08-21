@@ -1,6 +1,7 @@
 
 <script lang="ts">
-    import { cards } from "./cards";
+    import Layout from "./+layout.svelte";
+import { cards } from "./cards";
     import type { CardInfo } from "./cards";
 
     type State =
@@ -10,6 +11,7 @@
         | "opponentTurn"
         | "paused"
         | "won"
+        | "help"
         | "lost";
 
     let state: State = 'start'
@@ -26,6 +28,7 @@
     let pickupAmount: number = 0;
     let playableCards: CardInfo[] = [];
     let lastCardActive = false;
+    let helpActive = false;
 
 
     /* Allow the user to pause the game */
@@ -41,6 +44,19 @@
             }
         }
     }
+
+    function toggleHelpScreen() {
+        if (helpActive === false) {
+        helpActive = true;
+        state = "help";
+        }
+        else {
+            helpActive = false;
+            state = "start"
+        }
+    }
+
+
 
     function getRandomCard<T>(array: T[]): T | undefined {
         if (array.length === 0) {
@@ -78,7 +94,7 @@
 
 
     function handleLastCardClick() {
-        if (playerCards.length <= 2) {
+        if (playerCards.length = 2) {
             lastCardActive = true
         }
     }
@@ -353,6 +369,42 @@
     }}>
         <img src="../favicon.png" alt="card" />
     </button>
+    <button on:click={toggleHelpScreen} class="help-button">
+        Help
+    </button>  
+    {/if}
+
+
+    {#if state === "help"}
+    <div class="help-screen">
+    <h1>Rules of Last Card</h1>
+    <p>
+        The game starts with 7 cards in each deck, one for the player and one for the AI opponent. 
+        
+        Players must play either the same suit, or the same number as the previous card played.
+
+        If a player cannot play a card they pick a card from the draw pile. Their turn is now over.
+        
+        Ace is used as a wild card and can be used on top of any other card. When a player plays an ace, they can use it to change the suit of the cards being played.
+        
+        When a player has one remaining card in their hand they must say “last card.” If they do not, and they play their card on their next turn, they must pick up another 3 cards.
+        
+        The first person to get rid of their hand is the winner.
+        
+        If a player plays a 2, the next player must pick up 2 cards. Alternatively, they could play another 2 and the next player would have to pick up 4.
+
+        It also applies if a player plays a 5. The next player picks up 5 cards, or adds another 5 to accumulate.
+
+        If a player plays a 10, the next players turn is skipped.
+
+        If a player plays a 7, the player who played that 7 gets to play again.
+
+        If the deck empties and the game is therefore impossible to win, the game will be declared a draw.
+    </p>
+        <button on:click={toggleHelpScreen} class="return-button">
+        Return
+        </button>
+        </div>
 {/if}
 
 {#if state === "playerTurn"}
@@ -508,6 +560,60 @@
         gap: 8px;
     }
 
+    .help-button {
+        position: fixed;
+        bottom: 1rem;
+        right: 6rem;    
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 4px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .help-button:hover {
+        background-color: red;
+    }
+
+    .help-screen {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(122, 92%, 20%);
+        color: white;
+        padding: 2rem;
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .return-button {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;    
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 4px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .return-button:hover {
+        background-color: red;
+    }
+
     .card {
         display: inline-flex;
         align-items: center;
@@ -535,8 +641,8 @@
         font-size: 1.2rem;
         border: none;
         border-radius: 4px;
-        background-color: green;
-        color: white;
+        background-color: white;
+        color: black;
         cursor: pointer;
         transition: background-color 0.3s ease;
         text-align: center;
