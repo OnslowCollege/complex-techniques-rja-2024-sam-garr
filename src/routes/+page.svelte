@@ -13,12 +13,8 @@
         | "lost";
 
     let state: State = 'start'
-    let size = 20
-    let selected: number[] = []
-    let matches: string[] = []
-    let timerId: number | null = null
-    let time = 60
     let playerCardCount = 0;
+    let turnCount: number = 1;
     let oppositionCardCount = 0;
     let playerHandCards: number[] = [];
     let playerCards: CardInfo[] = [];
@@ -29,6 +25,7 @@
     let dealPile: CardInfo[] = cards;
     let pickupAmount: number = 0;
     let playableCards: CardInfo[] = [];
+    let lastCardActive = false;
 
 
     /* Allow the user to pause the game */
@@ -82,7 +79,7 @@
 
     function handleLastCardClick() {
         if (playerCards.length === 1) {
-            console.log("Last Card!")
+            lastCardActive = true
         }
     }
 
@@ -164,6 +161,7 @@
 
         // Transition back to the player's turn
         state = 'playerTurn';
+        turnCount++;
     }
 
     function pickupCheck() {
@@ -254,12 +252,15 @@
                 return
             }
             state = "opponentTurn";
+            turnCount++;
+            lastCardCheck();
         }
     }
 
     function pickup(competitor: CardInfo[]) {
 
         const randomCard: CardInfo | undefined = getRandomCard(dealPile)
+        turnCount++;
 
         if (randomCard) {
             // Remove the card from the array
@@ -290,6 +291,11 @@
             return;
         }
     }
+
+    function lastCardCheck(){
+
+    }
+
 
     /* Reset game to starting condition */
     function resetGame() {
