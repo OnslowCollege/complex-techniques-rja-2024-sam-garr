@@ -292,8 +292,10 @@
         }
     }
 
-    function lastCardCheck(){
-
+    function lastCardCheck() {
+        if (playerCardCount === 1 && !lastCardActive) {
+            pickupAmount += 2
+        }
     }
 
 
@@ -361,7 +363,10 @@
         <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div>
-        <h1 >playerturn</h1>
+        <h1 >player turn</h1>
+        <h1>
+            turn: {turnCount}
+        </h1>
     </div>
     <div class="center">
         <button on:click = {() => {
@@ -394,7 +399,7 @@
     </div>
     <button 
     on:click={handleLastCardClick}
-    class="last-card-button"
+    class="last-card-button {lastCardActive ? 'clicked' : ''}" 
     disabled={playerCards.length !== 1} 
     >
         Last Card
@@ -417,6 +422,9 @@
     </div>
     <div>
         <h1>opposition turn</h1>
+        <h1>
+            turn: {turnCount}
+        </h1>
     </div>
     <div class="center">
         <button class="card pickup-pile">
@@ -518,8 +526,8 @@
         position: fixed;
         bottom: 1rem;
         right: 1rem;    
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
         border: none;
         border-radius: 4px;
         background-color: green;
@@ -537,6 +545,10 @@
 
     .last-card-button:not(:disabled):hover {
         background-color: red;
+    }
+
+    .last-card-button.clicked {
+        background-color: gold;
     }
 
 
