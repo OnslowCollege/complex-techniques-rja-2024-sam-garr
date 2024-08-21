@@ -78,7 +78,7 @@
 
 
     function handleLastCardClick() {
-        if (playerCards.length === 1) {
+        if (playerCards.length <= 2) {
             lastCardActive = true
         }
     }
@@ -296,6 +296,9 @@
         if (playerCardCount === 1 && !lastCardActive) {
             pickupAmount += 2
         }
+        if (playerCardCount >= 2 && lastCardActive === true) {
+            lastCardActive = false
+        }
     }
 
 
@@ -400,7 +403,7 @@
     <button 
     on:click={handleLastCardClick}
     class="last-card-button {lastCardActive ? 'clicked' : ''}" 
-    disabled={playerCards.length !== 1} 
+    disabled={playerCards.length !== 2} 
     >
         Last Card
     </button>
