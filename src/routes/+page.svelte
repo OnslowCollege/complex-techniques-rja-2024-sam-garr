@@ -1,7 +1,7 @@
 
 <script lang="ts">
     import Layout from "./+layout.svelte";
-import { cards } from "./cards";
+    import { cards } from "./cards";
     import type { CardInfo } from "./cards";
 
     type State =
@@ -379,7 +379,7 @@ import { cards } from "./cards";
     <div class="help-screen">
     <h1>Rules of Last Card</h1>
     <p>
-        The game starts with 7 cards in each deck, one for the player and one for the AI opponent. 
+        The game starts with 7 cards in each deck, one deck for the player and one for the CPU opponent. 
         
         Players must play either the same suit, or the same number as the previous card played.
 
@@ -387,7 +387,7 @@ import { cards } from "./cards";
         
         Ace is used as a wild card and can be used on top of any other card. When a player plays an ace, they can use it to change the suit of the cards being played.
         
-        When a player has one remaining card in their hand they must say “last card.” If they do not, and they play their card on their next turn, they must pick up another 3 cards.
+        When a player has one remaining card in their hand they must say “Last Card.” If they do not, and they play their card on their next turn, they must pick up another 3 cards.
         
         The first person to get rid of their hand is the winner.
         
