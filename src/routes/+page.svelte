@@ -327,13 +327,11 @@
     /* When game is won give option to reset */
     function gameWon() {
         state = "won";
-        resetGame();
     }
 
     /* When game is lost give option to reset */
     function gameLost() {
         state = "lost";
-        resetGame();
     }
 
     $: if (state === 'playerTurn') {
@@ -548,6 +546,20 @@
     </div>
 {/if}
 
+{#if state === "won"}
+    <div class ="win-screen">
+        <h1>You Won!</h1>
+        <h2>Press the retry button to play again</h2>
+    </div>
+{/if}
+
+{#if state === "lost"}
+    <div class ="loss-screen">
+        <h1>You Lost!</h1>
+        <h2>Press the retry button to play again</h2>
+    </div>
+{/if}
+
 <style>
 
 .center {
@@ -592,6 +604,10 @@
         box-sizing: border-box;
         overflow-y: auto;
         z-index: 1000;
+    }
+
+    .help-screen p {
+        font-size: 1.5rem;
     }
 
     .return-button {
@@ -687,5 +703,51 @@
             margin-top: 1rem;
         }
     
+
+    .win-screen {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(122, 92%, 20%);
+        color: white;
+        padding: 2rem;
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .win-screen h2 {
+        margin-top: 1rem;
+    }
+
+    .loss-screen {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(122, 92%, 20%);
+        color: white;
+        padding: 2rem;
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .loss-screen h2 {
+        margin-top: 1rem;
+    }
 
 </style>
