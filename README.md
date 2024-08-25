@@ -1,15 +1,38 @@
-## Swift Template
+# create-svelte
 
-Use this template to develop a text-based program in Swift 5.10 on a Linux host.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-This template includes:
+## Creating a project
 
-- Extensions to support Swift development
-- swift-format linter/formatter enabled to ensure code follows conventions
-- Mint to run external Swift-based software
-- swift-sh to run individual Swift files, including any external packages
-- Integration for diagrams.net (for files ending in `.drawio`)
+If you're seeing this, you've probably already done this step. Congrats!
 
-## How to run your code
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-Once your Codespace has loaded, click on the Run File button in the status bar.
+# create a new project in my-app
+npm create svelte@latest my-app
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

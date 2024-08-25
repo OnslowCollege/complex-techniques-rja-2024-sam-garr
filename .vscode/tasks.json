@@ -4,12 +4,15 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run Swift file",
-            "type": "shell",
-            "command": "swift ${file}",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
             "problemMatcher": [
-                "$swiftc"
-            ]
+                "$tsc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
