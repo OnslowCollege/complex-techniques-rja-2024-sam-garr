@@ -12,7 +12,8 @@
         | "paused"
         | "won"
         | "help"
-        | "lost";
+        | "lost"
+        | "draw";
 
     let state: State = 'start'
     let playerCardCount = 0;
@@ -29,6 +30,7 @@
     let playableCards: CardInfo[] = [];
     let lastCardActive = false;
     let helpActive = false;
+    let pileCount = dealPile.length;
 
 
     /* Allow the user to pause the game */
@@ -89,6 +91,7 @@
             }
         }
         oppositionCardCount = oppositionCards.length
+        pileCount = dealPile.length;
 
     }
 
@@ -100,6 +103,13 @@
     }
 
     function opponentTurn() {
+
+        pileCount = dealPile.length
+
+        if (dealPile.length === 0) {
+            gameDraw();
+            return;
+        }
 
         // Check if the opponent has any cards left
         if (oppositionCards.length === 0) {
@@ -235,6 +245,13 @@
 
 
     function playerTurn() {
+
+        pileCount = dealPile.length
+
+        if (dealPile.length === 0) {
+            gameDraw()
+            return;
+        }
     
         if (pickupAmount !== 0){
             if (currentCard.name === clicked.name) {
@@ -279,11 +296,17 @@
 
         const randomCard: CardInfo | undefined = getRandomCard(dealPile)
 
+        if (dealPile.length === 0) {
+            gameDraw();
+            return;
+        }
+
         if (randomCard) {
             // Remove the card from the array
             dealPile = dealPile.filter(card => card !== randomCard);
             competitor.push(randomCard);
             console.log("adding", randomCard)
+            pileCount = dealPile.length
 
             if (state === 'playerTurn') {
                 playerCardCount = playerCards.length
@@ -321,7 +344,7 @@
 
     /* Reset game to starting condition */
     function resetGame() {
-
+        state = "start";
     }
 
     /* When game is won give option to reset */
@@ -332,6 +355,10 @@
     /* When game is lost give option to reset */
     function gameLost() {
         state = "lost";
+    }
+
+    function gameDraw() {
+        state = "draw";
     }
 
     $: if (state === 'playerTurn') {
@@ -358,18 +385,23 @@
 {/if}
 
 {#if state === "start"}
+    <div class="start-area">
     <h1>Last Card</h1>
+    <div class="start-area-buttons">
     <button on:click = {() => {
         (state = 'playerTurn');
         turnCount++;
         dealTrial();
         startCard();
-    }}>
-        <img src="../favicon.png" alt="card" />
+        }}
+        class="start-button">
+        Start
     </button>
     <button on:click={toggleHelpScreen} class="help-button">
         Help
-    </button>  
+    </button>
+    </div>
+    </div>
     {/if}
 
 
@@ -424,6 +456,10 @@
         </h1>
     </div>
     <div class="center">
+        <div class="pickup-area">
+        <div class="pile-count">
+            <div class="pile-counter">{pileCount}</div>
+        </div>
         <button on:click = {() => {
             pickup(playerCards);
             state = "opponentTurn";
@@ -433,6 +469,7 @@
         <button class="card">
             <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
+    </div>
     </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
@@ -482,13 +519,18 @@
         </h1>
     </div>
     <div class="center">
+        <div class="pickup-area">
+        <div class="pile-count">
+            <div class="pile-counter">{pileCount}</div>
+        </div>
         <button class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
             <img src={currentCard?.image} alt={currentCard?.name} loading="lazy"/>
         </button>
-    </div>
+        </div>
+        </div>
     <div class="cards">
         {#each playerCards as playerHandCard}
             <button class="card">
@@ -527,12 +569,17 @@
         <div class="card-counter">{oppositionCardCount}</div>
     </div>
     <div class="center">
+        <div class="pickup-area">
+        <div class="pile-count">
+            <div class="pile-counter">{pileCount}</div>
+        </div>
         <button class="card pickup-pile">
             <img src="/cards/backcard.png" alt="Pickup Card Pile" />
         </button>
         <button class="card">
             <img src={currentCard?.image} alt={currentCard?.name} />
         </button>
+    </div>
     </div>
     <div class="cards">     
         {#each playerCards as playerHandCard}
@@ -550,6 +597,9 @@
     <div class ="win-screen">
         <h1>You Won!</h1>
         <h2>Press the retry button to play again</h2>
+        <button on:click={resetGame()} class="retry-button">
+            retry
+            </button>
     </div>
 {/if}
 
@@ -557,6 +607,19 @@
     <div class ="loss-screen">
         <h1>You Lost!</h1>
         <h2>Press the retry button to play again</h2>
+        <button on:click={resetGame()} class="retry-button">
+            retry
+            </button>
+    </div>
+{/if}
+
+{#if state === "draw"}
+    <div class ="draw-screen">
+        <h1>You Drew!</h1>
+        <h2>Press the retry button to play again</h2>
+        <button on:click={resetGame()} class="retry-button">
+            retry
+            </button>
     </div>
 {/if}
 
@@ -572,12 +635,24 @@
         gap: 8px;
     }
 
-    .help-button {
-        position: fixed;
-        bottom: 1rem;
-        right: 6rem;    
-        padding: 1.5rem 2rem;
-        font-size: 1.2rem;
+    .start-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .start-area-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .start-button, .help-button {
+        position: relative;
+        padding: 2rem 2.5rem;
+        font-size: 1.5rem;
         border: none;
         border-radius: 4px;
         background-color: white;
@@ -587,6 +662,11 @@
         text-align: center;
         display: inline-block;
     }
+
+    .start-button:hover {
+        background-color: gold;
+    }
+
 
     .help-button:hover {
         background-color: red;
@@ -610,7 +690,7 @@
         font-size: 1.5rem;
     }
 
-    .return-button {
+    .return-button, .retry-button {
         position: fixed;
         bottom: 1rem;
         right: 1rem;    
@@ -686,7 +766,18 @@
         margin: 0;
     }
 
-    .card-counter {
+    .pickup-area {
+        display: flex;
+        align-items: center;
+    }
+
+    .pile-count {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .card-counter, .pile-counter {
         font-size: 1.2rem;
         padding: 0.5rem;
         background-color: white;
@@ -704,7 +795,7 @@
         }
     
 
-    .win-screen {
+    .win-screen, .loss-screen, .draw-screen {
         position: fixed;
         top: 0;
         right: 0;
@@ -723,31 +814,9 @@
         text-align: center;
     }
 
-    .win-screen h2 {
+    .win-screen, .loss-screen, .draw-screen h2 {
         margin-top: 1rem;
     }
 
-    .loss-screen {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background-color: hsl(122, 92%, 20%);
-        color: white;
-        padding: 2rem;
-        box-sizing: border-box;
-        overflow-y: auto;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .loss-screen h2 {
-        margin-top: 1rem;
-    }
 
 </style>
